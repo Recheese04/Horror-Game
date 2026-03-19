@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://dw7kw81c6sdlw"]
+
+[ext_resource type="PackedScene" uid="uid://cax2bqhqxtqxk" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="Texture2D" uid="uid://bbhsx4i4vvhj4" path="res://models/Concrete wall smooth pillar texture.jpg" id="2_hbghi"]
+[ext_resource type="PackedScene" uid="uid://cgrvyndvmd6f8" path="res://models/old_wooden_table.glb" id="4_ihfcg"]
+[ext_resource type="PackedScene" uid="uid://bllctlle87im5" path="res://models/table_wood_canteen_the_chair.glb" id="4_rka8t"]
+[ext_resource type="Texture2D" uid="uid://bt8sd1eytl5eb" path="res://models/wood1.jpg" id="5_rka8t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x"]
+
+[sub_resource type="Sky" id="Sky_y"]
+sky_material = SubResource("ProceduralSkyMaterial_x")
+
+[sub_resource type="Environment" id="Environment_z"]
+background_mode = 2
+sky = SubResource("Sky_y")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hn12h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbghi"]
+albedo_texture = ExtResource("2_hbghi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cellphone"]
+albedo_color = Color(0.1, 0.1, 0.1, 1)
+metallic = 0.8
+roughness = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chair"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_newtable"]
+size = Vector3(80, 80, 80)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5hph3"]
+albedo_texture = ExtResource("5_rka8t")
+
+[sub_resource type="BoxMesh" id="BoxMesh_j7kpp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bjebc"]
+
+[sub_resource type="Animation" id="Animation_close"]
+resource_name = "door_close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_open"]
+resource_name = "door_open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_door"]
+_data = {
+&"door_close": SubResource("Animation_close"),
+&"door_open": SubResource("Animation_open")
+}
+
+[node name="Level1" type="Node3D" unique_id=1694093653]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5512103, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=735558146]
+environment = SubResource("Environment_z")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=53272429]
+transform = Transform3D(0.866025, -0.433013, 0.25, 0.5, 0.75, -0.433013, 0, 0.5, 0.866025, 0, 10, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=654180443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37163424, -0.051200688, -0.340405)
+use_collision = true
+size = Vector3(50, 0.1, 50)
+material = SubResource("ShaderMaterial_hn12h")
+
+[node name="Player" parent="." unique_id=222895145 instance=ExtResource("1_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2808514, 0.100000024, -2.5767071)
+
+[node name="House" type="Node3D" parent="." unique_id=1241009710]
+
+[node name="wall" type="CSGBox3D" parent="House" unique_id=1880967537]
+transform = Transform3D(0.32302818, 0, 0, 0, 2.764515, 0, 0, 0, 10.008363, 0, 1.3999383, 0)
+use_collision = true
+material = SubResource("StandardMaterial3D_hbghi")
+
+[node name="wall2" type="CSGBox3D" parent="House" unique_id=1094582138]
+transform = Transform3D(-0.0024355422, 0, -10.008078, 0, 2.7645147, 0, 0.323019, 0, -0.07546026, -4.6192684, 1.3999383, -4.7764373)
+use_collision = true
+material = SubResource("StandardMaterial3D_hbghi")
+
+[node name="wall3" type="CSGBox3D" parent="House" unique_id=1985580437]
+transform = Transform3D(-0.0024343785, 0, -6.087896, 0, 2.7645147, 0, 0.32286465, 0, -0.045902345, -6.7141924, 1.3999383, 5.08926)
+use_collision = true
+material = SubResource("StandardMaterial3D_hbghi")
+
+[node name="wall4" type="CSGBox3D" parent="House" unique_id=852801067]
+transform = Transform3D(-0.0024248457, 0, -3.5803068, 0, 2.7645147, 0, 0.32160032, 0, -0.026995283, -1.0696576, 1.3999383, 5.0845084)
+use_collision = true
+size = Vector3(1, 1, 0.6479492)
+material = SubResource("StandardMaterial3D_hbghi")
+
+[node name="wall5" type="CSGBox3D" parent="House" unique_id=995814625]
+transform = Transform3D(0.32302818, 0, 0, 0, 2.764515, 0, 0, 0, 10.008363, -9.688177, 1.3999383, 0)
+use_collision = true
+material = SubResource("StandardMaterial3D_hbghi")
+
+[node name="cellphone" type="CSGBox3D" parent="House" unique_id=59239103]
+transform = Transform3D(0.6889052, 0, 0, 0, 1, 0, 0, 0, 0.72909707, -1.7823974, 1.0918577, 1.4638871)
+use_collision = true
+size = Vector3(0.3203, 0.0274, 0.567)
+material = SubResource("StandardMaterial3D_cellphone")
+
+[node name="Flashlight" type="SpotLight3D" parent="House/cellphone" unique_id=74102948]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.014, -0.25)
+visible = false
+light_color = Color(0.9, 0.95, 1, 1)
+light_energy = 2.0
+shadow_enabled = true
+spot_range = 15.0
+spot_angle = 35.0
+
+[node name="Chair" parent="House" unique_id=197165597 instance=ExtResource("4_ihfcg")]
+transform = Transform3D(0.56948227, 0, 0, 0, 0.7386714, 0, 0, 0, 0.6944939, -1.9116502, 0.00041657686, -0.98568124)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="House/Chair" unique_id=202020749]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="House/Chair/StaticBody3D" unique_id=742056604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_chair")
+
+[node name="Table" parent="House" unique_id=1246235101 instance=ExtResource("4_rka8t")]
+transform = Transform3D(0.017570438, 0, 0, 0, 0.013083068, 0, 0, 0, 0.018655052, -1.5569065, -0.021335125, 0.66053545)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="House/Table" unique_id=1844581200]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="House/Table/StaticBody3D" unique_id=1327667314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0)
+shape = SubResource("BoxShape3D_newtable")
+
+[node name="Door" type="AnimatableBody3D" parent="House" unique_id=818467455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7476, 0, 5.09188)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="House/Door" unique_id=161460234]
+transform = Transform3D(1.545742, 0, 0, 0, 2.5365372, 0, 0, 0, 0.10706239, 0.77274, 1.2250953, 0)
+material_override = SubResource("StandardMaterial3D_5hph3")
+mesh = SubResource("BoxMesh_j7kpp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="House/Door" unique_id=1686499992]
+transform = Transform3D(1.545742, 0, 0, 0, 2.5365372, 0, 0, 0, 0.10706239, 0.77274, 1.2250953, 0)
+shape = SubResource("BoxShape3D_bjebc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="House/Door" unique_id=964781546]
+libraries/ = SubResource("AnimationLibrary_door")
