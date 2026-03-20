@@ -11,12 +11,42 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var held_object: Node3D = null
 @onready var interact_label: Label = $CanvasLayer/InteractLabel
 @onready var interact_ray: RayCast3D = $Camera3D/InteractRay
+@onready var subtitle_label: Label = $CanvasLayer/SubtitleLabel
+
+var in_cinematic = false
+var cinematic_target = null
+
+func start_cinematic(target: Node3D):
+	in_cinematic = true
+	cinematic_target = target
+
+func end_cinematic():
+	in_cinematic = false
+	cinematic_target = null
+	
+	# Fix camera rotation! Transfer the temporary cinematic Y-yaw to the player's body
+	# and wipe local Y/Z twists off the camera so mouse look works perfectly again.
+	var current_y = camera.global_rotation.y
+	var current_x = camera.rotation.x
+	camera.rotation = Vector3(current_x, 0, 0)
+	global_rotation.y = current_y
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	interact_label.hide()
+	subtitle_label.hide()
+
+func show_subtitle(text: String):
+	subtitle_label.text = text
+	subtitle_label.show()
+
+func hide_subtitle():
+	subtitle_label.hide()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if in_cinematic:
+		return
+		
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		camera.rotate_x(-event.relative.y * mouse_sensitivity)
@@ -63,6 +93,26 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+
+	if in_cinematic:
+		# Stop walking
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
+		move_and_slide()
+		
+		# Smoothly rotate head to look at NPC face (approximate Y offset)
+		var face_pos = cinematic_target.global_position + Vector3(0, 1.5, 0)
+		var look_transform = camera.global_transform.looking_at(face_pos, Vector3.UP)
+		camera.global_transform = camera.global_transform.interpolate_with(look_transform, 4.0 * delta)
+		
+		# Zoom FOV in
+		camera.fov = lerp(camera.fov, 40.0, 3.0 * delta)
+		
+		interact_label.hide()
+		return
+		
+	# Smoothly return FOV back to normal if escaping cinematic
+	camera.fov = lerp(camera.fov, 75.0, 5.0 * delta)
 
 	# Handle interact label
 	if interact_ray.is_colliding():

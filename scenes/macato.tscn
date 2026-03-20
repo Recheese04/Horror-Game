@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://macato123"]
+
+[ext_resource type="Script" uid="uid://fnxeoi3tox45" path="res://scenes/macato.gd" id="1_m"]
+[ext_resource type="PackedScene" uid="uid://crk3w2n5rdecb" path="res://models/Pictures/all_animations_unity.fbx" id="2_m"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qxqx"]
+radius = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_intz"]
+radius = 1.2
+
+[node name="Macato" type="CharacterBody3D" unique_id=1729570797]
+script = ExtResource("1_m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=365664313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_qxqx")
+
+[node name="MeshScaleWrapper" type="Node3D" parent="." unique_id=1823021040]
+transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 0, 0, 0)
+
+[node name="macato_anim" parent="MeshScaleWrapper" unique_id=1914827835 instance=ExtResource("2_m")]
+
+[node name="InteractionZone" type="Area3D" parent="." unique_id=125358373]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionZone" unique_id=54090996]
+shape = SubResource("SphereShape3D_intz")

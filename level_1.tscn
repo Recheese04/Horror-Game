@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cgrvyndvmd6f8" path="res://models/old_wooden_table.glb" id="4_ihfcg"]
 [ext_resource type="PackedScene" uid="uid://bllctlle87im5" path="res://models/table_wood_canteen_the_chair.glb" id="4_rka8t"]
 [ext_resource type="Texture2D" uid="uid://bt8sd1eytl5eb" path="res://models/wood1.jpg" id="5_rka8t"]
+[ext_resource type="PackedScene" path="res://scenes/npc.tscn" id="8_npc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x"]
 
@@ -86,9 +87,9 @@ transform = Transform3D(0.866025, -0.433013, 0.25, 0.5, 0.75, -0.433013, 0, 0.5,
 shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=654180443]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37163424, -0.051200688, -0.340405)
+transform = Transform3D(0.96005905, 0, 0, 0, 0.96005905, 0, 0, 0, 0.96005905, -0.37163424, -0.051200688, -0.340405)
 use_collision = true
-size = Vector3(50, 0.1, 50)
+size = Vector3(100, 0.1, 100)
 material = SubResource("ShaderMaterial_hn12h")
 
 [node name="Player" parent="." unique_id=222895145 instance=ExtResource("1_player")]
@@ -146,12 +147,12 @@ transform = Transform3D(0.56948227, 0, 0, 0, 0.7386714, 0, 0, 0, 0.6944939, -1.9
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_chair")
 
-[node name="Table" parent="House" unique_id=1246235101 instance=ExtResource("4_rka8t")]
-transform = Transform3D(0.017570438, 0, 0, 0, 0.013083068, 0, 0, 0, 0.018655052, -1.5569065, -0.021335125, 0.66053545)
+[node name="Table" parent="House/Chair/StaticBody3D" unique_id=1246235101 instance=ExtResource("4_rka8t")]
+transform = Transform3D(0.030853355, 0, 0, 0, 0.017711619, 0, 0, 0, 0.026861362, 0.62292314, -0.029447079, 2.370383)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="House/Table" unique_id=1844581200]
+[node name="StaticBody3D" type="StaticBody3D" parent="House/Chair/StaticBody3D/Table" unique_id=1844581200]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="House/Table/StaticBody3D" unique_id=1327667314]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="House/Chair/StaticBody3D/Table/StaticBody3D" unique_id=1327667314]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0)
 shape = SubResource("BoxShape3D_newtable")
 
@@ -169,3 +170,6 @@ shape = SubResource("BoxShape3D_bjebc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="House/Door" unique_id=964781546]
 libraries/ = SubResource("AnimationLibrary_door")
+
+[node name="NPC" parent="." unique_id=1632518412 instance=ExtResource("8_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.926191, -0.0031981468, 10.9955635)
