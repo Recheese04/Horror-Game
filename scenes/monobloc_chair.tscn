@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://4gf7hgwkym24"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plastic"]
+albedo_color = Color(0.2, 0.7, 0.5, 1)
+roughness = 0.35
+clearcoat_enabled = true
+clearcoat_roughness = 0.2
+
+[node name="MonoblocChair" type="CSGCombiner3D" unique_id=1323133290]
+use_collision = true
+
+[node name="SeatGroup" type="CSGCombiner3D" parent="." unique_id=1467859906]
+
+[node name="Seat" type="CSGBox3D" parent="SeatGroup" unique_id=1484463409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43, 0.02)
+size = Vector3(0.42, 0.02, 0.38)
+material = SubResource("StandardMaterial3D_plastic")
+
+[node name="SeatFrontLip" type="CSGCylinder3D" parent="SeatGroup" unique_id=486046350]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.43, 0.21)
+radius = 0.01
+height = 0.42
+material = SubResource("StandardMaterial3D_plastic")
+
+[node name="SeatBackCurve" type="CSGCylinder3D" parent="SeatGroup" unique_id=1140644008]
+transform = Transform3D(-1.0289e-08, -1, 0, 0.23538482, -4.37114e-08, 0, 0, 0, 0.23211837, 0, 0.43, -0.17)
+radius = 0.04
+height = 0.42
+material = SubResource("StandardMaterial3D_plastic")
+
+[node name="BackrestGroup" type="CSGCombiner3D" parent="." unique_id=1670808339]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0.65, -0.23)
+
+[node name="BackrestMain" type="CSGBox3D" parent="BackrestGroup" unique_id=2036079511]
+size = Vector3(0.42, 0.45, 0.02)
+material = SubResource("StandardMaterial3D_plastic")
+
+[node name="BackrestTopCurve" type="CSGCylinder3D" parent="BackrestGroup" unique_id=139808432]
+transform = Transform3D(-3.282534e-08, -1, 0, 0.75095606, -4.37114e-08, 5.5879354e-09, -1.4901161e-08, 0, 0.06905264, 0, 0.22499996, 0)
+radius = 0.06
+height = 0.42
+material = SubResource("StandardMaterial3D_plastic")
+
+[node name="CutoutLeftBox" type="CSGBox3D" parent="BackrestGroup" unique_id=542614359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12, -0.05, 0)
+operation = 2
+size = Vector3(0.12, 0.35, 0.1)
+
+[node name="CutoutLeftArch" type="CSGCylinder3D" parent="BackrestGroup" unique_id=1557731994]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.12, 0.125, 0)
+operation = 2
+radius = 0.06
+height = 0.1
+
+[node name="CutoutRightBox" type="CSGBox3D" parent="BackrestGroup" unique_id=534629232]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, -0.05, 0)
+operation = 2
+size = Vector3(0.12, 0.35, 0.1)
+
+[node name="CutoutRightArch" type="CSGCylinder3D" parent="BackrestGroup" unique_id=2112626830]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.12, 0.125, 0)
+operation = 2
+radius = 0.06
+height = 0.1
+
+[node name="LegGroup" type="CSGCombiner3D" parent="." unique_id=1494725444]
+
+[node name="LegFrontLeft" type="CSGCylinder3D" parent="LegGroup" unique_id=441244540]
+transform = Transform3D(0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0, 0, 1, -0.19, 0.21, 0.19)
+radius = 0.015
+height = 0.42
+material = SubResource("StandardMaterial3D_plastic")
+
+[node name="LegFrontRight" type="CSGCylinder3D" parent="LegGroup" unique_id=1051905730]
+transform = Transform3D(0.996195, -0.0871557, 0, 0.0871557, 0.996195, 0, 0, 0, 1, 0.19, 0.21, 0.19)
+radius = 0.015
+height = 0.42
+material = SubResource("StandardMaterial3D_plastic")
+
+[node name="LegBackLeft" type="CSGCylinder3D" parent="LegGroup" unique_id=1945489190]
+transform = Transform3D(0.984808, 0.08615, -0.150384, -0.0871553, 0.996195, 0, 0.149806, 0.0131065, 0.988626, -0.19, 0.21, -0.15068546)
+radius = 0.015
+height = 0.44
+material = SubResource("StandardMaterial3D_plastic")
+
+[node name="LegBackRight" type="CSGCylinder3D" parent="LegGroup" unique_id=1014017169]
+transform = Transform3D(0.984808, -0.08615, 0.150384, 0.0871553, 0.996195, 0, -0.149806, 0.0131065, 0.988626, 0.19, 0.21, -0.14243434)
+radius = 0.015
+height = 0.44
+material = SubResource("StandardMaterial3D_plastic")
+
+[node name="Slits" type="CSGCombiner3D" parent="." unique_id=1882877387]
+operation = 2
+
+[node name="Slit1" type="CSGBox3D" parent="Slits" unique_id=417326199]
+transform = Transform3D(1.5941768, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43, -0.02)
+size = Vector3(0.01, 0.1, 0.15)
+
+[node name="Slit2" type="CSGBox3D" parent="Slits" unique_id=335304725]
+transform = Transform3D(2.0943656, 0, 0, 0, 1, 0, 0, 0, 1, -0.06081625, 0.43, 0.004791703)
+size = Vector3(0.01, 0.1, 0.15)
+
+[node name="Slit4" type="CSGBox3D" parent="Slits" unique_id=250591313]
+transform = Transform3D(2.1311293, 0, 0, 0, 1, 0, 0, 0, 1, -0.11821849, 0.43, 0.0686277)
+size = Vector3(0.01, 0.1, 0.15)
+
+[node name="Slit5" type="CSGBox3D" parent="Slits" unique_id=1640124334]
+transform = Transform3D(2.1311293, 0, 0, 0, 1, 0, 0, 0, 1, 0.08252042, 0.43, 0.0686277)
+size = Vector3(0.01, 0.1, 0.15)
+
+[node name="Slit6" type="CSGBox3D" parent="Slits" unique_id=1420302454]
+transform = Transform3D(2.1311293, 0, 0, 0, 1, 0, 0, 0, 1, 0.11901792, 0.43, 0.01744102)
+size = Vector3(0.01, 0.1, 0.15)
+
+[node name="Slit3" type="CSGBox3D" parent="Slits" unique_id=200583057]
+transform = Transform3D(1.6379381, 0, 0, 0, 1, 0, 0, 0, 1, 0.035119206, 0.43, 0.023410644)
+size = Vector3(0.01, 0.1, 0.15)

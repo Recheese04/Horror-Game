@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://bt8sd1eytl5eb" path="res://models/wood1.jpg" id="5_rka8t"]
 [ext_resource type="PackedScene" uid="uid://dwbvmn66jxxfy" path="res://scenes/bulb.tscn" id="7_j7kpp"]
 [ext_resource type="PackedScene" path="res://scenes/npc.tscn" id="8_npc"]
+[ext_resource type="PackedScene" uid="uid://4gf7hgwkym24" path="res://scenes/monobloc_chair.tscn" id="9_gyffv"]
 [ext_resource type="Script" uid="uid://cdvuq4fp0ptpc" path="res://scenes/switch.gd" id="9_switchscript"]
+[ext_resource type="PackedScene" uid="uid://dqql1j1aphgpo" path="res://scenes/curtain.tscn" id="11_1pe0h"]
 [ext_resource type="PackedScene" uid="uid://d3yq1vx6n5c3g" path="res://scenes/wall_fan.tscn" id="11_newfan"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x"]
@@ -146,6 +148,18 @@ material = SubResource("StandardMaterial3D_hbghi")
 transform = Transform3D(-0.0024406614, 0, -10.029114, 0, 3.4250195, 0, 0.32369795, 0, -0.07561887, -1.457026, 1.3999383, -3.6766756)
 use_collision = true
 size = Vector3(1, 1, 0.28339958)
+material = SubResource("StandardMaterial3D_hbghi")
+
+[node name="wall15" type="CSGBox3D" parent="House" unique_id=119886735]
+transform = Transform3D(-0.0024349084, 0, -6.8938603, 0, 0.8631209, 0, 0.32293496, 0, -0.051979262, -3.6788776, 2.8130493, -3.6777568)
+use_collision = true
+size = Vector3(1, 0.70202637, 0.24179745)
+material = SubResource("StandardMaterial3D_hbghi")
+
+[node name="wall16" type="CSGBox3D" parent="House" unique_id=292073901]
+transform = Transform3D(-0.0024349084, 0, -6.8938603, 0, 0.8631209, 0, 0.32293496, 0, -0.051979262, -7.666678, 2.822876, -3.6777568)
+use_collision = true
+size = Vector3(1, 0.70202637, 0.24179745)
 material = SubResource("StandardMaterial3D_hbghi")
 
 [node name="wall3" type="CSGBox3D" parent="House" unique_id=1985580437]
@@ -317,7 +331,15 @@ material = SubResource("ORMMaterial3D_j7kpp")
 
 [node name="WallFan" parent="House" unique_id=99232842 instance=ExtResource("11_newfan")]
 transform = Transform3D(0.04367139, -1.4814904, 0.03153215, -0.02974955, -0.027998462, -1.7242187, 1.4679543, 0.043506727, -0.03588105, -2.9618874, 3.5774832, -6.6749983)
-spin_speed = 20.0
 
 [node name="NPC" parent="." unique_id=1632518412 instance=ExtResource("8_npc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.926191, -0.0031981468, 20.295311)
+
+[node name="MonoblocChair" parent="." unique_id=2012307267 instance=ExtResource("9_gyffv")]
+transform = Transform3D(0.9564521, 0, 0, 0, 1.1611863, 0, 0, 0, 0.9564521, -3.2584555, -0.09777096, 2.2387028)
+
+[node name="Curtain" parent="." unique_id=855702835 instance=ExtResource("11_1pe0h")]
+transform = Transform3D(0.7268971, 0, 0, 0, 1, 0, 0, 0, 1, -3.5650837, 2.3795843, -3.5123227)
+
+[node name="Curtain2" parent="." unique_id=1852992968 instance=ExtResource("11_1pe0h")]
+transform = Transform3D(0.7268971, 0, 0, 0, 1, 0, 0, 0, 1, -7.677517, 2.3795843, -3.5123227)
