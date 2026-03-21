@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://fake_person"]
+
+[ext_resource type="Texture2D" path="res://assets/images/mother.png" id="1_mother"]
+
+[node name="FakePerson" type="Node3D"]
+
+[node name="Sprite33D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+pixel_size = 0.002
+billboard = 2
+texture = ExtResource("1_mother")

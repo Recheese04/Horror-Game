@@ -109,9 +109,10 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		
 		# Smoothly rotate head to look at NPC face (approximate Y offset)
-		var face_pos = cinematic_target.global_position + Vector3(0, 1.5, 0)
-		var look_transform = camera.global_transform.looking_at(face_pos, Vector3.UP)
-		camera.global_transform = camera.global_transform.interpolate_with(look_transform, 4.0 * delta)
+		if is_instance_valid(cinematic_target):
+			var face_pos = cinematic_target.global_position + Vector3(0, 1.5, 0)
+			var look_transform = camera.global_transform.looking_at(face_pos, Vector3.UP)
+			camera.global_transform = camera.global_transform.interpolate_with(look_transform, 4.0 * delta)
 		
 		# Zoom FOV in
 		camera.fov = lerp(camera.fov, 40.0, 3.0 * delta)
