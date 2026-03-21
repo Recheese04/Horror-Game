@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dj8kw81c6sdlw" path="res://scenes/jumpscare.tscn" id="14_jsscene"]
 [ext_resource type="Script" path="res://scenes/fake_jumpscare_trigger.gd" id="15_fakejstrigger"]
 [ext_resource type="PackedScene" uid="uid://fake_person" path="res://scenes/fake_person.tscn" id="16_fakeperson"]
+[ext_resource type="PackedScene" uid="uid://4gf7hgwkym24" path="res://scenes/monobloc_chair.tscn" id="17_monobloc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x"]
 
@@ -358,7 +359,7 @@ target_path = NodePath("../FakeMother")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FakeJumpscareTrigger"]
 shape = SubResource("BoxShape3D_fakejstrigger")
 
-[node name="MonoblocChair" parent="." unique_id=2012307267 instance=ExtResource("9_gyffv")]
+[node name="MonoblocChair" parent="." unique_id=2012307267 instance=ExtResource("17_monobloc")]
 transform = Transform3D(0.9564521, 0, 0, 0, 1.1611863, 0, 0, 0, 0.9564521, -3.2584555, -0.09777096, 2.2387028)
 
 [node name="Curtain" parent="House" unique_id=855702835 instance=ExtResource("11_1pe0h")]
