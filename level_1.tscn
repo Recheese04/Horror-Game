@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://cdvuq4fp0ptpc" path="res://scenes/switch.gd" id="9_switchscript"]
 [ext_resource type="PackedScene" uid="uid://dqql1j1aphgpo" path="res://scenes/curtain.tscn" id="11_1pe0h"]
 [ext_resource type="PackedScene" uid="uid://d3yq1vx6n5c3g" path="res://scenes/wall_fan.tscn" id="11_newfan"]
+[ext_resource type="Script" path="res://scenes/door.gd" id="12_doorscript"]
+[ext_resource type="PackedScene" uid="uid://dj8kw81c6sdlw" path="res://scenes/jumpscare.tscn" id="13_jsscene"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x"]
 
@@ -89,6 +91,9 @@ albedo_texture = ExtResource("2_hbghi")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_newtable"]
 size = Vector3(80, 80, 80)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jstrigger"]
+size = Vector3(2, 4, 2)
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_j7kpp"]
 
@@ -252,6 +257,8 @@ shape = SubResource("BoxShape3D_chair")
 
 [node name="Door" type="AnimatableBody3D" parent="House" unique_id=818467455]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7476, 0, 5.09188)
+script = ExtResource("12_doorscript")
+jumpscare_scene = ExtResource("13_jsscene")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="House/Door" unique_id=161460234]
 transform = Transform3D(1.545742, 0, 0, 0, 2.5365372, 0, 0, 0, 0.10706239, 0.77274, 1.2250953, 0)
