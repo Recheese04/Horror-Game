@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://bt84rddsr5cb0"]
+
+[ext_resource type="Shader" uid="uid://bg6nwla64bicd" path="res://scenes/habol.gdshader" id="1_hshader"]
+[ext_resource type="Texture2D" uid="uid://wog354yfl42k" path="res://models/image texture/wood-texture-background-free-photo.jpg" id="1_woodtex"]
+[ext_resource type="Texture2D" uid="uid://b8b215ehx4o6n" path="res://models/image texture/banig.jpg" id="2_wxwjr"]
+[ext_resource type="Texture2D" uid="uid://dyycm1cx0klsm" path="res://models/image texture/Gemini_Generated_Image_8pnh8o8pnh8o8pnh.png" id="4_w0io5"]
+[ext_resource type="Texture2D" uid="uid://cjkdj06j3fyrc" path="res://models/image texture/Gemini_Generated_Image_fetx1afetx1afetx.png" id="4_wec0l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wood"]
+albedo_color = Color(0.8, 0.7, 0.6, 1)
+albedo_texture = ExtResource("1_woodtex")
+metallic = 0.1
+roughness = 0.9
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_foam"]
+albedo_color = Color(0.15, 0.25, 0.5, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_banig"]
+albedo_color = Color(0.75, 0.65, 0.35, 1)
+albedo_texture = ExtResource("2_wxwjr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_habol"]
+render_priority = 0
+shader = ExtResource("1_hshader")
+shader_parameter/albedo = Color(0.69803923, 0.6117647, 0.6901961, 1)
+shader_parameter/albedo_texture = ExtResource("4_w0io5")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/crumple_amount = 0.03
+shader_parameter/fold_scale = 12.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_habol"]
+material = SubResource("ShaderMaterial_habol")
+size = Vector2(1, 1.2)
+subdivide_width = 32
+subdivide_depth = 32
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pillow"]
+albedo_color = Color(0.85, 0.85, 0.85, 1)
+albedo_texture = ExtResource("4_wec0l")
+roughness = 0.8
+
+[node name="FilipinoBed" type="Node3D" unique_id=1583668024]
+
+[node name="BedFrame" type="CSGCombiner3D" parent="." unique_id=1086111481]
+use_collision = true
+
+[node name="LegFL" type="CSGBox3D" parent="BedFrame" unique_id=1728992044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.25, 1)
+size = Vector3(0.05, 0.5, 0.05)
+material = SubResource("StandardMaterial3D_wood")
+
+[node name="LegFR" type="CSGBox3D" parent="BedFrame" unique_id=1651774021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.25, 1)
+size = Vector3(0.05, 0.5, 0.05)
+material = SubResource("StandardMaterial3D_wood")
+
+[node name="LegBL" type="CSGBox3D" parent="BedFrame" unique_id=1058177051]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.45, -1)
+size = Vector3(0.05, 0.9, 0.05)
+material = SubResource("StandardMaterial3D_wood")
+
+[node name="LegBR" type="CSGBox3D" parent="BedFrame" unique_id=24546541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.45, -1)
+size = Vector3(0.05, 0.9, 0.05)
+material = SubResource("StandardMaterial3D_wood")
+
+[node name="HeadboardPanel" type="CSGBox3D" parent="BedFrame" unique_id=473112630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -1)
+size = Vector3(1.15, 0.35, 0.02)
+material = SubResource("StandardMaterial3D_wood")
+
+[node name="HeadboardSlit1" type="CSGBox3D" parent="BedFrame/HeadboardPanel" unique_id=402543779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0)
+operation = 2
+size = Vector3(0.05, 0.3, 0.05)
+
+[node name="HeadboardSlit2" type="CSGBox3D" parent="BedFrame/HeadboardPanel" unique_id=1242792042]
+operation = 2
+size = Vector3(0.05, 0.3, 0.05)
+
+[node name="HeadboardSlit3" type="CSGBox3D" parent="BedFrame/HeadboardPanel" unique_id=1629090000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0)
+operation = 2
+size = Vector3(0.05, 0.3, 0.05)
+
+[node name="FootboardPanel" type="CSGBox3D" parent="BedFrame" unique_id=560444959]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 1)
+size = Vector3(1.15, 0.15, 0.02)
+material = SubResource("StandardMaterial3D_wood")
+
+[node name="SideRailL" type="CSGBox3D" parent="BedFrame" unique_id=1905060194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.3, 0)
+size = Vector3(0.02, 0.1, 1.95)
+material = SubResource("StandardMaterial3D_wood")
+
+[node name="SideRailR" type="CSGBox3D" parent="BedFrame" unique_id=1694424157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.3, 0)
+size = Vector3(0.02, 0.1, 1.95)
+material = SubResource("StandardMaterial3D_wood")
+
+[node name="BasePlate" type="CSGBox3D" parent="BedFrame" unique_id=232021401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+size = Vector3(1.18, 0.02, 1.95)
+material = SubResource("StandardMaterial3D_wood")
+
+[node name="Mattress" type="CSGBox3D" parent="." unique_id=1916041977]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.355, 0)
+size = Vector3(1.16, 0.09, 1.94)
+material = SubResource("StandardMaterial3D_foam")
+
+[node name="BanigGroup" type="CSGCombiner3D" parent="." unique_id=693979717]
+
+[node name="Banig" type="CSGBox3D" parent="BanigGroup" unique_id=661778903]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.405, 0.05)
+size = Vector3(1.1, 0.01, 1.8)
+material = SubResource("StandardMaterial3D_banig")
+
+[node name="HabolMesh" type="MeshInstance3D" parent="." unique_id=1552188647]
+transform = Transform3D(0.72885096, -0.00068067835, 0, 0.00049611315, 0.99999976, 0, 0, 0, 0.8847509, -0.12846914, 0.44173336, 0.08877221)
+mesh = SubResource("PlaneMesh_habol")
+
+[node name="Pillows" type="Node3D" parent="." unique_id=638533439]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.42, -0.75)
+
+[node name="PillowL" type="CSGSphere3D" parent="Pillows" unique_id=1282761964]
+transform = Transform3D(0.42948252, 0, 0, 0, 0.23184751, -2.2351742e-08, 0, 1.1175871e-08, 0.28228873, -0.28, -0.051410675, 0.19186619)
+radial_segments = 16
+rings = 8
+material = SubResource("StandardMaterial3D_pillow")
+
+[node name="PillowR" type="CSGSphere3D" parent="Pillows" unique_id=1666531310]
+transform = Transform3D(0.5504094, 0, 0, 0, 0.19187969, 7.450581e-09, 0, 1.4901161e-08, 0.26153305, 0.28, 0.014265835, 0.0038225055)
+radial_segments = 16
+rings = 8
+material = SubResource("StandardMaterial3D_pillow")
