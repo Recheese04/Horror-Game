@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://d3yq1vx6n5c3g"]
+
+[ext_resource type="Script" uid="uid://bn8bkxb7jrida" path="res://scenes/wall_fan.gd" id="1_wfan"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_base"]
+top_radius = 0.12
+bottom_radius = 0.12
+height = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_base"]
+albedo_color = Color(0.95, 0.95, 0.95, 1)
+metallic = 0.1
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blades"]
+albedo_color = Color(0.6, 0.2, 0.9, 1)
+metallic = 0.2
+roughness = 0.4
+
+[node name="WallFan" type="Node3D" unique_id=784713808]
+script = ExtResource("1_wfan")
+blades_path = NodePath("FanHead/BladesPivot")
+fan_head_path = NodePath("FanHead")
+spin_speed = 60.0
+
+[node name="Base" type="CSGMesh3D" parent="." unique_id=153345638]
+transform = Transform3D(0.5818609, 0, 0, 0, -7.971745e-08, 0.6281424, 0, -1.8237225, -2.7456986e-08, 0.00068081915, -0.24366696, 0.35111418)
+mesh = SubResource("CylinderMesh_base")
+material = SubResource("StandardMaterial3D_base")
+
+[node name="Arm" type="CSGCylinder3D" parent="." unique_id=1613392236]
+transform = Transform3D(0.6105023, 0, 0, 0, 0.046125136, 0.7412313, 0, -0.97699344, 0.034994498, 0, -0.23681004, 0.46240076)
+radius = 0.017089844
+height = 0.2100586
+material = SubResource("StandardMaterial3D_base")
+
+[node name="FanHead" type="Node3D" parent="." unique_id=1756360048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22, 0.27)
+
+[node name="BladesPivot" type="Node3D" parent="FanHead" unique_id=1375371851]
+transform = Transform3D(1.268227, 0, 0, 0, 1.3793552, 0, 0, 0, 1, 0, -0.030000001, 0.30632278)
+
+[node name="Hub" type="CSGCylinder3D" parent="FanHead/BladesPivot" unique_id=1338250640]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+radius = 0.08
+height = 0.04
+material = SubResource("StandardMaterial3D_blades")
+
+[node name="P1" type="Node3D" parent="FanHead/BladesPivot" unique_id=351452690]
+
+[node name="Blade" type="CSGSphere3D" parent="FanHead/BladesPivot/P1" unique_id=699188673]
+transform = Transform3D(0.14, 0, -0.0684, 0, 0.32, 0, 0.00684, 0, 0.01879, 0, 0.19, 0)
+radial_segments = 24
+rings = 12
+material = SubResource("StandardMaterial3D_blades")
+
+[node name="P2" type="Node3D" parent="FanHead/BladesPivot" unique_id=617201870]
+transform = Transform3D(-0.5, 0.866025, 0, -0.866025, -0.5, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Blade" type="CSGSphere3D" parent="FanHead/BladesPivot/P2" unique_id=2014341325]
+transform = Transform3D(0.14, 0, -0.0684, 0, 0.32, 0, 0.00684, 0, 0.01879, 0, 0.19, 0)
+radial_segments = 24
+rings = 12
+material = SubResource("StandardMaterial3D_blades")
+
+[node name="P3" type="Node3D" parent="FanHead/BladesPivot" unique_id=1263768211]
+transform = Transform3D(-0.5, -0.866025, 0, 0.866025, -0.5, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Blade" type="CSGSphere3D" parent="FanHead/BladesPivot/P3" unique_id=644745532]
+transform = Transform3D(0.14, 0, -0.0684, 0, 0.32, 0, 0.00684, 0, 0.01879, 0, 0.19, 0)
+radial_segments = 24
+rings = 12
+material = SubResource("StandardMaterial3D_blades")

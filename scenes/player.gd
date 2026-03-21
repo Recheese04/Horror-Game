@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var speed := 5.0
+@export var speed := 3.0
 @export var jump_velocity := 4.0
 @export var mouse_sensitivity := 0.002
 
@@ -83,6 +83,10 @@ func _unhandled_input(event: InputEvent) -> void:
 						else:
 							anim.play("door_open")
 							collider.set_meta("is_open", true)
+				elif collider.has_method("interact"):
+					collider.interact()
+				elif collider.get_parent() and collider.get_parent().has_method("interact"):
+					collider.get_parent().interact()
 		elif event.keycode == KEY_F and event.pressed and not event.echo:
 			if held_object != null:
 				var light = held_object.get_node("Flashlight")
@@ -120,6 +124,8 @@ func _physics_process(delta: float) -> void:
 		if collider.name == "Door":
 			interact_label.show()
 		elif held_object == null and (collider.name == "cellphone" or (collider.get_parent() and collider.get_parent().name == "cellphone")):
+			interact_label.show()
+		elif collider.has_method("interact") or (collider.get_parent() and collider.get_parent().has_method("interact")):
 			interact_label.show()
 		else:
 			interact_label.hide()

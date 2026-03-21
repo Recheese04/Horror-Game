@@ -15,3 +15,8 @@ func _disable_shadows(node: Node):
 		node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	for child in node.get_children():
 		_disable_shadows(child)
+
+func toggle():
+	light.visible = not light.visible
+	if audio.stream != null:
+		audio.play()
