@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://dju1ptyv0d0wp"]
+
+[ext_resource type="Texture2D" uid="uid://g22702io7gsi" path="res://models/image texture/Heathered-Red-T-Shirt-Texture.jpg" id="1_soroa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wire"]
+albedo_color = Color(0.8, 0.8, 0.8, 1)
+metallic = 0.5
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shirt_white"]
+cull_mode = 2
+albedo_color = Color(0.9, 0.9, 0.9, 1)
+albedo_texture = ExtResource("1_soroa")
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shirt_red"]
+cull_mode = 2
+albedo_color = Color(0.8, 0.2, 0.2, 1)
+albedo_texture = ExtResource("1_soroa")
+roughness = 0.8
+
+[sub_resource type="Shader" id="Shader_clothes"]
+code = "shader_type spatial;
+render_mode cull_disabled;
+
+uniform vec4 albedo_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float wind_speed = 3.0;
+uniform float wind_strength = 0.15;
+uniform float anchor_y = 0.0; 
+
+void vertex() {
+    float swing_amount = (anchor_y - VERTEX.y);
+    swing_amount = max(0.0, swing_amount);
+    
+    float wind = sin(TIME * wind_speed + VERTEX.x * 4.0) * wind_strength;
+    float gust = sin(TIME * (wind_speed * 0.5) + VERTEX.z * 2.0) * (wind_strength * 0.5);
+    
+    VERTEX.z += (wind + gust) * swing_amount;
+    VERTEX.x += (wind * 0.2) * swing_amount;
+}
+
+void fragment() {
+    ALBEDO = albedo_color.rgb;
+    ROUGHNESS = 0.8;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="StandardMaterial3D_towel_blue"]
+render_priority = 0
+shader = SubResource("Shader_clothes")
+shader_parameter/albedo_color = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/wind_speed = 2.5
+shader_parameter/wind_strength = 0.18
+shader_parameter/anchor_y = 0.0
+
+[node name="Clothesline" type="Node3D" unique_id=821948861]
+
+[node name="Poles" type="CSGCombiner3D" parent="." unique_id=1272921232]
+use_collision = true
+
+[node name="Wire" type="CSGCylinder3D" parent="." unique_id=936918047]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.3746338, 1.9, 0)
+radius = 0.003
+height = 4.7492676
+material = SubResource("StandardMaterial3D_wire")
+
+[node name="HangingClothes" type="Node3D" parent="." unique_id=1567615065]
+
+[node name="ShirtWhite" type="CSGCombiner3D" parent="HangingClothes" unique_id=1622822433]
+transform = Transform3D(0.845208, 0.04356692, 0.5326591, -0.019973673, 0.9985506, -0.04997918, -0.5340644, 0.031603634, 0.84485304, 0.12621918, 1.9, 0.056445576)
+
+[node name="HangerHook" type="CSGCylinder3D" parent="HangingClothes/ShirtWhite" unique_id=1508622742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+radius = 0.004
+height = 0.1
+material = SubResource("StandardMaterial3D_wire")
+
+[node name="HangerBase" type="CSGBox3D" parent="HangingClothes/ShirtWhite" unique_id=282066809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+size = Vector3(0.42, 0.015, 0.015)
+material = SubResource("StandardMaterial3D_wire")
+
+[node name="Body" type="CSGBox3D" parent="HangingClothes/ShirtWhite" unique_id=12035194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+size = Vector3(0.45, 0.6, 0.02)
+material = SubResource("StandardMaterial3D_shirt_white")
+
+[node name="Sleeves" type="CSGBox3D" parent="HangingClothes/ShirtWhite" unique_id=308873793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+size = Vector3(0.75, 0.2, 0.02)
+material = SubResource("StandardMaterial3D_shirt_white")
+
+[node name="NeckHole" type="CSGCylinder3D" parent="HangingClothes/ShirtWhite" unique_id=1771950675]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.1, 0)
+operation = 2
+radius = 0.08
+height = 0.05
+material = SubResource("StandardMaterial3D_shirt_white")
+
+[node name="ShirtRed" type="CSGCombiner3D" parent="HangingClothes" unique_id=1026079566]
+transform = Transform3D(0.84506905, -0.068854265, 0.53020513, 0.049916714, 0.99750215, 0.049979165, -0.53232193, -0.015769757, 0.8463951, 0.63485, 1.9, -0.056445576)
+
+[node name="HangerHook" type="CSGCylinder3D" parent="HangingClothes/ShirtRed" unique_id=1737123198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+radius = 0.004
+height = 0.1
+material = SubResource("StandardMaterial3D_wire")
+
+[node name="HangerBase" type="CSGBox3D" parent="HangingClothes/ShirtRed" unique_id=1816614238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+size = Vector3(0.42, 0.015, 0.015)
+material = SubResource("StandardMaterial3D_wire")
+
+[node name="Body" type="CSGBox3D" parent="HangingClothes/ShirtRed" unique_id=1989290960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+size = Vector3(0.45, 0.6, 0.02)
+material = SubResource("StandardMaterial3D_shirt_red")
+
+[node name="Sleeves" type="CSGBox3D" parent="HangingClothes/ShirtRed" unique_id=1881018003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+size = Vector3(0.75, 0.2, 0.02)
+material = SubResource("StandardMaterial3D_shirt_red")
+
+[node name="NeckHole" type="CSGCylinder3D" parent="HangingClothes/ShirtRed" unique_id=1001090925]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.1, 0)
+operation = 2
+radius = 0.08
+height = 0.05
+
+[node name="TowelBlue" type="CSGCombiner3D" parent="HangingClothes" unique_id=582119304]
+transform = Transform3D(0.99875027, 0.0039940695, 0.04981932, 0, 0.99680173, -0.07991469, -0.04997917, 0.079814814, 0.995556, 1.2, 1.9, 0)
+
+[node name="HangerHook" type="CSGCylinder3D" parent="HangingClothes/TowelBlue" unique_id=1673765107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+radius = 0.004
+height = 0.1
+material = SubResource("StandardMaterial3D_wire")
+
+[node name="TowelBody" type="CSGBox3D" parent="HangingClothes/TowelBlue" unique_id=1522380144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(0.6, 0.8, 0.02)
+material = SubResource("StandardMaterial3D_towel_blue")

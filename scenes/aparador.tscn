@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://parador123"]
+
+[ext_resource type="Texture2D" uid="uid://bog756pvknbh3" path="res://models/image texture/1fad72792206429c7f450cf869dc897b.jpg" id="1_8qit4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mahogany"]
+albedo_texture = ExtResource("1_8qit4")
+roughness = 0.5
+clearcoat_enabled = true
+clearcoat_roughness = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mirror"]
+albedo_color = Color(0.9, 0.9, 0.9, 1)
+metallic = 1.0
+roughness = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gold"]
+albedo_color = Color(0.8, 0.6, 0.15, 1)
+metallic = 1.0
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dark_metal"]
+albedo_color = Color(0.1, 0.1, 0.1, 1)
+metallic = 0.8
+roughness = 0.7
+
+[node name="Aparador" type="Node3D" unique_id=230581273]
+
+[node name="CabinetBody" type="CSGCombiner3D" parent="." unique_id=1672012396]
+use_collision = true
+
+[node name="MainBox" type="CSGBox3D" parent="CabinetBody" unique_id=1493598509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+size = Vector3(1.2, 1.8, 0.6)
+material = SubResource("StandardMaterial3D_mahogany")
+
+[node name="ArchedCrown" type="CSGCylinder3D" parent="CabinetBody" unique_id=1459843556]
+transform = Transform3D(0.66387093, 0, 0, 0, -4.37114e-08, -0.18531989, 0, 1, -8.10059e-09, 0, 1.9, 0)
+radius = 0.6
+height = 0.6
+sides = 32
+material = SubResource("StandardMaterial3D_mahogany")
+
+[node name="InteriorHollow" type="CSGBox3D" parent="CabinetBody" unique_id=1626776593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12, 0.05)
+operation = 2
+size = Vector3(1.12, 1.5, 0.6)
+
+[node name="BaseTrim" type="CSGBox3D" parent="CabinetBody" unique_id=69540770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+size = Vector3(1.24, 0.05, 0.64)
+material = SubResource("StandardMaterial3D_mahogany")
+
+[node name="DoorLeft" type="CSGBox3D" parent="CabinetBody" unique_id=1766513614]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1.15, 0.31)
+size = Vector3(0.58, 1.45, 0.04)
+material = SubResource("StandardMaterial3D_mahogany")
+
+[node name="DrawerLeft" type="CSGBox3D" parent="CabinetBody" unique_id=47668514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.275, 0.31)
+size = Vector3(0.58, 0.25, 0.04)
+material = SubResource("StandardMaterial3D_mahogany")
+
+[node name="DrawerRight" type="CSGBox3D" parent="CabinetBody" unique_id=1325327897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.275, 0.31)
+size = Vector3(0.58, 0.25, 0.04)
+material = SubResource("StandardMaterial3D_mahogany")
+
+[node name="RightDoorHinge" type="CSGCombiner3D" parent="." unique_id=1549909688]
+transform = Transform3D(0.9553365, 0, 0.29552022, 0, 1, 0, -0.29552022, 0, 0.9553365, 0.59, 1.15, 0.31)
+use_collision = true
+
+[node name="DoorRight" type="CSGBox3D" parent="RightDoorHinge" unique_id=1088980395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29, 0, 0)
+size = Vector3(0.58, 1.45, 0.04)
+material = SubResource("StandardMaterial3D_mahogany")
+
+[node name="MirrorGlass" type="CSGBox3D" parent="RightDoorHinge" unique_id=1193483814]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29, 0, 0.025)
+size = Vector3(0.4, 1.25, 0.01)
+material = SubResource("StandardMaterial3D_mirror")
+
+[node name="HandleDoorR" type="CSGBox3D" parent="RightDoorHinge" unique_id=110838516]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.54, -0.15, 0.03)
+size = Vector3(0.015, 0.1, 0.02)
+material = SubResource("StandardMaterial3D_gold")
+
+[node name="KeyholeDoorR" type="CSGCylinder3D" parent="RightDoorHinge" unique_id=1805428230]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.54, -0.25, 0.025)
+radius = 0.008
+height = 0.015
+material = SubResource("StandardMaterial3D_dark_metal")
+
+[node name="HandlesAndLocks" type="Node3D" parent="." unique_id=345657604]
+
+[node name="HandleDoorL" type="CSGBox3D" parent="HandlesAndLocks" unique_id=499021008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 1, 0.34)
+size = Vector3(0.015, 0.1, 0.02)
+material = SubResource("StandardMaterial3D_gold")
+
+[node name="HandleDrawerL" type="CSGBox3D" parent="HandlesAndLocks" unique_id=25842432]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.25, 0.34)
+size = Vector3(0.12, 0.015, 0.02)
+material = SubResource("StandardMaterial3D_gold")
+
+[node name="HandleDrawerR" type="CSGBox3D" parent="HandlesAndLocks" unique_id=422462317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.25, 0.34)
+size = Vector3(0.12, 0.015, 0.02)
+material = SubResource("StandardMaterial3D_gold")
+
+[node name="KeyholeDoorL" type="CSGCylinder3D" parent="HandlesAndLocks" unique_id=2140751191]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.05, 0.9, 0.335)
+radius = 0.008
+height = 0.015
+material = SubResource("StandardMaterial3D_dark_metal")
+
+[node name="KeyholeDrawerL" type="CSGCylinder3D" parent="HandlesAndLocks" unique_id=1833186270]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.3, 0.32, 0.335)
+radius = 0.008
+height = 0.015
+material = SubResource("StandardMaterial3D_dark_metal")
+
+[node name="KeyholeDrawerR" type="CSGCylinder3D" parent="HandlesAndLocks" unique_id=1804324180]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.3, 0.32, 0.335)
+radius = 0.008
+height = 0.015
+material = SubResource("StandardMaterial3D_dark_metal")
+
+[node name="Feet" type="Node3D" parent="." unique_id=1791061867]
+
+[node name="FootFL" type="CSGCylinder3D" parent="Feet" unique_id=1291843320]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0.05, 0.25)
+radius = 0.04
+height = 0.1
+material = SubResource("StandardMaterial3D_mahogany")
+
+[node name="FootFR" type="CSGCylinder3D" parent="Feet" unique_id=1747329069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0.05, 0.25)
+radius = 0.04
+height = 0.1
+material = SubResource("StandardMaterial3D_mahogany")
+
+[node name="FootBL" type="CSGCylinder3D" parent="Feet" unique_id=828125930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0.05, -0.25)
+radius = 0.04
+height = 0.1
+material = SubResource("StandardMaterial3D_mahogany")
+
+[node name="FootBR" type="CSGCylinder3D" parent="Feet" unique_id=2114430425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0.05, -0.25)
+radius = 0.04
+height = 0.1
+material = SubResource("StandardMaterial3D_mahogany")

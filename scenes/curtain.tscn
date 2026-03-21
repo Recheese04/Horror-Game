@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://dqql1j1aphgpo"]
 
 [ext_resource type="Shader" uid="uid://cntlcjgcpn0rr" path="res://scenes/curtain.gdshader" id="1_cshader"]
-[ext_resource type="Texture2D" uid="uid://6nf0kilf5pio" path="res://models/Pictures/all_animations_unity_0.png" id="2_a72ll"]
+[ext_resource type="Texture2D" uid="uid://db7rycqc0pjjo" path="res://models/image texture/pngtree-the-texture-of-a-blue-curtain-patterned-background-image_13840175.png" id="2_a72ll"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_curtain"]
 render_priority = 0
 shader = ExtResource("1_cshader")
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/albedo_texture = ExtResource("2_a72ll")
-shader_parameter/uv_scale = Vector2(2, 2)
+shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/wind_speed = 2.0
 shader_parameter/wind_strength = 0.15
 shader_parameter/fold_amount = 0.1
