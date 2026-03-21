@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://cy46w7iso6fss"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wood"]
+albedo_color = Color(0.25, 0.15, 0.1, 1)
+roughness = 0.85
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_baffle"]
+albedo_color = Color(0.1, 0.1, 0.1, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cone_paper"]
+albedo_color = Color(0.15, 0.15, 0.16, 1)
+roughness = 0.95
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cone_metal"]
+albedo_color = Color(0.7, 0.7, 0.75, 1)
+metallic = 0.8
+roughness = 0.4
+
+[node name="OldSpeaker" type="Node3D"]
+
+[node name="Casing" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="WoodenBox" type="CSGBox3D" parent="Casing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+size = Vector3(0.4, 0.9, 0.35)
+material = SubResource("StandardMaterial3D_wood")
+
+[node name="FrontBaffleCutout" type="CSGBox3D" parent="Casing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0.17)
+operation = 2
+size = Vector3(0.36, 0.86, 0.05)
+
+[node name="BaffleBoard" type="CSGBox3D" parent="Casing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0.16)
+size = Vector3(0.36, 0.86, 0.04)
+material = SubResource("StandardMaterial3D_baffle")
+
+[node name="WooferHole" type="CSGCylinder3D" parent="Casing"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.25, 0.16)
+operation = 2
+radius = 0.15
+height = 0.05
+
+[node name="MidrangeHole" type="CSGCylinder3D" parent="Casing"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.05, 0.6, 0.16)
+operation = 2
+radius = 0.08
+height = 0.05
+
+[node name="TweeterHole" type="CSGCylinder3D" parent="Casing"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.08, 0.75, 0.16)
+operation = 2
+radius = 0.04
+height = 0.05
+
+[node name="BassPort" type="CSGCylinder3D" parent="Casing"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.1, 0.1, 0.15)
+operation = 2
+radius = 0.04
+height = 0.1
+
+[node name="Cones" type="Node3D" parent="."]
+
+[node name="WooferSurround" type="CSGTorus3D" parent="Cones"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.25, 0.17)
+inner_radius = 0.13
+outer_radius = 0.15
+sides = 32
+ring_sides = 12
+material = SubResource("StandardMaterial3D_baffle")
+
+[node name="WooferCone" type="CSGCylinder3D" parent="Cones"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.25, 0.15)
+radius = 0.13
+height = 0.04
+cone = true
+radial_segments = 32
+material = SubResource("StandardMaterial3D_cone_paper")
+
+[node name="WooferDustCap" type="CSGSphere3D" parent="Cones"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0.25, 0.15)
+radius = 0.04
+radial_segments = 16
+rings = 8
+material = SubResource("StandardMaterial3D_cone_metal")
+
+[node name="MidSurround" type="CSGTorus3D" parent="Cones"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.05, 0.6, 0.17)
+inner_radius = 0.07
+outer_radius = 0.08
+sides = 24
+ring_sides = 8
+material = SubResource("StandardMaterial3D_baffle")
+
+[node name="MidCone" type="CSGCylinder3D" parent="Cones"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.05, 0.6, 0.16)
+radius = 0.07
+height = 0.02
+cone = true
+radial_segments = 24
+material = SubResource("StandardMaterial3D_cone_paper")
+
+[node name="MidDustCap" type="CSGSphere3D" parent="Cones"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, -0.05, 0.6, 0.16)
+radius = 0.025
+radial_segments = 16
+rings = 8
+material = SubResource("StandardMaterial3D_baffle")
+
+[node name="TweeterCone" type="CSGCylinder3D" parent="Cones"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.08, 0.75, 0.165)
+radius = 0.04
+height = 0.01
+material = SubResource("StandardMaterial3D_cone_metal")
+
+[node name="TweeterDome" type="CSGSphere3D" parent="Cones"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0.08, 0.75, 0.165)
+radius = 0.02
+radial_segments = 16
+rings = 8
+material = SubResource("StandardMaterial3D_cone_metal")

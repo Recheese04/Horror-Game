@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://orocan123"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plastic_beige"]
+albedo_color = Color(0.85, 0.75, 0.6, 1)
+roughness = 0.4
+metallic = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plastic_darker"]
+albedo_color = Color(0.7, 0.6, 0.5, 1)
+roughness = 0.5
+
+[node name="OrocanDrawers" type="Node3D"]
+
+[node name="Frame" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="MainCase" type="CSGBox3D" parent="Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+size = Vector3(0.55, 1.2, 0.45)
+material = SubResource("StandardMaterial3D_plastic_beige")
+
+[node name="CutoutDrawerArea" type="CSGBox3D" parent="Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0.05)
+operation = 2
+size = Vector3(0.5, 1.15, 0.4)
+
+[node name="Drawer1" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 0.02)
+size = Vector3(0.48, 0.18, 0.42)
+material = SubResource("StandardMaterial3D_plastic_beige")
+
+[node name="Handle" type="CSGBox3D" parent="Drawer1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0.22)
+size = Vector3(0.2, 0.03, 0.04)
+material = SubResource("StandardMaterial3D_plastic_darker")
+
+[node name="Drawer2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0.02)
+size = Vector3(0.48, 0.18, 0.42)
+material = SubResource("StandardMaterial3D_plastic_beige")
+
+[node name="Handle" type="CSGBox3D" parent="Drawer2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0.22)
+size = Vector3(0.2, 0.03, 0.04)
+material = SubResource("StandardMaterial3D_plastic_darker")
+
+[node name="Drawer3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58, 0.02)
+size = Vector3(0.48, 0.18, 0.42)
+material = SubResource("StandardMaterial3D_plastic_beige")
+
+[node name="Handle" type="CSGBox3D" parent="Drawer3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0.22)
+size = Vector3(0.2, 0.03, 0.04)
+material = SubResource("StandardMaterial3D_plastic_darker")
+
+[node name="Drawer4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81, 0.02)
+size = Vector3(0.48, 0.18, 0.42)
+material = SubResource("StandardMaterial3D_plastic_beige")
+
+[node name="Handle" type="CSGBox3D" parent="Drawer4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0.22)
+size = Vector3(0.2, 0.03, 0.04)
+material = SubResource("StandardMaterial3D_plastic_darker")
+
+[node name="Drawer5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04, 0.02)
+size = Vector3(0.48, 0.18, 0.42)
+material = SubResource("StandardMaterial3D_plastic_beige")
+
+[node name="Handle" type="CSGBox3D" parent="Drawer5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0.22)
+size = Vector3(0.2, 0.03, 0.04)
+material = SubResource("StandardMaterial3D_plastic_darker")

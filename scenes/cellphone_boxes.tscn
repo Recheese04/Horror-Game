@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://crgra5l0v4mjl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_box_blue"]
+albedo_color = Color(0.1, 0.25, 0.6, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_box_lid"]
+albedo_color = Color(0.05, 0.05, 0.05, 1)
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_box_white"]
+albedo_color = Color(0.85, 0.85, 0.85, 1)
+roughness = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_box_black"]
+albedo_color = Color(0.15, 0.15, 0.15, 1)
+roughness = 0.5
+
+[node name="CellphoneBoxes" type="Node3D" unique_id=1617767949]
+
+[node name="Box1_Blue" type="CSGBox3D" parent="." unique_id=1604281119]
+transform = Transform3D(0.9800666, 0, 0.19866933, 0, 1, 0, -0.19866933, 0, 0.9800666, 0, 0.02, 0)
+size = Vector3(0.16, 0.04, 0.09)
+material = SubResource("StandardMaterial3D_box_blue")
+
+[node name="Lid1" type="CSGBox3D" parent="Box1_Blue" unique_id=1255534802]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.045)
+size = Vector3(0.162, 0.002, 0.002)
+material = SubResource("StandardMaterial3D_box_lid")
+
+[node name="Lid1_B" type="CSGBox3D" parent="Box1_Blue" unique_id=1541700578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.045)
+size = Vector3(0.162, 0.002, 0.002)
+material = SubResource("StandardMaterial3D_box_lid")
+
+[node name="Box2_White" type="CSGBox3D" parent="." unique_id=1251653938]
+transform = Transform3D(0.9887711, 0, -0.14943814, 0, 1, 0, 0.14943814, 0, 0.9887711, 0.01, 0.065, 0.01)
+size = Vector3(0.14, 0.05, 0.08)
+material = SubResource("StandardMaterial3D_box_white")
+
+[node name="Lid2" type="CSGBox3D" parent="Box2_White" unique_id=486924133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0.04)
+size = Vector3(0.142, 0.002, 0.002)
+material = SubResource("StandardMaterial3D_box_lid")
+
+[node name="Box3_Black" type="CSGBox3D" parent="." unique_id=407676024]
+transform = Transform3D(0.921061, 0, 0.38941833, 0, 1, 0, -0.38941833, 0, 0.921061, -0.02, 0.107, -0.01)
+size = Vector3(0.15, 0.035, 0.085)
+material = SubResource("StandardMaterial3D_box_black")
+
+[node name="Lid3" type="CSGBox3D" parent="Box3_Black" unique_id=2003643705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.043)
+size = Vector3(0.152, 0.002, 0.002)
+material = SubResource("StandardMaterial3D_box_lid")
+
+[node name="Box4_White_Leaning" type="CSGBox3D" parent="." unique_id=1649661841]
+transform = Transform3D(0.83838665, -0.2593434, 0.47942555, 0.29552022, 0.9553365, 0, -0.45801273, 0.14167994, 0.87758255, 0.13, 0.03, -0.02)
+size = Vector3(0.13, 0.04, 0.08)
+material = SubResource("StandardMaterial3D_box_white")
+
+[node name="Lid4" type="CSGBox3D" parent="Box4_White_Leaning" unique_id=936223869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0.04)
+size = Vector3(0.132, 0.002, 0.002)
+material = SubResource("StandardMaterial3D_box_lid")

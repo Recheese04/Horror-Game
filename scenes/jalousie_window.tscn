@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://jalousie123"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aluminum"]
+albedo_color = Color(0.7, 0.7, 0.72, 1)
+metallic = 0.7
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_glass"]
+albedo_color = Color(0.75, 0.85, 0.82, 0.4)
+transparency = 1
+metallic = 0.2
+roughness = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_crank"]
+albedo_color = Color(0.3, 0.3, 0.32, 1)
+metallic = 0.8
+roughness = 0.3
+
+[node name="JalousieWindow" type="Node3D"]
+
+[node name="Frame" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="FrameOuter" type="CSGBox3D" parent="Frame"]
+size = Vector3(0.8, 1.0, 0.06)
+material = SubResource("StandardMaterial3D_aluminum")
+
+[node name="FrameCutout" type="CSGBox3D" parent="Frame"]
+operation = 2
+size = Vector3(0.72, 0.92, 0.1)
+
+[node name="SideBracketL" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34, 0, 0)
+size = Vector3(0.02, 0.92, 0.04)
+material = SubResource("StandardMaterial3D_aluminum")
+
+[node name="SideBracketR" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34, 0, 0)
+size = Vector3(0.02, 0.92, 0.04)
+material = SubResource("StandardMaterial3D_aluminum")
+
+[node name="Slats" type="Node3D" parent="."]
+
+[node name="Slat1" type="CSGBox3D" parent="Slats"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -0.38, 0.01)
+size = Vector3(0.68, 0.008, 0.1)
+material = SubResource("StandardMaterial3D_glass")
+
+[node name="Slat2" type="CSGBox3D" parent="Slats"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -0.27, 0.01)
+size = Vector3(0.68, 0.008, 0.1)
+material = SubResource("StandardMaterial3D_glass")
+
+[node name="Slat3" type="CSGBox3D" parent="Slats"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -0.16, 0.01)
+size = Vector3(0.68, 0.008, 0.1)
+material = SubResource("StandardMaterial3D_glass")
+
+[node name="Slat4" type="CSGBox3D" parent="Slats"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -0.05, 0.01)
+size = Vector3(0.68, 0.008, 0.1)
+material = SubResource("StandardMaterial3D_glass")
+
+[node name="Slat5" type="CSGBox3D" parent="Slats"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0.06, 0.01)
+size = Vector3(0.68, 0.008, 0.1)
+material = SubResource("StandardMaterial3D_glass")
+
+[node name="Slat6" type="CSGBox3D" parent="Slats"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0.17, 0.01)
+size = Vector3(0.68, 0.008, 0.1)
+material = SubResource("StandardMaterial3D_glass")
+
+[node name="Slat7" type="CSGBox3D" parent="Slats"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0.28, 0.01)
+size = Vector3(0.68, 0.008, 0.1)
+material = SubResource("StandardMaterial3D_glass")
+
+[node name="Slat8" type="CSGBox3D" parent="Slats"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0.39, 0.01)
+size = Vector3(0.68, 0.008, 0.1)
+material = SubResource("StandardMaterial3D_glass")
+
+[node name="CrankMechanism" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42, -0.3, 0.03)
+
+[node name="CrankBase" type="CSGCylinder3D" parent="CrankMechanism"]
+radius = 0.015
+height = 0.04
+material = SubResource("StandardMaterial3D_crank")
+
+[node name="CrankArm" type="CSGBox3D" parent="CrankMechanism"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04)
+size = Vector3(0.01, 0.01, 0.06)
+material = SubResource("StandardMaterial3D_crank")
+
+[node name="CrankHandle" type="CSGCylinder3D" parent="CrankMechanism"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.07)
+radius = 0.008
+height = 0.03
+material = SubResource("StandardMaterial3D_crank")

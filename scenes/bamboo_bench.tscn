@@ -1,0 +1,220 @@
+[gd_scene format=3 uid="uid://k8pfcshtk014"]
+
+[ext_resource type="Texture2D" uid="uid://8mw3e22ot5yt" path="res://models/image texture/bamboosingle.jpg" id="1_m1nn5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyk4v"]
+albedo_texture = ExtResource("1_m1nn5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55lc4"]
+albedo_texture = ExtResource("1_m1nn5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bamboo_slat"]
+albedo_color = Color(0.8, 0.7, 0.4, 1)
+albedo_texture = ExtResource("1_m1nn5")
+roughness = 0.7
+
+[node name="BambooBench" type="Node3D" unique_id=1613101375]
+
+[node name="ChairFrame" type="CSGCombiner3D" parent="." unique_id=510072698]
+use_collision = true
+
+[node name="LegFrontLeft" type="CSGCylinder3D" parent="ChairFrame" unique_id=1137326798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 0.325, 0.25)
+radius = 0.035
+height = 0.65
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="LegFrontRight" type="CSGCylinder3D" parent="ChairFrame" unique_id=1243046316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.85, 0.325, 0.25)
+radius = 0.035
+height = 0.65
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="LegBackLeft" type="CSGCylinder3D" parent="ChairFrame" unique_id=124942721]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 0.45, -0.25)
+radius = 0.035
+height = 0.9
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="LegBackRight" type="CSGCylinder3D" parent="ChairFrame" unique_id=35301186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.85, 0.45, -0.25)
+radius = 0.035
+height = 0.9
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="LegMidFront" type="CSGCylinder3D" parent="ChairFrame" unique_id=1827721552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21, 0.25)
+radius = 0.035
+height = 0.42
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="LegMidBack" type="CSGCylinder3D" parent="ChairFrame" unique_id=886216204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, -0.25)
+radius = 0.035
+height = 0.9
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="ArmLeft" type="CSGCylinder3D" parent="ChairFrame" unique_id=1214614591]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.85, 0.65, 0)
+radius = 0.03
+height = 0.5
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="ArmRight" type="CSGCylinder3D" parent="ChairFrame" unique_id=1439781550]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.85, 0.65, 0)
+radius = 0.03
+height = 0.5
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="SeatRailFront" type="CSGCylinder3D" parent="ChairFrame" unique_id=1680800926]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.4, 0.25)
+radius = 0.03
+height = 1.7
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="SeatRailBack" type="CSGCylinder3D" parent="ChairFrame" unique_id=1491479196]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.4, -0.25)
+radius = 0.03
+height = 1.7
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="SeatRailLeft" type="CSGCylinder3D" parent="ChairFrame" unique_id=2002178127]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.85, 0.4, 0)
+radius = 0.03
+height = 0.5
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="SeatRailRight" type="CSGCylinder3D" parent="ChairFrame" unique_id=1447331019]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.85, 0.4, 0)
+radius = 0.03
+height = 0.5
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="LowerRailFront" type="CSGCylinder3D" parent="ChairFrame" unique_id=441900647]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.15, 0.25)
+radius = 0.02
+height = 1.7
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="LowerRailBack" type="CSGCylinder3D" parent="ChairFrame" unique_id=548389980]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.15, -0.25)
+radius = 0.02
+height = 1.7
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="LowerRailLeft" type="CSGCylinder3D" parent="ChairFrame" unique_id=1937156533]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.85, 0.15, 0)
+radius = 0.02
+height = 0.5
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="LowerRailRight" type="CSGCylinder3D" parent="ChairFrame" unique_id=484780831]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.85, 0.15, 0)
+radius = 0.02
+height = 0.5
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="BackrestTopRail" type="CSGCylinder3D" parent="ChairFrame" unique_id=484297532]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.85, -0.25)
+radius = 0.025
+height = 1.7
+material = SubResource("StandardMaterial3D_lyk4v")
+
+[node name="SeatSlats" type="Node3D" parent="." unique_id=461872879]
+
+[node name="Slat01" type="CSGBox3D" parent="SeatSlats" unique_id=1928239605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, -0.21)
+size = Vector3(1.7, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_55lc4")
+
+[node name="Slat02" type="CSGBox3D" parent="SeatSlats" unique_id=1210314501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, -0.17)
+size = Vector3(1.7, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_55lc4")
+
+[node name="Slat03" type="CSGBox3D" parent="SeatSlats" unique_id=541804545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, -0.13)
+size = Vector3(1.7, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_55lc4")
+
+[node name="Slat04" type="CSGBox3D" parent="SeatSlats" unique_id=862213142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, -0.09)
+size = Vector3(1.7, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_55lc4")
+
+[node name="Slat05" type="CSGBox3D" parent="SeatSlats" unique_id=1499580398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, -0.05)
+size = Vector3(1.7, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_55lc4")
+
+[node name="Slat06" type="CSGBox3D" parent="SeatSlats" unique_id=1657700100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, -0.01)
+size = Vector3(1.7, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_55lc4")
+
+[node name="Slat07" type="CSGBox3D" parent="SeatSlats" unique_id=1939671866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0.03)
+size = Vector3(1.7, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_55lc4")
+
+[node name="Slat08" type="CSGBox3D" parent="SeatSlats" unique_id=1802767061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0.07)
+size = Vector3(1.7, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_55lc4")
+
+[node name="Slat09" type="CSGBox3D" parent="SeatSlats" unique_id=925126755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0.11)
+size = Vector3(1.7, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_55lc4")
+
+[node name="Slat10" type="CSGBox3D" parent="SeatSlats" unique_id=463460537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0.15)
+size = Vector3(1.7, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_55lc4")
+
+[node name="Slat11" type="CSGBox3D" parent="SeatSlats" unique_id=2039318153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0.19)
+size = Vector3(1.7, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_55lc4")
+
+[node name="Slat12" type="CSGBox3D" parent="SeatSlats" unique_id=1712523050]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0.23)
+size = Vector3(1.7, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_55lc4")
+
+[node name="BackSlats" type="Node3D" parent="." unique_id=1532643412]
+
+[node name="BSlat1" type="CSGBox3D" parent="BackSlats" unique_id=2097208544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.24)
+size = Vector3(1.7, 0.04, 0.015)
+material = SubResource("StandardMaterial3D_bamboo_slat")
+
+[node name="BSlat2" type="CSGBox3D" parent="BackSlats" unique_id=941913681]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.24)
+size = Vector3(1.7, 0.04, 0.015)
+material = SubResource("StandardMaterial3D_bamboo_slat")
+
+[node name="BSlat3" type="CSGBox3D" parent="BackSlats" unique_id=98955950]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -0.24)
+size = Vector3(1.7, 0.04, 0.015)
+material = SubResource("StandardMaterial3D_bamboo_slat")
+
+[node name="BSlat4" type="CSGBox3D" parent="BackSlats" unique_id=1339802365]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, -0.24)
+size = Vector3(1.7, 0.04, 0.015)
+material = SubResource("StandardMaterial3D_bamboo_slat")
+
+[node name="BSlat5" type="CSGBox3D" parent="BackSlats" unique_id=1805703394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -0.24)
+size = Vector3(1.7, 0.04, 0.015)
+material = SubResource("StandardMaterial3D_bamboo_slat")
+
+[node name="BSlat6" type="CSGBox3D" parent="BackSlats" unique_id=228967767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.24)
+size = Vector3(1.7, 0.04, 0.015)
+material = SubResource("StandardMaterial3D_bamboo_slat")
+
+[node name="BSlat7" type="CSGBox3D" parent="BackSlats" unique_id=1390470911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -0.24)
+size = Vector3(1.7, 0.04, 0.015)
+material = SubResource("StandardMaterial3D_bamboo_slat")

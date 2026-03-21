@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://dtmnav3s385dx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_silver_casing"]
+albedo_color = Color(0.0188, 0.0193, 0.02, 1)
+metallic = 0.8
+roughness = 0.35
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_black_plastic"]
+albedo_color = Color(0.15, 0.15, 0.15, 1)
+roughness = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcd_glass"]
+transparency = 1
+albedo_color = Color(0.05, 0.05, 0.05, 0.8)
+metallic = 0.5
+roughness = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcd_cyan"]
+albedo_color = Color(0, 0.8, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.8, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gold_mic"]
+albedo_color = Color(0.8, 0.7, 0.2, 1)
+metallic = 0.95
+roughness = 0.2
+
+[node name="VCDPlayer" type="Node3D" unique_id=2074835570]
+
+[node name="Casing" type="CSGCombiner3D" parent="." unique_id=124993722]
+use_collision = true
+
+[node name="MainBody" type="CSGBox3D" parent="Casing" unique_id=1788078120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, 0)
+size = Vector3(0.43, 0.06, 0.28)
+material = SubResource("StandardMaterial3D_silver_casing")
+
+[node name="FrontBevel" type="CSGBox3D" parent="Casing" unique_id=402243360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, 0.135)
+size = Vector3(0.43, 0.05, 0.03)
+material = SubResource("StandardMaterial3D_silver_casing")
+
+[node name="FeetGroup" type="Node3D" parent="." unique_id=878681307]
+
+[node name="Foot1" type="CSGCylinder3D" parent="FeetGroup" unique_id=386222071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19, 0.005, 0.11)
+radius = 0.012
+height = 0.01
+material = SubResource("StandardMaterial3D_black_plastic")
+
+[node name="Foot2" type="CSGCylinder3D" parent="FeetGroup" unique_id=840468140]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19, 0.005, 0.11)
+radius = 0.012
+height = 0.01
+material = SubResource("StandardMaterial3D_black_plastic")
+
+[node name="Foot3" type="CSGCylinder3D" parent="FeetGroup" unique_id=1669649741]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19, 0.005, -0.11)
+radius = 0.012
+height = 0.01
+material = SubResource("StandardMaterial3D_black_plastic")
+
+[node name="Foot4" type="CSGCylinder3D" parent="FeetGroup" unique_id=1118756424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19, 0.005, -0.11)
+radius = 0.012
+height = 0.01
+material = SubResource("StandardMaterial3D_black_plastic")
+
+[node name="FrontPanel" type="Node3D" parent="." unique_id=1805304977]
+
+[node name="DiscTray" type="CSGBox3D" parent="FrontPanel" unique_id=2117218812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12, 0.045, 0.15)
+size = Vector3(0.14, 0.015, 0.005)
+material = SubResource("StandardMaterial3D_black_plastic")
+
+[node name="DiscTrayBevel" type="CSGBox3D" parent="FrontPanel" unique_id=1710275217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12, 0.045, 0.152)
+size = Vector3(0.13, 0.01, 0.002)
+material = SubResource("StandardMaterial3D_silver_casing")
+
+[node name="LCDScreen" type="CSGBox3D" parent="FrontPanel" unique_id=1574980925]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 0.045, 0.15)
+size = Vector3(0.1, 0.025, 0.005)
+material = SubResource("StandardMaterial3D_lcd_glass")
+
+[node name="LCDTextGlow" type="CSGBox3D" parent="FrontPanel" unique_id=147677797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06, 0.045, 0.149)
+size = Vector3(0.08, 0.015, 0.006)
+material = SubResource("StandardMaterial3D_lcd_cyan")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="FrontPanel/LCDTextGlow" unique_id=1761728256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+light_color = Color(0, 0.8, 1, 1)
+light_energy = 0.2
+omni_range = 1.0
+
+[node name="PowerButton" type="CSGCylinder3D" parent="FrontPanel" unique_id=500932460]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.19, 0.045, 0.151)
+radius = 0.008
+height = 0.005
+material = SubResource("StandardMaterial3D_silver_casing")
+
+[node name="PlayButton" type="CSGCylinder3D" parent="FrontPanel" unique_id=1010232096]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.14, 0.045, 0.151)
+radius = 0.006
+height = 0.005
+material = SubResource("StandardMaterial3D_silver_casing")
+
+[node name="StopButton" type="CSGCylinder3D" parent="FrontPanel" unique_id=1608125623]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.16, 0.045, 0.151)
+radius = 0.004
+height = 0.005
+material = SubResource("StandardMaterial3D_silver_casing")
+
+[node name="NextButton" type="CSGCylinder3D" parent="FrontPanel" unique_id=689531069]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.175, 0.045, 0.151)
+radius = 0.004
+height = 0.005
+material = SubResource("StandardMaterial3D_silver_casing")
+
+[node name="MicVolKnob" type="CSGCylinder3D" parent="FrontPanel" unique_id=662758317]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.19, 0.025, 0.151)
+radius = 0.006
+height = 0.01
+material = SubResource("StandardMaterial3D_black_plastic")
+
+[node name="MicEchoKnob" type="CSGCylinder3D" parent="FrontPanel" unique_id=1315718099]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.16, 0.025, 0.151)
+radius = 0.006
+height = 0.01
+material = SubResource("StandardMaterial3D_black_plastic")
+
+[node name="MicPort1" type="CSGCylinder3D" parent="FrontPanel" unique_id=982844394]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.13, 0.025, 0.15)
+radius = 0.004
+height = 0.002
+material = SubResource("StandardMaterial3D_gold_mic")
+
+[node name="MicPort1Hole" type="CSGCylinder3D" parent="FrontPanel/MicPort1" unique_id=2088179607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.002, 0)
+radius = 0.0025
+height = 0.003
+material = SubResource("StandardMaterial3D_black_plastic")
+
+[node name="MicPort2" type="CSGCylinder3D" parent="FrontPanel" unique_id=19034405]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.11, 0.025, 0.15)
+radius = 0.004
+height = 0.002
+material = SubResource("StandardMaterial3D_gold_mic")
+
+[node name="MicPort2Hole" type="CSGCylinder3D" parent="FrontPanel/MicPort2" unique_id=1335955264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.002, 0)
+radius = 0.0025
+height = 0.003
+material = SubResource("StandardMaterial3D_black_plastic")

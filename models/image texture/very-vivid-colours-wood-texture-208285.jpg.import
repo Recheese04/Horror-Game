@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du0it76oi7jdj"
-path.s3tc="res://.godot/imported/mother.jpg-c25b586c77b986cf5032b454fbe8f947.s3tc.ctex"
+uid="uid://dcvrid0ntkd27"
+path.s3tc="res://.godot/imported/very-vivid-colours-wood-texture-208285.jpg-2798205e58d0ecce219152be162860de.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/images/mother.jpg"
-dest_files=["res://.godot/imported/mother.jpg-c25b586c77b986cf5032b454fbe8f947.s3tc.ctex"]
+source_file="res://models/image texture/very-vivid-colours-wood-texture-208285.jpg"
+dest_files=["res://.godot/imported/very-vivid-colours-wood-texture-208285.jpg-2798205e58d0ecce219152be162860de.s3tc.ctex"]
 
 [params]
 

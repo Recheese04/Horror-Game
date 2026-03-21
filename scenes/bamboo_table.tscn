@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://pr8u5v1ossgy"]
+
+[ext_resource type="Texture2D" uid="uid://8mw3e22ot5yt" path="res://models/image texture/bamboosingle.jpg" id="1_rta82"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgfcr"]
+albedo_texture = ExtResource("1_rta82")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjee3"]
+albedo_texture = ExtResource("1_rta82")
+
+[node name="BambooTable" type="Node3D" unique_id=1322286154]
+
+[node name="TableFrame" type="CSGCombiner3D" parent="." unique_id=1371907755]
+use_collision = true
+
+[node name="LegFL" type="CSGCylinder3D" parent="TableFrame" unique_id=1203868578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0.225, 0.2)
+radius = 0.03
+height = 0.45
+material = SubResource("StandardMaterial3D_sgfcr")
+
+[node name="LegFR" type="CSGCylinder3D" parent="TableFrame" unique_id=2012265435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.225, 0.2)
+radius = 0.03
+height = 0.45
+material = SubResource("StandardMaterial3D_sgfcr")
+
+[node name="LegBL" type="CSGCylinder3D" parent="TableFrame" unique_id=403422573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0.225, -0.2)
+radius = 0.03
+height = 0.45
+material = SubResource("StandardMaterial3D_sgfcr")
+
+[node name="LegBR" type="CSGCylinder3D" parent="TableFrame" unique_id=883966206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.225, -0.2)
+radius = 0.03
+height = 0.45
+material = SubResource("StandardMaterial3D_sgfcr")
+
+[node name="TopRailF" type="CSGCylinder3D" parent="TableFrame" unique_id=126992490]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.4, 0.2)
+radius = 0.025
+height = 0.74
+material = SubResource("StandardMaterial3D_sgfcr")
+
+[node name="TopRailB" type="CSGCylinder3D" parent="TableFrame" unique_id=456067905]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.4, -0.2)
+radius = 0.025
+height = 0.74
+material = SubResource("StandardMaterial3D_sgfcr")
+
+[node name="TopRailL" type="CSGCylinder3D" parent="TableFrame" unique_id=911073979]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.35, 0.4, 0)
+radius = 0.025
+height = 0.44
+material = SubResource("StandardMaterial3D_sgfcr")
+
+[node name="TopRailR" type="CSGCylinder3D" parent="TableFrame" unique_id=67199690]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.35, 0.4, 0)
+radius = 0.025
+height = 0.44
+material = SubResource("StandardMaterial3D_sgfcr")
+
+[node name="LowRailF" type="CSGCylinder3D" parent="TableFrame" unique_id=105696719]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.15, 0.2)
+radius = 0.02
+height = 0.74
+material = SubResource("StandardMaterial3D_sgfcr")
+
+[node name="LowRailB" type="CSGCylinder3D" parent="TableFrame" unique_id=1158220152]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.15, -0.2)
+radius = 0.02
+height = 0.74
+material = SubResource("StandardMaterial3D_sgfcr")
+
+[node name="LowRailL" type="CSGCylinder3D" parent="TableFrame" unique_id=1509258494]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.35, 0.15, 0)
+radius = 0.02
+height = 0.44
+material = SubResource("StandardMaterial3D_sgfcr")
+
+[node name="LowRailR" type="CSGCylinder3D" parent="TableFrame" unique_id=1261918594]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.35, 0.15, 0)
+radius = 0.02
+height = 0.44
+material = SubResource("StandardMaterial3D_sgfcr")
+
+[node name="TabletopSlats" type="Node3D" parent="." unique_id=1301776026]
+
+[node name="Slat01" type="CSGBox3D" parent="TabletopSlats" unique_id=962182796]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, -0.18)
+size = Vector3(0.8, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_gjee3")
+
+[node name="Slat02" type="CSGBox3D" parent="TabletopSlats" unique_id=1363199214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, -0.14)
+size = Vector3(0.8, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_gjee3")
+
+[node name="Slat03" type="CSGBox3D" parent="TabletopSlats" unique_id=325107014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, -0.1)
+size = Vector3(0.8, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_gjee3")
+
+[node name="Slat04" type="CSGBox3D" parent="TabletopSlats" unique_id=2051559634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, -0.06)
+size = Vector3(0.8, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_gjee3")
+
+[node name="Slat05" type="CSGBox3D" parent="TabletopSlats" unique_id=661813326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, -0.02)
+size = Vector3(0.8, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_gjee3")
+
+[node name="Slat06" type="CSGBox3D" parent="TabletopSlats" unique_id=1428481935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0.02)
+size = Vector3(0.8, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_gjee3")
+
+[node name="Slat07" type="CSGBox3D" parent="TabletopSlats" unique_id=1637404693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0.06)
+size = Vector3(0.8, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_gjee3")
+
+[node name="Slat08" type="CSGBox3D" parent="TabletopSlats" unique_id=862448190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0.1)
+size = Vector3(0.8, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_gjee3")
+
+[node name="Slat09" type="CSGBox3D" parent="TabletopSlats" unique_id=1899781299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0.14)
+size = Vector3(0.8, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_gjee3")
+
+[node name="Slat10" type="CSGBox3D" parent="TabletopSlats" unique_id=1587970167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0.18)
+size = Vector3(0.8, 0.015, 0.035)
+material = SubResource("StandardMaterial3D_gjee3")
