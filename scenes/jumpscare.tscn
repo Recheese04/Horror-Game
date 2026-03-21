@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dj8kw81c6sdlw"]
+
+[ext_resource type="Script" path="res://scenes/jumpscare.gd" id="1_js"]
+[ext_resource type="Texture2D" path="res://assets/images/scary.png" id="2_ghost"]
+[ext_resource type="AudioStream" path="res://assets/sounds/848150__torrent7x__jumpscare.wav" id="3_sfx"]
+
+[node name="Jumpscare" type="CanvasLayer"]
+script = ExtResource("1_js")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ghost")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_sfx")
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

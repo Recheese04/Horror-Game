@@ -75,14 +75,18 @@ func _unhandled_input(event: InputEvent) -> void:
 						held_object = phone
 				# Door interaction (works whether or not holding something)
 				if collider.name == "Door":
-					var anim = collider.get_node_or_null("AnimationPlayer")
-					if anim:
-						if collider.get_meta("is_open", false):
-							anim.play("door_close")
-							collider.set_meta("is_open", false)
-						else:
-							anim.play("door_open")
-							collider.set_meta("is_open", true)
+					if collider.has_method("interact"):
+						collider.interact()
+					else:
+						# Fallback for old/no script
+						var anim = collider.get_node_or_null("AnimationPlayer")
+						if anim:
+							if collider.get_meta("is_open", false):
+								anim.play("door_close")
+								collider.set_meta("is_open", false)
+							else:
+								anim.play("door_open")
+								collider.set_meta("is_open", true)
 				elif collider.has_method("interact"):
 					collider.interact()
 				elif collider.get_parent() and collider.get_parent().has_method("interact"):
