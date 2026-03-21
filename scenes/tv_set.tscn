@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://dux58h5hikc41"]
+
+[ext_resource type="Script" uid="uid://devshijonh357" path="res://scenes/tv.gd" id="1_tvscript"]
+[ext_resource type="VideoStream" uid="uid://bnjsil6dhldo6" path="res://models/videos/tvmacato.ogv" id="2_vlusw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wood"]
+albedo_color = Color(0.25, 0.15, 0.08, 1)
+metallic = 0.1
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plastic"]
+albedo_color = Color(0.05, 0.05, 0.05, 1)
+metallic = 0.5
+roughness = 0.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_screen"]
+size = Vector2(0.95, 0.55)
+
+[node name="TVSet" type="Node3D" unique_id=998287842]
+script = ExtResource("1_tvscript")
+
+[node name="TVStand" type="CSGCombiner3D" parent="." unique_id=33721104]
+use_collision = true
+
+[node name="MainBox" type="CSGBox3D" parent="TVStand" unique_id=182136310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+size = Vector3(1.5, 0.6, 0.5)
+material = SubResource("StandardMaterial3D_wood")
+
+[node name="ShelfCutout" type="CSGBox3D" parent="TVStand" unique_id=855481780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0.1)
+operation = 2
+size = Vector3(1.3, 0.25, 0.45)
+material = SubResource("StandardMaterial3D_wood")
+
+[node name="TVBody" type="CSGCombiner3D" parent="." unique_id=1506710355]
+use_collision = true
+
+[node name="Base" type="CSGBox3D" parent="TVBody" unique_id=1011442484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.62, 0)
+size = Vector3(0.4, 0.04, 0.25)
+material = SubResource("StandardMaterial3D_plastic")
+
+[node name="Neck" type="CSGCylinder3D" parent="TVBody" unique_id=1939257067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.66, 0)
+radius = 0.05
+height = 0.1
+material = SubResource("StandardMaterial3D_plastic")
+
+[node name="ScreenBack" type="CSGBox3D" parent="TVBody" unique_id=630245600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.02)
+size = Vector3(1, 0.6, 0.08)
+material = SubResource("StandardMaterial3D_plastic")
+
+[node name="TVScreen" type="MeshInstance3D" parent="." unique_id=1263835684]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0.021)
+mesh = SubResource("PlaneMesh_screen")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="TVScreen" unique_id=1142437921]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+light_color = Color(0.6, 0.7, 1, 1)
+light_energy = 1.5
+omni_range = 4.0
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1998997311]
+disable_3d = true
+size = Vector2i(1280, 720)
+
+[node name="NoSignalBg" type="ColorRect" parent="SubViewport" unique_id=452005031]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.1, 0.6, 1)
+
+[node name="Label" type="Label" parent="SubViewport/NoSignalBg" unique_id=146566797]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -50.0
+offset_right = 200.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 96
+text = "NO SIGNAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="SubViewport" unique_id=1115899943]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_vlusw")
+expand = true
+loop = true
