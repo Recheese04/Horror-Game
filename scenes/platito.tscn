@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://platito"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_platito"]
+height = 0.01
+radius = 0.08
+
+[node name="Platito" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
+shape = SubResource("CylinderShape3D_platito")
+
+[node name="Body" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
+radius = 0.08
+height = 0.01
+sides = 32

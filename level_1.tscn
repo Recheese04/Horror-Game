@@ -15,19 +15,22 @@
 [ext_resource type="PackedScene" uid="uid://bt84rddsr5cb0" path="res://scenes/filipino_bed.tscn" id="13_filipinobed"]
 [ext_resource type="PackedScene" uid="uid://dj8kw81c6sdlw" path="res://scenes/jumpscare.tscn" id="14_jsscene"]
 [ext_resource type="Texture2D" uid="uid://dt7v7k0w8o5y" path="res://models/wood.jpg" id="15_3o2xh"]
-[ext_resource type="Script" path="res://scenes/fake_jumpscare_trigger.gd" id="15_fakejstrigger"]
+[ext_resource type="Script" uid="uid://vpinxl8i8ukc" path="res://scenes/fake_jumpscare_trigger.gd" id="15_fakejstrigger"]
+[ext_resource type="PackedScene" uid="uid://bnlsls3aonod3" path="res://scenes/gripo.tscn" id="16_be5co"]
 [ext_resource type="PackedScene" path="res://scenes/fake_person.tscn" id="16_fakeperson"]
 [ext_resource type="PackedScene" uid="uid://bvnwje8h27y1v" path="res://scenes/bamboo_chair.tscn" id="18_00ld1"]
 [ext_resource type="PackedScene" path="res://scenes/jalousie_window.tscn" id="18_gjkv5"]
 [ext_resource type="PackedScene" uid="uid://k8pfcshtk014" path="res://scenes/bamboo_bench.tscn" id="19_00ld1"]
 [ext_resource type="PackedScene" uid="uid://pr8u5v1ossgy" path="res://scenes/bamboo_table.tscn" id="20_3qmij"]
-[ext_resource type="PackedScene" path="res://scenes/father.tscn" id="father_scene"]
 [ext_resource type="PackedScene" uid="uid://parador123" path="res://scenes/aparador.tscn" id="21_kb5eu"]
 [ext_resource type="PackedScene" uid="uid://dju1ptyv0d0wp" path="res://scenes/clothesline.tscn" id="22_lfy8a"]
 [ext_resource type="PackedScene" uid="uid://6546vxfr4hy7" path="res://models/monobloc_-_plastic_garden_chair.glb" id="23_ethxx"]
 [ext_resource type="PackedScene" uid="uid://dudvrlbf0xntb" path="res://models/low_poly_roof_tile_game_ready.glb" id="25_duihb"]
 [ext_resource type="PackedScene" uid="uid://cuaahjjhcwcgi" path="res://scenes/refrigerator.tscn" id="26_b6mmh"]
+[ext_resource type="PackedScene" uid="uid://di36whhfkkr7g" path="res://scenes/soap_dispenser.tscn" id="30_hycyb"]
+[ext_resource type="PackedScene" path="res://scenes/plate.tscn" id="31_swvua"]
 [ext_resource type="PackedScene" uid="uid://ceb7i1msvwnrk" path="res://scenes/dish_cabinet.tscn" id="78_dish"]
+[ext_resource type="PackedScene" path="res://scenes/father.tscn" id="father_scene"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x"]
 
@@ -215,10 +218,22 @@ use_collision = true
 material = SubResource("StandardMaterial3D_hbghi")
 
 [node name="wall19" type="CSGBox3D" parent="House" unique_id=1597869946]
-transform = Transform3D(-0.0024343785, 0, -6.087896, 0, 3.4178355, 0, 0.32286465, 0, -0.045902345, -7.713536, 0.43700325, 4.466278)
+transform = Transform3D(-0.002433698, 0, -5.862179, 0, 2.8116586, 0, 0.3227744, 0, -0.044200454, -7.692892, 0.4641105, 4.466278)
 use_collision = true
 size = Vector3(2.9918213, 0.43652344, 0.67089844)
 material = SubResource("StandardMaterial3D_hbghi")
+
+[node name="wall20" type="CSGBox3D" parent="House/wall19" unique_id=1091131333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -5.820766e-11, 0, 1, -0.108724594, 0.19139096, 0.14688957)
+operation = 2
+use_collision = true
+size = Vector3(2.0746613, 0.09017944, 0.20373535)
+material = SubResource("StandardMaterial3D_hbghi")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="House/wall19" unique_id=1582901656]
+transform = Transform3D(0.2720131, 0, 4.656613e-10, 0, 0.13043848, 0, -1.6734703e-10, 0, 0.011528981, 0.30781174, 0.13388091, 0.15517342)
+operation = 2
+height = 0.47338867
 
 [node name="wall13" type="CSGBox3D" parent="House" unique_id=225227627]
 transform = Transform3D(-0.0024343785, 0, -6.087896, 0, 3.4178355, 0, 0.32286465, 0, -0.045902345, -16.663742, 1.3999383, 5.0797343)
@@ -272,7 +287,7 @@ spot_range = 15.0
 spot_angle = 35.0
 
 [node name="Chair" parent="House" unique_id=197165597 instance=ExtResource("4_ihfcg")]
-transform = Transform3D(1.2134786, 0, 0, 0, 0.7386714, 0, 0, 0, 0.5425126, -8.799819, -0.00446409, -0.0282709)
+transform = Transform3D(1.2134786, 0, 0, 0, 0.7386714, 0, 0, 0, 0.5425126, -8.792253, -0.011197031, -0.020124614)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="House/Chair" unique_id=202020749]
 
@@ -281,7 +296,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_chair")
 
 [node name="Chair2" parent="House" unique_id=210711748 instance=ExtResource("4_ihfcg")]
-transform = Transform3D(1.0154277, 0, 0, 0, 0.7386714, 0, 0, 0, 0.5425126, -8.799819, -0.00446409, 2.994331)
+transform = Transform3D(1.0154277, 0, 0, 0, 0.7386714, 0, 0, 0, 0.5425126, -8.792253, -0.011197031, 2.4680486)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="House/Chair2" unique_id=1381850768]
 
@@ -326,7 +341,7 @@ transform = Transform3D(-0.009847031, 0, 0, 0, 0.010825726, 0, 0, 0, 0.014744977
 transform = Transform3D(-0.009847031, 0, 0, 0, 0.010825726, 0, 0, 0, 0.0147449775, -10.63594, 3.007298, -7.098007)
 
 [node name="Table" parent="House" unique_id=1246235101 instance=ExtResource("4_rka8t")]
-transform = Transform3D(0.026274772, 0, 0, 0, 0.013083067, 0, 0, 0, 0.018655052, -8.765327, -0.026216269, 1.7425127)
+transform = Transform3D(0.026274772, 0, 0, 0, 0.013083067, 0, 0, 0, 0.018655052, -8.757761, -0.03294921, 1.2162304)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="House/Table" unique_id=1844581200]
 
@@ -652,6 +667,9 @@ use_collision = true
 size = Vector3(3.4522095, 0.3022705, 0.28353882)
 material = SubResource("StandardMaterial3D_duihb")
 
+[node name="Gripo" parent="House" unique_id=564741387 instance=ExtResource("16_be5co")]
+transform = Transform3D(-1.1394367, 0, -0.01394112, 0, 1.0504485, 0, 0.013523821, 0, -1.174596, -8.5701475, 1.2907996, 4.727398)
+
 [node name="FakeMother" parent="." unique_id=5551212 instance=ExtResource("16_fakeperson")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 8.5)
 
@@ -682,7 +700,7 @@ transform = Transform3D(0.24843086, 0, -1.0639657, 0, 1.3795747, 0, 1.4850419, 0
 transform = Transform3D(1, 0, 0, 0, 1.3054397, 0, 0, 0, 1.7510042, -2.2181883, 0.059439063, 1.762958)
 
 [node name="Father" parent="." unique_id=5551213 instance=ExtResource("father_scene")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0, 0.1, -1.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.1, -1)
 
 [node name="Aparador" parent="." unique_id=51773008 instance=ExtResource("21_kb5eu")]
 transform = Transform3D(0.06739479, 0, 0.9855365, 0, 1.2700677, 0, -1.2537286, 0, 0.052977998, -5.7414846, -0.13093984, -6.557936)
@@ -761,4 +779,10 @@ material = SubResource("StandardMaterial3D_ttn6t")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4054, 0.086116195, -3.0359867)
 
 [node name="DishCabinet" parent="." unique_id=788518304 instance=ExtResource("78_dish")]
-transform = Transform3D(-0.8824439, 0, 0.027658317, 0, 0.89293474, 0, -0.024340514, 0, -1.0027279, -6.6, 0.7426841, 4.355839)
+transform = Transform3D(-0.84973764, 0, 0.027686594, 0, 0.73456657, 0, -0.023438374, 0, -1.003753, -6.6206436, 0.71557677, 4.355839)
+
+[node name="DishwashingPaste" parent="." unique_id=1937353726 instance=ExtResource("30_hycyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8549166, 1.0931695, 4.7713404)
+
+[node name="Plate" parent="." unique_id=1088085349 instance=ExtResource("31_swvua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.770339, 1.077788, 4.2421927)

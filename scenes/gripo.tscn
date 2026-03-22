@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bnlsls3aonod3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gripo"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_metal"]
+albedo_color = Color(0.6, 0.6, 0.6, 1)
+metallic = 0.9
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_handle"]
+albedo_color = Color(0.8, 0.1, 0.1, 1)
+roughness = 0.5
+
+[node name="Gripo" type="StaticBody3D" unique_id=1662872602]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2076363665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+shape = SubResource("BoxShape3D_gripo")
+
+[node name="WallMount" type="CSGCylinder3D" parent="." unique_id=1286297885]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.01)
+radius = 0.04
+height = 0.02
+material = SubResource("StandardMaterial3D_metal")
+
+[node name="MainPipe" type="CSGCylinder3D" parent="." unique_id=1856973858]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.05)
+radius = 0.015
+height = 0.1
+material = SubResource("StandardMaterial3D_metal")
+
+[node name="MainPipe2" type="CSGCylinder3D" parent="." unique_id=1544513613]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.07257384)
+radius = 0.015
+height = 0.1
+material = SubResource("StandardMaterial3D_metal")
+
+[node name="MainPipe3" type="CSGCylinder3D" parent="." unique_id=1916328937]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.14230548)
+radius = 0.015
+height = 0.1
+material = SubResource("StandardMaterial3D_metal")
+
+[node name="SpoutBase" type="CSGSphere3D" parent="." unique_id=1482344675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+radius = 0.02
+material = SubResource("StandardMaterial3D_metal")
+
+[node name="SpoutTip" type="CSGCylinder3D" parent="." unique_id=1966028038]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, -0.025, 0.11)
+radius = 0.012
+height = 0.05
+material = SubResource("StandardMaterial3D_metal")
+
+[node name="HandleStem" type="CSGCylinder3D" parent="." unique_id=1151477953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0.06)
+radius = 0.01
+height = 0.04
+material = SubResource("StandardMaterial3D_metal")
+
+[node name="HandleTop" type="CSGBox3D" parent="." unique_id=180296626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0.06)
+size = Vector3(0.08, 0.01, 0.02)
+material = SubResource("StandardMaterial3D_handle")
