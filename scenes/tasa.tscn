@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bhqhkggisp6xp"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tasa"]
+height = 0.1
+radius = 0.05
+
+[node name="Tasa" type="StaticBody3D" unique_id=1535557356]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1431739867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("CylinderShape3D_tasa")
+
+[node name="Body" type="CSGCombiner3D" parent="." unique_id=1162692022]
+
+[node name="MugBody" type="CSGCylinder3D" parent="Body" unique_id=1703584654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+radius = 0.05
+height = 0.1
+sides = 32
+
+[node name="Handle" type="CSGTorus3D" parent="Body" unique_id=1803662179]
+transform = Transform3D(-2.2794241e-08, -0.5214713, -0.8532688, 1, -4.37114e-08, 0, -3.729757e-08, -0.8532688, 0.5214713, 0.05, 0.05, 0)
+inner_radius = 0.02
+outer_radius = 0.035
+sides = 16
+ring_sides = 8
+
+[node name="InnerHollow" type="CSGCylinder3D" parent="Body" unique_id=1307792211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.055, 0)
+operation = 2
+radius = 0.046
+height = 0.095
+sides = 32

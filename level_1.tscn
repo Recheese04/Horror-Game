@@ -29,6 +29,9 @@
 [ext_resource type="PackedScene" uid="uid://cuaahjjhcwcgi" path="res://scenes/refrigerator.tscn" id="26_b6mmh"]
 [ext_resource type="PackedScene" uid="uid://di36whhfkkr7g" path="res://scenes/soap_dispenser.tscn" id="30_hycyb"]
 [ext_resource type="PackedScene" path="res://scenes/plate.tscn" id="31_swvua"]
+[ext_resource type="PackedScene" path="res://scenes/platito.tscn" id="32_ka01f"]
+[ext_resource type="PackedScene" path="res://scenes/baso.tscn" id="33_ett8d"]
+[ext_resource type="PackedScene" uid="uid://bhqhkggisp6xp" path="res://scenes/tasa.tscn" id="34_4p6gt"]
 [ext_resource type="PackedScene" uid="uid://ceb7i1msvwnrk" path="res://scenes/dish_cabinet.tscn" id="78_dish"]
 [ext_resource type="PackedScene" path="res://scenes/father.tscn" id="father_scene"]
 
@@ -779,10 +782,46 @@ material = SubResource("StandardMaterial3D_ttn6t")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4054, 0.086116195, -3.0359867)
 
 [node name="DishCabinet" parent="." unique_id=788518304 instance=ExtResource("78_dish")]
-transform = Transform3D(-0.84973764, 0, 0.027686594, 0, 0.73456657, 0, -0.023438374, 0, -1.003753, -6.6206436, 0.71557677, 4.355839)
+transform = Transform3D(-0.84973764, 0, 0.027686594, 0, 0.73456657, 0, -0.023438374, 0, -1.003753, -6.4960504, 0.71557677, 4.83948)
 
 [node name="DishwashingPaste" parent="." unique_id=1937353726 instance=ExtResource("30_hycyb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8549166, 1.0931695, 4.7713404)
 
-[node name="Plate" parent="." unique_id=1088085349 instance=ExtResource("31_swvua")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.770339, 1.077788, 4.2421927)
+[node name="Plate2" parent="." unique_id=3260938 instance=ExtResource("31_swvua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6836686, 1.077788, 4.2421927)
+
+[node name="Plate4" parent="." unique_id=907401988 instance=ExtResource("31_swvua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.367849, 0.88047016, 4.2421927)
+
+[node name="Plate5" parent="." unique_id=261797534 instance=ExtResource("31_swvua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.367849, 0.88047016, 4.578532)
+
+[node name="Plate6" parent="." unique_id=1605913424 instance=ExtResource("31_swvua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.162582, 0.88047016, 4.4205294)
+
+[node name="Plate3" parent="." unique_id=1256172433 instance=ExtResource("31_swvua")]
+transform = Transform3D(0.97924405, -0.20268476, 0, 0.20268476, 0.97924405, 0, 0, 0, 1, -7.801849, 1.1185044, 4.2421927)
+
+[node name="Platito" parent="." unique_id=1686194372 instance=ExtResource("32_ka01f")]
+transform = Transform3D(1, 0, 0, 0, 1.2350261, 0, 0, 0, 1, -7.776731, 1.0777879, 4.4518685)
+
+[node name="Baso" parent="." unique_id=415424594 instance=ExtResource("33_ett8d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.519877, 1.077788, 4.251421)
+
+[node name="Baso5" parent="." unique_id=328657006 instance=ExtResource("33_ett8d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.814213, 0.8982098, 4.251421)
+
+[node name="Baso2" parent="." unique_id=886564013 instance=ExtResource("33_ett8d")]
+transform = Transform3D(0.17851023, -0.98393804, 0, 0.98393804, 0.17851023, 0, 0, 0, 1, -7.480732, 1.077788, 4.5508986)
+
+[node name="Baso3" parent="." unique_id=715412818 instance=ExtResource("33_ett8d")]
+transform = Transform3D(0.17851023, -0.98393804, 0, 0.98393804, 0.17851023, 0, 0, 0, 1, -7.480732, 1.077788, 4.440382)
+
+[node name="Baso4" parent="." unique_id=1926701236 instance=ExtResource("33_ett8d")]
+transform = Transform3D(0.17851023, -0.98393804, 0, 0.98393804, 0.17851023, 0, 0, 0, 1, -8.576787, 0.8835162, 4.440382)
+
+[node name="Tasa" parent="." unique_id=1502711697 instance=ExtResource("34_4p6gt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5522747, 1.077788, 4.121899)
+
+[node name="Tasa2" parent="." unique_id=1535557356 instance=ExtResource("34_4p6gt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.851994, 1.077788, 4.121899)
