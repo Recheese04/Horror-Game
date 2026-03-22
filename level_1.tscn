@@ -796,6 +796,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6836686, 1.077788, 4.24219
 [node name="Plate4" parent="." unique_id=907401988 instance=ExtResource("31_swvua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.367849, 0.88047016, 4.2421927)
 
+ [node name="InteractionZone" parent="Father" index="2"]
+ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 0, -1.5)
+
+
 [node name="Plate5" parent="." unique_id=261797534 instance=ExtResource("31_swvua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.367849, 0.88047016, 4.578532)
 

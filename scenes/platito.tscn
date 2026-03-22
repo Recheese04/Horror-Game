@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://platito"]
+[gd_scene format=3 uid="uid://platito"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_platito"]
 height = 0.02
