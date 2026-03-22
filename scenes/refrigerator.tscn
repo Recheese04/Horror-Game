@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://cuaahjjhcwcgi"]
+
+[ext_resource type="Texture2D" uid="uid://e3bipa507lse" path="res://models/image texture/istockphoto-824631162-612x612.jpg" id="1_xhls8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ref"]
+size = Vector3(0.8, 1.8, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_body"]
+albedo_color = Color(0.85, 0.85, 0.8, 1)
+albedo_texture = ExtResource("1_xhls8")
+roughness = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_handle"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+metallic = 0.5
+roughness = 0.5
+
+[node name="Refrigerator" type="StaticBody3D" unique_id=998222677]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1763328613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("BoxShape3D_ref")
+
+[node name="MainBody" type="CSGBox3D" parent="." unique_id=667798878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+size = Vector3(0.8, 1.8, 0.8)
+material = SubResource("StandardMaterial3D_body")
+
+[node name="FreezerDoor" type="CSGBox3D" parent="MainBody" unique_id=2102275235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0.42)
+size = Vector3(0.78, 0.6, 0.05)
+material = SubResource("StandardMaterial3D_body")
+
+[node name="FridgeDoor" type="CSGBox3D" parent="MainBody" unique_id=1956303902]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0.42)
+size = Vector3(0.78, 1.05, 0.05)
+material = SubResource("StandardMaterial3D_body")
+
+[node name="HandleTop" type="CSGBox3D" parent="MainBody" unique_id=949892549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.55, 0.46)
+size = Vector3(0.04, 0.4, 0.04)
+material = SubResource("StandardMaterial3D_handle")
+
+[node name="HandleBottom" type="CSGBox3D" parent="MainBody" unique_id=1028087699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.1, 0.46)
+size = Vector3(0.04, 0.6, 0.04)
+material = SubResource("StandardMaterial3D_handle")
+
+[node name="Foot1" type="CSGBox3D" parent="MainBody" unique_id=1882430309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, -0.925, 0.35)
+size = Vector3(0.05, 0.05, 0.05)
+material = SubResource("StandardMaterial3D_handle")
+
+[node name="Foot2" type="CSGBox3D" parent="MainBody" unique_id=642442631]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, -0.925, 0.35)
+size = Vector3(0.05, 0.05, 0.05)
+material = SubResource("StandardMaterial3D_handle")
+
+[node name="Foot3" type="CSGBox3D" parent="MainBody" unique_id=1202912996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, -0.925, -0.35)
+size = Vector3(0.05, 0.05, 0.05)
+material = SubResource("StandardMaterial3D_handle")
+
+[node name="Foot4" type="CSGBox3D" parent="MainBody" unique_id=153166969]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, -0.925, -0.35)
+size = Vector3(0.05, 0.05, 0.05)
+material = SubResource("StandardMaterial3D_handle")
