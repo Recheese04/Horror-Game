@@ -32,6 +32,8 @@ func end_cinematic():
 	global_rotation.y = current_y
 
 func _ready() -> void:
+	add_to_group("Player")
+	print("PLAYER DEBUG: Name is '", name, "', Groups: ", get_groups())
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	interact_label.hide()
 	subtitle_label.hide()
@@ -111,8 +113,9 @@ func _physics_process(delta: float) -> void:
 		# Smoothly rotate head to look at NPC face (approximate Y offset)
 		if is_instance_valid(cinematic_target):
 			var face_pos = cinematic_target.global_position + Vector3(0, 1.5, 0)
-			var look_transform = camera.global_transform.looking_at(face_pos, Vector3.UP)
-			camera.global_transform = camera.global_transform.interpolate_with(look_transform, 4.0 * delta)
+			var look_target = camera.global_transform.looking_at(face_pos, Vector3.UP)
+			# Slerp the rotation basis specifically for much smoother results
+			camera.global_transform.basis = camera.global_transform.basis.slerp(look_target.basis, 5.0 * delta)
 		
 		# Zoom FOV in
 		camera.fov = lerp(camera.fov, 40.0, 3.0 * delta)

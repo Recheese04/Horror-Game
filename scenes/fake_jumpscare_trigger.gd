@@ -10,7 +10,6 @@ func _ready():
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body):
-	print("Area3D Entered by: ", body.name)
 	if body.name == "Player" and not triggered:
 		if not target_node and not target_path.is_empty():
 			target_node = get_node(target_path)
@@ -24,12 +23,12 @@ func _on_body_entered(body):
 func start_fake_jumpscare(player):
 	print("Fake Jumpscare Cinematic Starting!")
 	
-	# Show the character sprite
-	var sprite = target_node.get_node_or_null("CharacterSprite")
-	if sprite:
-		sprite.show()
+	# Show the character mesh
+	var character = target_node.get_node_or_null("CharacterMesh")
+	if character:
+		character.show()
 	else:
-		print("Fake Jumpscare Error: CharacterSprite not found in target!")
+		print("Fake Jumpscare Error: CharacterMesh not found in target!")
 	
 	# Play the intense sound
 	var sfx = target_node.get_node_or_null("AudioStreamPlayer3D")

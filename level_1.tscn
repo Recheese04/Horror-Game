@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" path="res://scenes/jalousie_window.tscn" id="18_gjkv5"]
 [ext_resource type="PackedScene" uid="uid://k8pfcshtk014" path="res://scenes/bamboo_bench.tscn" id="19_00ld1"]
 [ext_resource type="PackedScene" uid="uid://pr8u5v1ossgy" path="res://scenes/bamboo_table.tscn" id="20_3qmij"]
+[ext_resource type="PackedScene" path="res://scenes/father.tscn" id="father_scene"]
 [ext_resource type="PackedScene" uid="uid://parador123" path="res://scenes/aparador.tscn" id="21_kb5eu"]
 [ext_resource type="PackedScene" uid="uid://dju1ptyv0d0wp" path="res://scenes/clothesline.tscn" id="22_lfy8a"]
 [ext_resource type="PackedScene" uid="uid://6546vxfr4hy7" path="res://models/monobloc_-_plastic_garden_chair.glb" id="23_ethxx"]
@@ -679,6 +680,9 @@ transform = Transform3D(0.24843086, 0, -1.0639657, 0, 1.3795747, 0, 1.4850419, 0
 
 [node name="BambooTable" parent="." unique_id=976104873 instance=ExtResource("20_3qmij")]
 transform = Transform3D(1, 0, 0, 0, 1.3054397, 0, 0, 0, 1.7510042, -2.2181883, 0.059439063, 1.762958)
+
+[node name="Father" parent="." unique_id=5551213 instance=ExtResource("father_scene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0, 0.1, -1.0)
 
 [node name="Aparador" parent="." unique_id=51773008 instance=ExtResource("21_kb5eu")]
 transform = Transform3D(0.06739479, 0, 0.9855365, 0, 1.2700677, 0, -1.2537286, 0, 0.052977998, -5.7414846, -0.13093984, -6.557936)
