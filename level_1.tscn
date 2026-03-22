@@ -115,6 +115,9 @@ size = Vector3(80, 80, 80)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_duihb"]
 albedo_texture = ExtResource("15_3o2xh")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_line"]
+size = Vector3(4.0, 2.0, 0.5)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_fakejstrigger"]
 size = Vector3(2, 4, 2)
 
@@ -676,7 +679,7 @@ transform = Transform3D(-1.1394367, 0, -0.01394112, 0, 1.0504485, 0, 0.013523821
 [node name="FakeMother" parent="." unique_id=5551212 instance=ExtResource("16_fakeperson")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 8.5)
 
-[node name="FakeJumpscareTrigger" type="Area3D" parent="." unique_id=1114660228]
+[node name="FakeJumpscareTrigger" type="Area3D" parent="." unique_id=5551211]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 6.5)
 script = ExtResource("15_fakejstrigger")
 target_path = NodePath("../FakeMother")
