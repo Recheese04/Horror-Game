@@ -761,4 +761,4 @@ material = SubResource("StandardMaterial3D_ttn6t")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4054, 0.086116195, -3.0359867)
 
 [node name="DishCabinet" parent="." unique_id=788518304 instance=ExtResource("78_dish")]
-transform = Transform3D(-0.8824439, 0, 0.027658317, 0, 0.89293474, 0, -0.024340514, 0, -1.0027279, -6.6, 0.84807634, 4.355839)
+transform = Transform3D(-0.8824439, 0, 0.027658317, 0, 0.89293474, 0, -0.024340514, 0, -1.0027279, -6.6, 0.7426841, 4.355839)
