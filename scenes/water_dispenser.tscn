@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://dxftenp5o5nah"]
+
+[ext_resource type="Texture2D" uid="uid://dbihbw0w65wm3" path="res://models/image texture/12f1a8f380ca4f11dd693296f6aeb591.jpg_720x720q80.jpg" id="1_vhq00"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bounds"]
+size = Vector3(0.18, 0.44, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blue"]
+albedo_color = Color(0.7058824, 0.6, 1, 1)
+albedo_texture = ExtResource("1_vhq00")
+roughness = 0.35
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_white"]
+albedo_color = Color(0.32121074, 0.9613034, 1.540184e-06, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_red"]
+albedo_color = Color(0.85, 0.1, 0.1, 1)
+roughness = 0.5
+
+[node name="WaterGallonSlim" type="StaticBody3D" unique_id=940289107]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=732549864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
+shape = SubResource("BoxShape3D_bounds")
+
+[node name="Body" type="CSGCombiner3D" parent="." unique_id=1119044599]
+
+[node name="MainBox" type="CSGBox3D" parent="Body" unique_id=420911648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26533204, -0.020068362)
+size = Vector3(0.18, 0.26933593, 0.2598633)
+material = SubResource("StandardMaterial3D_blue")
+
+[node name="HandleBase" type="CSGBox3D" parent="Body" unique_id=666710641]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42, 0)
+size = Vector3(0.08, 0.04, 0.16)
+material = SubResource("StandardMaterial3D_blue")
+
+[node name="HandleHole" type="CSGBox3D" parent="Body" unique_id=155954604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41, 0)
+operation = 2
+size = Vector3(0.2, 0.04, 0.08)
+material = SubResource("StandardMaterial3D_blue")
+
+[node name="MainCap" type="CSGCylinder3D" parent="Body" unique_id=1680204240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0061507523, 0.415, -0.09)
+radius = 0.065
+height = 0.03
+sides = 24
+material = SubResource("StandardMaterial3D_blue")
+
+[node name="VentCap" type="CSGCylinder3D" parent="Body" unique_id=385759820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.41, 0.101997554)
+radius = 0.012
+height = 0.02
+sides = 12
+material = SubResource("StandardMaterial3D_blue")
+
+[node name="FaucetCutout" type="CSGBox3D" parent="Body" unique_id=270230259]
+transform = Transform3D(0.011902842, 0, 0.99992913, 0, 1, 0, -0.99992913, 0, 0.011902842, 0.04717309, 0.14216545, -0.15218917)
+operation = 2
+size = Vector3(0.08054199, 0.12154297, 0.10055664)
+material = SubResource("StandardMaterial3D_blue")
+
+[node name="FaucetBase" type="CSGCylinder3D" parent="Body" unique_id=1307634264]
+transform = Transform3D(-0.99989706, -0.014346063, 6.270868e-10, 0, -4.37114e-08, -1, 0.014346063, -0.99989706, 4.37069e-08, 0.03438227, 0.15955697, -0.13378315)
+radius = 0.015
+height = 0.04
+sides = 12
+material = SubResource("StandardMaterial3D_white")
+
+[node name="FaucetSpout" type="CSGCylinder3D" parent="Body" unique_id=1209219156]
+transform = Transform3D(-0.99989706, 0, -0.014346063, 0, 1, 0, 0.014346063, 0, -0.99989706, 0.0342476, 0.13955697, -0.14316949)
+radius = 0.008
+height = 0.02
+material = SubResource("StandardMaterial3D_white")
+
+[node name="FaucetButton" type="CSGCylinder3D" parent="Body" unique_id=406693761]
+transform = Transform3D(-0.99989706, -0.010213017, -0.0100749135, 9.224757e-09, 0.7022773, -0.71190345, 0.014346093, -0.71183014, -0.702205, 0.034099184, 0.16893588, -0.15351371)
+radius = 0.016601563
+height = 0.015
+sides = 12
+material = SubResource("StandardMaterial3D_red")

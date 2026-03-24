@@ -19,14 +19,25 @@ func toggle():
     is_on = not is_on
     _update_state()
 
+func interact():
+    toggle()
+
+func get_interaction_prompt() -> String:
+    if is_on:
+        return "Turn Off"
+    else:
+        return "Turn On"
+
 func _update_state():
     if is_on:
         video_player.play()
         screen_light.visible = true
-        # Optional: enable the viewport processing only when on
+        if tv_screen.material_override:
+            tv_screen.material_override.albedo_color = Color(1, 1, 1, 1)
         $SubViewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
     else:
         video_player.stop()
         screen_light.visible = false
-        # Save performance by not rendering the viewport when off
+        if tv_screen.material_override:
+            tv_screen.material_override.albedo_color = Color(0, 0, 0, 1)
         $SubViewport.render_target_update_mode = SubViewport.UPDATE_DISABLED

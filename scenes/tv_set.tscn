@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cfvcb4s5nd3ru" path="res://models/image texture/realistic-paper-copy-scan-texturecopy-grunge-rough-black-distressed-film-noise-grain-overlay-texture-photo.jpg" id="3_qyygf"]
 [ext_resource type="PackedScene" uid="uid://cy46w7iso6fss" path="res://scenes/old_speaker.tscn" id="4_qyygf"]
 [ext_resource type="PackedScene" uid="uid://dtmnav3s385dx" path="res://scenes/vcd_player.tscn" id="5_171fh"]
+[ext_resource type="VideoStream" uid="uid://bnjsil6dhldo6" path="res://models/videos/tvmacato.ogv" id="6_28q65"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_171fh"]
 albedo_texture = ExtResource("2_wdd2l")
@@ -256,5 +257,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+stream = ExtResource("6_28q65")
 expand = true
 loop = true

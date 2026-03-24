@@ -129,11 +129,29 @@ func _physics_process(delta: float) -> void:
 	# Handle interact label
 	if interact_ray.is_colliding():
 		var collider = interact_ray.get_collider()
+		var target = null
+		
+		# Find the actual interactive target (could be parent)
+		if collider.has_method("interact"):
+			target = collider
+		elif collider.get_parent() and collider.get_parent().has_method("interact"):
+			target = collider.get_parent()
+		
+		# Determine the label to show
+		var label_text = ""
+		
 		if collider.name == "Door":
-			interact_label.show()
+			label_text = "Open/Close"
 		elif held_object == null and (collider.name == "cellphone" or (collider.get_parent() and collider.get_parent().name == "cellphone")):
-			interact_label.show()
-		elif collider.has_method("interact") or (collider.get_parent() and collider.get_parent().has_method("interact")):
+			label_text = "Pick Up"
+		elif target != null:
+			if target.has_method("get_interaction_prompt"):
+				label_text = target.get_interaction_prompt()
+			else:
+				label_text = "Interact"
+				
+		if label_text != "":
+			interact_label.text = label_text
 			interact_label.show()
 		else:
 			interact_label.hide()
