@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bilao_ph01"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bamboo"]
+albedo_color = Color(0.72, 0.58, 0.3, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_inner"]
+albedo_color = Color(0.65, 0.52, 0.27, 1)
+roughness = 0.85
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bilao"]
+size = Vector3(0.5, 0.06, 0.5)
+
+[node name="Bilao" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
+shape = SubResource("BoxShape3D_bilao")
+
+[node name="Rim" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.018, 0)
+radius = 0.245
+height = 0.036
+material = SubResource("StandardMaterial3D_bamboo")
+
+[node name="RimInner" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
+operation = 2
+radius = 0.22
+height = 0.04
+
+[node name="Weave1" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.006, 0)
+size = Vector3(0.44, 0.012, 0.022)
+material = SubResource("StandardMaterial3D_inner")
+
+[node name="Weave2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.006, 0.044)
+size = Vector3(0.43, 0.012, 0.022)
+material = SubResource("StandardMaterial3D_inner")
+
+[node name="Weave3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.006, -0.044)
+size = Vector3(0.43, 0.012, 0.022)
+material = SubResource("StandardMaterial3D_inner")
+
+[node name="Weave4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.006, 0.088)
+size = Vector3(0.38, 0.012, 0.022)
+material = SubResource("StandardMaterial3D_inner")
+
+[node name="Weave5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.006, -0.088)
+size = Vector3(0.38, 0.012, 0.022)
+material = SubResource("StandardMaterial3D_inner")
+
+[node name="WeaveV1" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.006, 0)
+size = Vector3(0.022, 0.012, 0.44)
+material = SubResource("StandardMaterial3D_bamboo")
+
+[node name="WeaveV2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.044, 0.006, 0)
+size = Vector3(0.022, 0.012, 0.43)
+material = SubResource("StandardMaterial3D_bamboo")
+
+[node name="WeaveV3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.044, 0.006, 0)
+size = Vector3(0.022, 0.012, 0.43)
+material = SubResource("StandardMaterial3D_bamboo")
+
+[node name="WeaveV4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.088, 0.006, 0)
+size = Vector3(0.022, 0.012, 0.38)
+material = SubResource("StandardMaterial3D_bamboo")
+
+[node name="WeaveV5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.088, 0.006, 0)
+size = Vector3(0.022, 0.012, 0.38)
+material = SubResource("StandardMaterial3D_bamboo")

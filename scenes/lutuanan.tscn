@@ -1,0 +1,434 @@
+[gd_scene format=3 uid="uid://bq38u5ijvxc5c"]
+
+[ext_resource type="Texture2D" uid="uid://bx7ucrnqwwlbn" path="res://models/image texture/istockphoto-638074852-612x612.jpg" id="1_mkxx7"]
+[ext_resource type="Texture2D" uid="uid://cbccaj717wbmh" path="res://models/image texture/ash.jpg" id="2_h7ce8"]
+[ext_resource type="Texture2D" uid="uid://bo0657l7dnh0i" path="res://models/image texture/kalan.png" id="3_yxqi0"]
+[ext_resource type="Texture2D" uid="uid://dcvrid0ntkd27" path="res://models/image texture/very-vivid-colours-wood-texture-208285.jpg" id="4_eqsf0"]
+[ext_resource type="Texture2D" uid="uid://c0o2ea7eqft30" path="res://models/image texture/kaldero.jpg" id="5_yxqi0"]
+[ext_resource type="Texture2D" uid="uid://nwrgyqyhxjuh" path="res://models/image texture/kalderotakob.jpg" id="6_eqsf0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_concrete"]
+albedo_color = Color(0.52, 0.49, 0.46, 1)
+albedo_texture = ExtResource("1_mkxx7")
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tile_gray"]
+albedo_color = Color(0.6, 0.58, 0.55, 1)
+albedo_texture = ExtResource("2_h7ce8")
+roughness = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wood_log"]
+albedo_color = Color(0.3, 0.2, 0.12, 1)
+albedo_texture = ExtResource("3_yxqi0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i66xe"]
+albedo_color = Color(0.33, 0.2145, 0, 1)
+albedo_texture = ExtResource("3_yxqi0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hook_metal"]
+albedo_color = Color(0.35, 0.33, 0.32, 1)
+metallic = 0.6
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a73oj"]
+albedo_texture = ExtResource("4_eqsf0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ppk10"]
+albedo_texture = ExtResource("2_h7ce8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1f37a"]
+albedo_texture = ExtResource("5_yxqi0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tr4mv"]
+albedo_color = Color(0.41, 0.41, 0.41, 1)
+albedo_texture = ExtResource("6_eqsf0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2s78"]
+albedo_texture = ExtResource("5_yxqi0")
+
+[node name="Lutuanan" type="Node3D" unique_id=2049336159]
+transform = Transform3D(1.3483105, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Counter" type="CSGBox3D" parent="." unique_id=815069765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8421265, -0.07866211)
+use_collision = true
+size = Vector3(1.8, 0.115747064, 0.99501956)
+material = SubResource("StandardMaterial3D_concrete")
+
+[node name="Counter6" type="CSGBox3D" parent="." unique_id=865021605]
+transform = Transform3D(1, 0, 0, 0, -0.0054454207, -0.9999853, 0, 0.9999853, -0.0054454207, 0, 0.3834244, -0.52252793)
+use_collision = true
+size = Vector3(1.8, 0.115747064, 0.90117186)
+material = SubResource("StandardMaterial3D_concrete")
+
+[node name="Counter8" type="CSGBox3D" parent="." unique_id=826654485]
+transform = Transform3D(0.02284443, 0.9997243, -0.0054439995, 0, -0.0054454203, -0.9999852, -0.999739, 0.022844091, -0.00012439753, 0.8442538, 0.3834244, -0.026885994)
+use_collision = true
+size = Vector3(0.89458007, 0.115747064, 0.90117186)
+material = SubResource("StandardMaterial3D_concrete")
+
+[node name="Counter9" type="CSGBox3D" parent="." unique_id=690681212]
+transform = Transform3D(0.02284443, 0.9997243, -0.0054439995, 0, -0.0054454203, -0.9999852, -0.999739, 0.022844091, -0.00012439753, -0.8228469, 0.3834244, -0.026885994)
+use_collision = true
+size = Vector3(0.89458007, 0.115747064, 0.90117186)
+material = SubResource("StandardMaterial3D_concrete")
+
+[node name="Counter7" type="CSGBox3D" parent="." unique_id=1738561613]
+transform = Transform3D(1, 0, 0, 0, -0.9990672, -0.043183476, 0, 0.043183476, -0.9990672, 0, -0.11347149, -0.07021107)
+use_collision = true
+size = Vector3(1.8, 0.115747064, 0.99020994)
+material = SubResource("StandardMaterial3D_concrete")
+
+[node name="Counter2" type="CSGBox3D" parent="." unique_id=699609429]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9176817, -0.54448247)
+use_collision = true
+size = Vector3(1.8, 0.052014157, 0.0633789)
+material = SubResource("StandardMaterial3D_concrete")
+
+[node name="kahoy5" type="CSGBox3D" parent="." unique_id=1474175644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00066006184, 0.90366066, -0.09489049)
+use_collision = true
+size = Vector3(1.82, 0.018, 0.86380863)
+material = SubResource("StandardMaterial3D_tile_gray")
+
+[node name="FirewoodStack" type="Node3D" parent="." unique_id=1051454326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0, 0.2)
+
+[node name="Log1" type="CSGCylinder3D" parent="FirewoodStack" unique_id=890426109]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0.49538797, 0.07, 0)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log3" type="CSGCylinder3D" parent="FirewoodStack" unique_id=1564605530]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0.49417415, 0.07, -0.1360648)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log4" type="CSGCylinder3D" parent="FirewoodStack" unique_id=1971023902]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0.49417415, 0.07, -0.08432189)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log5" type="CSGCylinder3D" parent="FirewoodStack" unique_id=1112179366]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0.49417415, 0.07, -0.1904619)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log6" type="CSGCylinder3D" parent="FirewoodStack" unique_id=1532670241]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0.49417415, 0.11131841, -0.14964575)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log7" type="CSGCylinder3D" parent="FirewoodStack" unique_id=1674881595]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0.49417415, 0.11131841, -0.050765097)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log9" type="CSGCylinder3D" parent="FirewoodStack" unique_id=1109025957]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0.49417415, 0.15263438, -0.12844503)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log10" type="CSGCylinder3D" parent="FirewoodStack" unique_id=252006398]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 1.0921243, 0.07, 0)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log11" type="CSGCylinder3D" parent="FirewoodStack" unique_id=949985198]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 1.0909104, 0.07, -0.1360648)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log12" type="CSGCylinder3D" parent="FirewoodStack" unique_id=301280412]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 1.0909104, 0.07, -0.08432189)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log13" type="CSGCylinder3D" parent="FirewoodStack" unique_id=167963025]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 1.0909104, 0.07, -0.1904619)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log14" type="CSGCylinder3D" parent="FirewoodStack" unique_id=1596418735]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 1.0909104, 0.11131841, -0.14964575)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log15" type="CSGCylinder3D" parent="FirewoodStack" unique_id=125808080]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 1.0909104, 0.11131841, -0.050765097)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log16" type="CSGCylinder3D" parent="FirewoodStack" unique_id=162346826]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 1.0909104, 0.15263438, -0.12844503)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log17" type="CSGCylinder3D" parent="FirewoodStack" unique_id=2040544851]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 1.0921243, 0.07, -0.22901875)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log18" type="CSGCylinder3D" parent="FirewoodStack" unique_id=687435975]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 1.0909104, 0.07, -0.36508355)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log19" type="CSGCylinder3D" parent="FirewoodStack" unique_id=1035310470]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 1.0909104, 0.07, -0.31334063)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log20" type="CSGCylinder3D" parent="FirewoodStack" unique_id=897867280]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 1.0909104, 0.07, -0.41948065)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log21" type="CSGCylinder3D" parent="FirewoodStack" unique_id=2123234475]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 1.0909104, 0.11131841, -0.3786645)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log22" type="CSGCylinder3D" parent="FirewoodStack" unique_id=1628299730]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 1.0909104, 0.11131841, -0.27978384)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log23" type="CSGCylinder3D" parent="FirewoodStack" unique_id=449759979]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 1.0909104, 0.15263438, -0.35746378)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log24" type="CSGCylinder3D" parent="FirewoodStack" unique_id=1432931869]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0.22447917, 0.07, -0.22901875)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log25" type="CSGCylinder3D" parent="FirewoodStack" unique_id=1672442174]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0.22326526, 0.07, -0.36508355)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log26" type="CSGCylinder3D" parent="FirewoodStack" unique_id=725366457]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0.22326526, 0.07, -0.31334063)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log27" type="CSGCylinder3D" parent="FirewoodStack" unique_id=2138104090]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0.22326526, 0.07, -0.41948065)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log28" type="CSGCylinder3D" parent="FirewoodStack" unique_id=876205109]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0.22326526, 0.11131841, -0.3786645)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log29" type="CSGCylinder3D" parent="FirewoodStack" unique_id=701427651]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0.22326526, 0.11131841, -0.27978384)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log30" type="CSGCylinder3D" parent="FirewoodStack" unique_id=2048317839]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0.22326526, 0.15263438, -0.35746378)
+radius = 0.03515625
+height = 0.5
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="Log2" type="CSGCylinder3D" parent="FirewoodStack" unique_id=1236110532]
+transform = Transform3D(-2.0332048, -0.030487154, 0, 0.097563565, -0.635346, 0, 0, 0, 2.215668, 1.1810133, 1.0114272, -0.23408651)
+radius = 0.09277344
+height = 0.3568164
+material = SubResource("StandardMaterial3D_wood_log")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="FirewoodStack/Log2" unique_id=991804659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0.0016323179, 0.13320279, 0.041661646)
+operation = 2
+size = Vector3(0.0791626, 0.33062744, 0.11743164)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="FirewoodStack/Log2" unique_id=1593487746]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0.0010768473, -0.15864873, 0)
+operation = 2
+radius = 0.067871094
+height = 0.67456055
+
+[node name="Log8" type="CSGCylinder3D" parent="FirewoodStack" unique_id=467068109]
+transform = Transform3D(-2.0934281, -0.037588485, 0, 0.1004534, -0.7833362, 0, 0, 0, 2.215668, 0.3206441, 1.0114272, -0.20471519)
+radius = 0.09277344
+height = 0.3568164
+material = SubResource("StandardMaterial3D_i66xe")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="FirewoodStack/Log8" unique_id=1774281508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0.0016323179, 0.13320279, 0.041661646)
+operation = 2
+size = Vector3(0.0791626, 0.33062744, 0.11743164)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="FirewoodStack/Log8" unique_id=419369211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0.0010768473, -0.15864873, 0)
+operation = 2
+radius = 0.067871094
+height = 0.67456055
+
+[node name="AshPile" type="CSGBox3D" parent="." unique_id=518331905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.01, 0.25)
+size = Vector3(0.3, 0.02, 0.3)
+material = SubResource("StandardMaterial3D_concrete")
+
+[node name="HookBar" type="CSGBox3D" parent="." unique_id=81089258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.25, -0.32)
+size = Vector3(0.012, 0.012, 0.06)
+material = SubResource("StandardMaterial3D_hook_metal")
+
+[node name="HookBar2" type="CSGBox3D" parent="." unique_id=2102537452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.25, -0.32)
+size = Vector3(0.012, 0.012, 0.06)
+material = SubResource("StandardMaterial3D_hook_metal")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=798616328]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Node3D" unique_id=331518919]
+transform = Transform3D(0.099301584, 0, 0, 0, 0.43934548, 0, 0, 0, 1, -0.85537, 0.9487742, -0.092122525)
+size = Vector3(0.77734375, 0.22705078, 1)
+material = SubResource("StandardMaterial3D_a73oj")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Node3D" unique_id=682697267]
+transform = Transform3D(0.099301584, 0, 0, 0, 0.43934548, 0, 0, 0, 1, 0.8757765, 0.9487742, -0.092122525)
+size = Vector3(0.77734375, 0.22705078, 1)
+material = SubResource("StandardMaterial3D_a73oj")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Node3D" unique_id=1472484822]
+transform = Transform3D(-0.0019288595, 0, -0.99981135, 0, 0.4393456, 0, 0.09928287, 0, -0.01942426, 0.39705095, 0.9487742, -0.5508008)
+size = Vector3(0.77734375, 0.22705078, 1)
+material = SubResource("StandardMaterial3D_a73oj")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Node3D" unique_id=235531815]
+transform = Transform3D(-0.0019288595, 0, -0.99981135, 0, 0.4393456, 0, 0.09928287, 0, -0.01942426, -0.3346011, 0.9487742, -0.5508008)
+size = Vector3(0.77734375, 0.22705078, 1)
+material = SubResource("StandardMaterial3D_a73oj")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=539843331]
+transform = Transform3D(0.18448278, -0.33778855, 0, 0.23070091, 0.2701167, 0, 0, 0, 0.16524947, -0.585273, 0.6710758, 0.18521291)
+polygon = PackedVector2Array(0.56241894, 0.42153573, 0.3684461, 0.56788516, 0.7487941, 0.48205948, 0.7851, 0.20112658)
+material = SubResource("StandardMaterial3D_ppk10")
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="." unique_id=792386427]
+transform = Transform3D(0.18448278, -0.33778855, 0, 0.23070091, 0.2701167, 0, 0, 0, 0.16524947, -0.33257127, 0.6710758, 0.15492436)
+polygon = PackedVector2Array(0.56241894, 0.42153573, 0.3684461, 0.56788516, 0.66663, 0.44760394, 0.7851, 0.20112658)
+material = SubResource("StandardMaterial3D_ppk10")
+
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="." unique_id=611741096]
+transform = Transform3D(0.18448278, -0.33778855, 0, 0.23070091, 0.2701167, 0, 0, 0, 0.16524947, -0.10662752, 0.6710758, 0.15492436)
+polygon = PackedVector2Array(0.56241894, 0.42153573, 0.3684461, 0.56788516, 0.66663, 0.44760394, 0.7851, 0.20112658)
+material = SubResource("StandardMaterial3D_ppk10")
+
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="." unique_id=1662892271]
+transform = Transform3D(0.18448278, -0.33778855, 0, 0.23070091, 0.2701167, 0, 0, 0, 0.16524947, 0.25032234, 0.6710758, 0.15492436)
+polygon = PackedVector2Array(0.56241894, 0.42153573, 0.3684461, 0.56788516, 0.66663, 0.44760394, 0.7851, 0.20112658)
+material = SubResource("StandardMaterial3D_ppk10")
+
+[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="." unique_id=1445068678]
+transform = Transform3D(0.18448278, -0.33778855, 0, 0.23070091, 0.2701167, 0, 0, 0, 0.16524947, 0.7031806, 0.6710758, 0.16749159)
+polygon = PackedVector2Array(0.56241894, 0.42153573, 0.3684461, 0.56788516, 0.66663, 0.44760394, 0.7851, 0.20112658)
+material = SubResource("StandardMaterial3D_ppk10")
+
+[node name="CSGPolygon3D6" type="CSGPolygon3D" parent="." unique_id=64545010]
+transform = Transform3D(0.18448278, -0.33778855, 0, 0.23070091, 0.2701167, 0, 0, 0, 0.16524947, 0.5014212, 0.6710758, 0.050264567)
+polygon = PackedVector2Array(0.56241894, 0.42153573, 0.3684461, 0.56788516, 0.66299486, 0.4148367, 0.7851, 0.20112658)
+material = SubResource("StandardMaterial3D_ppk10")
+
+[node name="kaldero" type="Node3D" parent="." unique_id=1383963888]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031017693, 0.09388834, 1.2178898)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="kaldero" unique_id=708593398]
+transform = Transform3D(0.50088286, 0, 0, 0, 0.5869893, 0, 0, 0, 0.52540684, 0.51541305, 1.143704, -1.2453899)
+radius = 0.37334162
+material = SubResource("StandardMaterial3D_1f37a")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="kaldero/CSGSphere3D" unique_id=1489056049]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0.62852645, 0)
+operation = 2
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="kaldero" unique_id=2088970720]
+transform = Transform3D(1, 0, 0, 0, 0.53845084, 0, 0, 0, 1.0761262, 0.51397055, 1.1933639, -1.2487531)
+radius = 0.18056217
+material = SubResource("StandardMaterial3D_tr4mv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="kaldero/CSGSphere3D2" unique_id=1386370098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45656908, 0)
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="kaldero" unique_id=855565345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.51198053, 1.2929424, -1.2542443)
+size = Vector3(0.059814453, 0.038146973, 0.020751953)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="kaldero" unique_id=1322019957]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34054264, 1.2043142, -1.2542443)
+size = Vector3(0.009887695, 0.038146973, 0.020751953)
+material = SubResource("StandardMaterial3D_x2s78")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="kaldero" unique_id=1276450366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6865261, 1.2036147, -1.2542443)
+size = Vector3(0.009887695, 0.038146973, 0.020751953)
+material = SubResource("StandardMaterial3D_x2s78")
+
+[node name="kaldero2" type="Node3D" parent="." unique_id=280441045]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.89456207, 0.09388834, 1.2178898)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="kaldero2" unique_id=715839005]
+transform = Transform3D(0.50088286, 0, 0, 0, 0.5869893, 0, 0, 0, 0.52540684, 0.51541305, 1.143704, -1.2453899)
+radius = 0.37334162
+material = SubResource("StandardMaterial3D_1f37a")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="kaldero2/CSGSphere3D" unique_id=1499506843]
+transform = Transform3D(0.9999998, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0.62852645, 0)
+operation = 2
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="kaldero2" unique_id=778576690]
+transform = Transform3D(1, 0, 0, 0, 0.53845084, 0, 0, 0, 1.0761262, 0.51397055, 1.1933639, -1.2487531)
+radius = 0.18056217
+material = SubResource("StandardMaterial3D_tr4mv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="kaldero2/CSGSphere3D2" unique_id=1028854783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45656908, 0)
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="kaldero2" unique_id=720457875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.51198053, 1.2929424, -1.2542443)
+size = Vector3(0.059814453, 0.038146973, 0.020751953)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="kaldero2" unique_id=147527806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34054264, 1.2043142, -1.2542443)
+size = Vector3(0.009887695, 0.038146973, 0.020751953)
+material = SubResource("StandardMaterial3D_x2s78")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="kaldero2" unique_id=1453707753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6865261, 1.2036147, -1.2542443)
+size = Vector3(0.009887695, 0.038146973, 0.020751953)
+material = SubResource("StandardMaterial3D_x2s78")

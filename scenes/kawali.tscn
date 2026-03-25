@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://kawali_ph01"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iron"]
+albedo_color = Color(0.14, 0.13, 0.12, 1)
+metallic = 0.45
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_soot"]
+albedo_color = Color(0.08, 0.07, 0.07, 1)
+roughness = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kawali"]
+size = Vector3(0.35, 0.12, 0.35)
+
+[node name="Kawali" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("BoxShape3D_kawali")
+
+[node name="Pan" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
+radius = 0.17
+height = 0.04
+material = SubResource("StandardMaterial3D_iron")
+
+[node name="PanInner" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, 0)
+operation = 2
+radius = 0.155
+height = 0.03
+
+[node name="Wall" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+radius = 0.17
+height = 0.1
+material = SubResource("StandardMaterial3D_iron")
+
+[node name="WallInner" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+operation = 2
+radius = 0.155
+height = 0.1
+
+[node name="Bottom" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+radius = 0.15
+height = 0.008
+material = SubResource("StandardMaterial3D_soot")
+
+[node name="HandleR" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215, 0.065, 0)
+size = Vector3(0.09, 0.016, 0.022)
+material = SubResource("StandardMaterial3D_iron")
+
+[node name="HandleL" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215, 0.065, 0)
+size = Vector3(0.09, 0.016, 0.022)
+material = SubResource("StandardMaterial3D_iron")

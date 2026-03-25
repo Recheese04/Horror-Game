@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://saksakan01"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plastic"]
+albedo_color = Color(0.92, 0.9, 0.85, 1)
+roughness = 0.85
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dark"]
+albedo_color = Color(0.08, 0.08, 0.08, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_metal"]
+albedo_color = Color(0.6, 0.6, 0.6, 1)
+metallic = 0.8
+roughness = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_body"]
+size = Vector3(0.12, 0.12, 0.04)
+
+[node name="Saksakan" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_body")
+
+[node name="FacePlate" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+size = Vector3(0.115, 0.115, 0.03)
+material = SubResource("StandardMaterial3D_plastic")
+
+[node name="SocketHoleL" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.018, 0.01, 0.016)
+operation = 2
+size = Vector3(0.008, 0.018, 0.01)
+
+[node name="SocketHoleR" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018, 0.01, 0.016)
+operation = 2
+size = Vector3(0.008, 0.018, 0.01)
+
+[node name="GroundHole" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.022, 0.016)
+operation = 2
+radius = 0.005
+height = 0.012
+
+[node name="ScrewTop" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.048, 0.016)
+radius = 0.004
+height = 0.008
+material = SubResource("StandardMaterial3D_metal")
+
+[node name="ScrewBottom" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.048, 0.016)
+radius = 0.004
+height = 0.008
+material = SubResource("StandardMaterial3D_metal")
+
+[node name="WireExit" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, -0.06, -0.01)
+radius = 0.006
+height = 0.04
+material = SubResource("StandardMaterial3D_dark")
