@@ -6,6 +6,7 @@ extends Node3D
 @export var base_energy: float = 0.8
 
 func _ready():
+	add_to_group("Bulbs")
 	light.light_energy = base_energy
 	_disable_shadows(self)
 
@@ -20,3 +21,6 @@ func toggle():
 	light.visible = not light.visible
 	if audio.stream != null:
 		audio.play()
+
+func turn_off():
+	light.visible = false

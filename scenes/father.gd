@@ -16,7 +16,7 @@ func _ready():
 	interaction_zone.body_entered.connect(_on_body_entered)
 
 func _physics_process(delta):
-	# Father is stationary again to avoid any lag
+	# Mother is stationary
 	if is_in_cinematic:
 		# If somehow pushed, stop
 		velocity = Vector3.ZERO

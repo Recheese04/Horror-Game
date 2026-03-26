@@ -4,15 +4,20 @@ extends Node3D
 @onready var screen_light = $TVScreen/OmniLight3D
 @onready var tv_screen = $TVScreen
 
-@export var is_on: bool = true
+@export var is_on: bool = false
 
 func _ready():
+    add_to_group("Electronics")
     # Setup the view port texture dynamically over the TV screen mesh
     var mat = StandardMaterial3D.new()
     mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
     mat.albedo_texture = $SubViewport.get_texture()
     tv_screen.material_override = mat
     
+    _update_state()
+
+func turn_off():
+    is_on = false
     _update_state()
 
 func toggle():

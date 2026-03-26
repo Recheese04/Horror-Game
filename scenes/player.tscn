@@ -1,25 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://cax2bqhqxtqxk"]
+[gd_scene format=3 uid="uid://cax2bqhqxtqxk"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_8m3n2"]
+[ext_resource type="Script" uid="uid://wg0lla2v2y5b" path="res://scenes/player.gd" id="1_8m3n2"]
+[ext_resource type="PackedScene" path="res://scenes/cp.tscn" id="2_cp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hw02x"]
 
-[node name="Player" type="CharacterBody3D" groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1198803859 groups=["Player"]]
 script = ExtResource("1_8m3n2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1897094061]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_hw02x")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=657212926]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 
-[node name="InteractRay" type="RayCast3D" parent="Camera3D"]
+[node name="InteractRay" type="RayCast3D" parent="Camera3D" unique_id=651848930]
 target_position = Vector3(0, 0, -3)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CP" parent="Camera3D" unique_id=494328927 instance=ExtResource("2_cp")]
+transform = Transform3D(1, 0, 0, 0, 0.8660249, 0.5, 0, -0.5, 0.8660249, 0.2, -0.4, -0.5)
 
-[node name="InteractLabel" type="Label" parent="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1228702994]
+
+[node name="InteractLabel" type="Label" parent="CanvasLayer" unique_id=2083281712]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -31,12 +35,11 @@ offset_right = 150.0
 offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 text = "Press E to Interact"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Crosshair" type="ColorRect" parent="CanvasLayer"]
+[node name="Crosshair" type="ColorRect" parent="CanvasLayer" unique_id=1880746427]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -50,7 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="SubtitleLabel" type="Label" parent="CanvasLayer"]
+[node name="SubtitleLabel" type="Label" parent="CanvasLayer" unique_id=1063296448]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -62,20 +65,18 @@ offset_right = 300.0
 offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 0
-mouse_filter = 2
 theme_override_font_sizes/font_size = 24
-text = ""
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
-color = Color(1, 1, 1, 0.7)
 
-[node name="InteractPointer" type="Label3D" parent="."]
+[node name="InteractPointer" type="Label3D" parent="." unique_id=242046956]
 top_level = true
 billboard = 1
 fixed_size = true
-text = "?"
-font_size = 64
 modulate = Color(0.2, 1, 0.2, 1)
 outline_modulate = Color(0, 0.2, 0, 1)
+text = "?"
+font_size = 64
+
 

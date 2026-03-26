@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="Horror Game"
-run/main_scene="uid://dw7kw81c6sdlw"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+
+[display]
+
+window/size/mode=3
+
 
 [physics]
 
@@ -24,3 +30,6 @@ config/icon="res://icon.svg"
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

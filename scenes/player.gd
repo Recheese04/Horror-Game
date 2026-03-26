@@ -15,6 +15,15 @@ var held_object: Node3D = null
 
 var in_cinematic = false
 var cinematic_target = null
+var is_intro_playing = false
+
+@onready var phone_3d: Node3D = $Camera3D/CP
+
+func _ready() -> void:
+	add_to_group("Player")
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	interact_label.hide()
+	subtitle_label.hide()
 
 func start_cinematic(target: Node3D):
 	in_cinematic = true
@@ -23,20 +32,9 @@ func start_cinematic(target: Node3D):
 func end_cinematic():
 	in_cinematic = false
 	cinematic_target = null
-	
-	# Fix camera rotation! Transfer the temporary cinematic Y-yaw to the player's body
-	# and wipe local Y/Z twists off the camera so mouse look works perfectly again.
-	var current_y = camera.global_rotation.y
-	var current_x = camera.rotation.x
-	camera.rotation = Vector3(current_x, 0, 0)
-	global_rotation.y = current_y
-
-func _ready() -> void:
-	add_to_group("Player")
-	print("PLAYER DEBUG: Name is '", name, "', Groups: ", get_groups())
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	interact_label.hide()
-	subtitle_label.hide()
+	# Smoothly reset camera to forward-facing
+	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(camera, "rotation", Vector3(0, 0, 0), 0.5)
 
 func show_subtitle(text: String):
 	subtitle_label.text = text
@@ -44,8 +42,12 @@ func show_subtitle(text: String):
 
 func hide_subtitle():
 	subtitle_label.hide()
+	subtitle_label.text = ""
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_intro_playing:
+		return
+
 	if in_cinematic:
 		return
 		
@@ -71,8 +73,8 @@ func _unhandled_input(event: InputEvent) -> void:
 						phone = collider.get_parent()
 					if phone:
 						phone.reparent(camera, false)
-						phone.position = Vector3(0.3, -0.3, -0.6)
-						phone.rotation = Vector3(PI/2, 0, 0)
+						phone.position = Vector3(0.07, -0.08, -0.15)
+						phone.rotation = Vector3(0, 0, 0)
 						if phone is CSGBox3D: phone.use_collision = false
 						held_object = phone
 				# Door interaction (works whether or not holding something)
@@ -94,10 +96,16 @@ func _unhandled_input(event: InputEvent) -> void:
 				elif collider.get_parent() and collider.get_parent().has_method("interact"):
 					collider.get_parent().interact()
 		elif event.keycode == KEY_F and event.pressed and not event.echo:
-			if held_object != null:
+			if held_object != null and held_object.has_node("Flashlight"):
 				var light = held_object.get_node("Flashlight")
-				if light:
-					light.visible = not light.visible
+				light.visible = not light.visible
+				# Update flashlight UI on phone screen
+				var fl_ui = held_object.get_node_or_null("SubViewport/FlashlightUI")
+				if fl_ui:
+					if light.visible:
+						fl_ui.texture = load("res://assets/images/flashlighton.jpg")
+					else:
+						fl_ui.texture = load("res://assets/images/flashlightoff.jpg")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
