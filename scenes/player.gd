@@ -18,6 +18,11 @@ var in_cinematic = false
 var cinematic_target = null
 var is_intro_playing = false
 
+# Examine mode
+var examining_object: Node3D = null
+var examine_clone: Node3D = null
+var is_examining = false
+
 @onready var phone_3d: Node3D = $Camera3D/CP
 
 func _ready() -> void:
@@ -53,11 +58,66 @@ func show_objective(text: String):
 func hide_objective():
 	objective_label.hide()
 
+# ── EXAMINE MODE ─────────────────────────────────────────────────
+
+func start_examine(original: Node3D):
+	is_examining = true
+	examining_object = original
+	
+	# Hide the original
+	original.hide()
+	
+	# Disable collision on original
+	if original is StaticBody3D:
+		original.set_collision_layer(0)
+		original.set_collision_mask(0)
+	
+	# Create a clone in front of camera
+	examine_clone = original.duplicate()
+	examine_clone.show()
+	camera.add_child(examine_clone)
+	examine_clone.position = Vector3(0, -0.05, -0.35)
+	examine_clone.rotation = Vector3(0, 0, 0)
+	examine_clone.scale = original.scale * 3.0
+	
+	# Disable collision on clone
+	for child in examine_clone.get_children():
+		if child is CollisionShape3D:
+			child.disabled = true
+	
+	interact_label.text = "Press E to open"
+	interact_label.show()
+	
+	# Show cursor for rotating
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func end_examine():
+	is_examining = false
+	
+	if examine_clone:
+		examine_clone.queue_free()
+		examine_clone = null
+	
+	examining_object = null
+	interact_label.hide()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 func _unhandled_input(event: InputEvent) -> void:
 	if is_intro_playing:
 		return
 
 	if in_cinematic:
+		return
+	
+	# Examine mode input handling
+	if is_examining:
+		if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and examine_clone:
+				examine_clone.rotate_y(-event.relative.x * 0.005)
+				examine_clone.rotate_x(-event.relative.y * 0.005)
+		elif event is InputEventKey and event.keycode == KEY_E and event.pressed and not event.echo:
+			if examining_object and examining_object.has_method("examine_action"):
+				examining_object.examine_action(self)
 		return
 		
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -120,6 +180,14 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+
+	# Block movement during examine
+	if is_examining:
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
+		move_and_slide()
+		interact_label.show()
+		return
 
 	if in_cinematic:
 		# Stop walking

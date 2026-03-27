@@ -9,16 +9,18 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var is_in_cinematic = false
 var interaction_count = 0
 
-# The dialogue combined into one line
-var dialogue_line = "Hoy buguk! Palit sag asin kaw."
+# Dialogue sequence: [speaker, bisaya, english]
+var dialogue_sequence = [
+	["Nanay", "Christian. Pag adto sa tindahan ni Aling Rosa. Wa tay asin ug posporo. Balik dayon.", "Christian. Go to Aling Rosa's store. We're out of salt and matches. Come right back."],
+	["Christian", "Ma gabii na man. Mo-uwan pa.", "Mom it's already night. And it's about to rain."],
+	["Nanay", "Kaduol ra. Dali lang anak.", "It's close by. Just hurry, anak."],
+]
 
 func _ready():
 	interaction_zone.body_entered.connect(_on_body_entered)
 
 func _physics_process(delta):
-	# Mother is stationary
 	if is_in_cinematic:
-		# If somehow pushed, stop
 		velocity = Vector3.ZERO
 		move_and_slide()
 		return
@@ -28,7 +30,6 @@ func _physics_process(delta):
 		move_and_slide()
 
 func _on_body_entered(body):
-	# If he already commanded or we are already talking, skip
 	if is_in_cinematic or interaction_count > 0:
 		return
 		
@@ -49,10 +50,21 @@ func _on_body_entered(body):
 		if body.has_method("start_cinematic"):
 			body.start_cinematic(self)
 		
-		# Show the combined single line of dialogue
-		if body.has_method("show_subtitle"):
-			body.show_subtitle(dialogue_line)
-			await get_tree().create_timer(3.5).timeout
+		# Play through the full dialogue sequence
+		for entry in dialogue_sequence:
+			var speaker = entry[0]
+			var bisaya = entry[1]
+			var english = entry[2]
+			
+			# Show Bisaya line with speaker name and English subtitle below
+			var display_text = speaker + ": \"" + bisaya + "\"\n" + english
+			
+			if body.has_method("show_subtitle"):
+				body.show_subtitle(display_text)
+			
+			# Wait based on line length (longer lines get more time)
+			var wait_time = max(3.5, bisaya.length() * 0.04)
+			await get_tree().create_timer(wait_time).timeout
 		
 		interaction_count += 1
 			
@@ -64,3 +76,7 @@ func _on_body_entered(body):
 		# Unlock player
 		if body.has_method("end_cinematic"):
 			body.end_cinematic()
+		
+		# Show objective after dialogue ends
+		if body.has_method("show_objective"):
+			body.show_objective("Kuhaa ang pitaka sa lamesa\n(Take the wallet on the table)")

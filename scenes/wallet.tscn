@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scenes/wallet.gd" id="1_wallet"]
 
@@ -9,9 +9,17 @@ size = Vector3(0.12, 0.03, 0.10)
 albedo_color = Color(0.15, 0.07, 0.03, 1)
 roughness = 0.9
 
-[sub_resource type="BoxMesh" id="BoxMesh_yy"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_money"]
+albedo_color = Color(0.1, 0.5, 0.15, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_body"]
 material = SubResource("StandardMaterial3D_w")
-size = Vector3(0.12, 0.03, 0.10)
+size = Vector3(0.12, 0.015, 0.10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_flap"]
+material = SubResource("StandardMaterial3D_w")
+size = Vector3(0.12, 0.015, 0.10)
 
 [node name="Wallet" type="StaticBody3D"]
 script = ExtResource("1_wallet")
@@ -19,5 +27,24 @@ script = ExtResource("1_wallet")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_xx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_yy")
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0075, 0)
+mesh = SubResource("BoxMesh_body")
+
+[node name="Flap" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
+
+[node name="FlapMesh" type="MeshInstance3D" parent="Flap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0075, 0.05)
+mesh = SubResource("BoxMesh_flap")
+
+[node name="Money" type="MeshInstance3D" parent="."]
+visible = false
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0.002, 0)
+mesh = SubResource("BoxMesh_body")
+material_override = SubResource("StandardMaterial3D_money")
+
+[node name="MoneyLabel" type="Label3D" parent="Money"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+text = "₱50"
+font_size = 32
