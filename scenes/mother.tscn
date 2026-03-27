@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b15sj82nx2qcy"]
 
-[ext_resource type="Script" uid="uid://dgcwnd5oafnha" path="res://scenes/mother.gd" id="1_father"]
+[ext_resource type="Script" uid="uid://cdgoxnrhsty7b" path="res://scenes/mother.gd" id="1_mother"]
 [ext_resource type="AudioStream" uid="uid://bbtmvbptfnwe1" path="res://assets/sounds/father.mp3" id="2_voice"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_father"]
@@ -21,7 +21,7 @@ bottom_radius = 0.3
 size = Vector3(8.31518, 2, 2.4677582)
 
 [node name="Mother" type="CharacterBody3D" unique_id=1624347282]
-script = ExtResource("1_father")
+script = ExtResource("1_mother")
 
 [node name="BodyCollision" type="CollisionShape3D" parent="." unique_id=2011708660]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -44,8 +44,4 @@ volume_db = 20.0
 unit_size = 50.0
 max_distance = 60.0
 
-[node name="Label3D" type="Label3D" parent="." unique_id=2035179756]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
-billboard = 2
-text = "NANAY"
-font_size = 64
+

@@ -319,7 +319,6 @@ func _end_intro():
 	hint_out.tween_property(hint, "modulate:a", 0.0, 1.0)
 	await hint_out.finished
 	
-	if player.has_method("show_objective"):
-		player.show_objective("Pangitaa ang kwarta/pitaka")
+	
 	
 	queue_free()

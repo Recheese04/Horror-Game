@@ -1,22 +1,28 @@
 extends StaticBody3D
 
-var is_reading = false
+var scene_path = "res://scenes/family_photo.tscn"
+
+enum PhotoState { CLOSED, EXAMINING }
+var state = PhotoState.CLOSED
 
 func get_interaction_prompt() -> String:
-	return "Look at photo"
+	return "Examine Photo"
+
+func get_examine_scale() -> float:
+	return 0.3
 
 func interact():
-	if is_reading: return
-	is_reading = true
+	if state != PhotoState.CLOSED:
+		return
+	
+	state = PhotoState.EXAMINING
 	var player = get_tree().root.find_child("Player", true, false)
-	if player and player.has_method("show_subtitle"):
-		player.show_subtitle("Ang iyang Tatay. Batan-on pa. Nagpahiyom. Nagtindog sa atubangan sa ilang balay.")
-		await get_tree().create_timer(3.5).timeout
-		player.show_subtitle("Sa iyang tupad — usa ka babaye. Tigulang. Puti og buhok. Malumo og pahiyom. Si Nang Caring.")
-		await get_tree().create_timer(4.0).timeout
-		player.show_subtitle("Wala ra gyud ni panumbalinga ni Christian kaniadto. Ang tanan naay litrato uban ni Nang Caring.")
-		await get_tree().create_timer(4.0).timeout
-		player.show_subtitle("Dugay na kaayo siya sa barangay, mas dugay pa kaysa sa mahinumduman sa tanan.")
-		await get_tree().create_timer(4.0).timeout
-		player.hide_subtitle()
-	is_reading = false
+	if player and player.has_method("start_examine"):
+		player.start_examine(self)
+		if player.has_method("update_examine_prompt"):
+			player.update_examine_prompt("[Mouse] Rotate   |   [ESC] Back")
+
+func cancel_examine(player):
+	if state == PhotoState.EXAMINING:
+		state = PhotoState.CLOSED
+	player.end_examine()

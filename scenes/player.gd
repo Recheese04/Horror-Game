@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export var speed := 3.0
-@export var jump_velocity := 4.0
+@export var jump_velocity := 0.0
 @export var mouse_sensitivity := 0.002
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -60,6 +60,9 @@ func hide_objective():
 
 # ── EXAMINE MODE ─────────────────────────────────────────────────
 
+var _flashlight_was_on: bool = false
+var _examine_spot: OmniLight3D = null
+
 func start_examine(original: Node3D):
 	is_examining = true
 	examining_object = original
@@ -72,24 +75,79 @@ func start_examine(original: Node3D):
 		original.set_collision_layer(0)
 		original.set_collision_mask(0)
 	
-	# Create a clone in front of camera
-	examine_clone = original.duplicate()
+	# Hide the phone (CP) so only the wallet is shown
+	if phone_3d:
+		phone_3d.hide()
+	
+	# Turn off flashlight if it's on
+	if held_object and held_object.has_node("Flashlight"):
+		var light = held_object.get_node("Flashlight")
+		_flashlight_was_on = light.visible
+		light.visible = false
+	
+	# Hide crosshair and objective during examine
+	if has_node("CanvasLayer/Crosshair"):
+		get_node("CanvasLayer/Crosshair").hide()
+	if objective_label:
+		objective_label.hide()
+	interact_label.hide()
+	
+	# INSTEAD of using Godot's buggy duplicate(), we load a fresh instance from the file.
+	# This guarantees the original object is completely untouched and never vanishes!
+	var spawn_path = ""
+	if "scene_path" in original:
+		spawn_path = original.scene_path
+	elif original.scene_file_path != "":
+		spawn_path = original.scene_file_path
+		
+	if spawn_path != "":
+		var scene = load(spawn_path)
+		if scene:
+			examine_clone = scene.instantiate()
+		else:
+			examine_clone = original.duplicate()
+	else:
+		examine_clone = original.duplicate()
+		
+	# Strip the script from the visual clone so it acts purely as a prop
+	examine_clone.set_script(null)
+	
 	examine_clone.show()
 	camera.add_child(examine_clone)
 	examine_clone.position = Vector3(0, -0.05, -0.35)
 	examine_clone.rotation = Vector3(0, 0, 0)
-	examine_clone.scale = original.scale * 3.0
+	
+	if original.has_method("get_examine_scale"):
+		examine_clone.scale = original.scale * original.get_examine_scale()
+	else:
+		examine_clone.scale = original.scale * 1.5
 	
 	# Disable collision on clone
 	for child in examine_clone.get_children():
 		if child is CollisionShape3D:
 			child.disabled = true
 	
-	interact_label.text = "Press E to open"
-	interact_label.show()
+	# Add a light attached to the camera (not the clone) so it stays stationary when rotating
+	_examine_spot = OmniLight3D.new()
+	_examine_spot.light_color = Color(1.0, 0.98, 0.95)
+	_examine_spot.light_energy = 2.0
+	_examine_spot.omni_range = 1.0
+	_examine_spot.shadow_enabled = false
+	_examine_spot.position = Vector3(0, -0.05, -0.1) # Just in front of camera
+	camera.add_child(_examine_spot)
+	
+	# Prompt at top center
+	if has_node("CanvasLayer/ExaminePromptLabel"):
+		var prompt = get_node("CanvasLayer/ExaminePromptLabel")
+		prompt.text = "[Mouse] Rotate   |   [ESC] Back   |   [E] Open"
+		prompt.show()
 	
 	# Show cursor for rotating
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func update_examine_prompt(text: String):
+	if has_node("CanvasLayer/ExaminePromptLabel"):
+		get_node("CanvasLayer/ExaminePromptLabel").text = text
 
 func end_examine():
 	is_examining = false
@@ -97,6 +155,34 @@ func end_examine():
 	if examine_clone:
 		examine_clone.queue_free()
 		examine_clone = null
+	
+	# Show the original object again and restore its collision!
+	if examining_object:
+		examining_object.show()
+		if examining_object is StaticBody3D:
+			examining_object.set_collision_layer(1)
+			examining_object.set_collision_mask(1)
+	examining_object = null
+	
+	if _examine_spot:
+		_examine_spot.queue_free()
+		_examine_spot = null
+	
+	if has_node("CanvasLayer/ExaminePromptLabel"):
+		get_node("CanvasLayer/ExaminePromptLabel").hide()
+	
+	# Show phone again
+	if phone_3d:
+		phone_3d.show()
+	
+	# Restore flashlight state
+	if _flashlight_was_on and held_object and held_object.has_node("Flashlight"):
+		held_object.get_node("Flashlight").visible = true
+		_flashlight_was_on = false
+	
+	# Show crosshair
+	if has_node("CanvasLayer/Crosshair"):
+		get_node("CanvasLayer/Crosshair").show()
 	
 	examining_object = null
 	interact_label.hide()
@@ -115,9 +201,15 @@ func _unhandled_input(event: InputEvent) -> void:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and examine_clone:
 				examine_clone.rotate_y(-event.relative.x * 0.005)
 				examine_clone.rotate_x(-event.relative.y * 0.005)
-		elif event is InputEventKey and event.keycode == KEY_E and event.pressed and not event.echo:
-			if examining_object and examining_object.has_method("examine_action"):
-				examining_object.examine_action(self)
+		elif event is InputEventKey and event.pressed and not event.echo:
+			if event.keycode == KEY_E:
+				if examining_object and examining_object.has_method("examine_action"):
+					examining_object.examine_action(self)
+			elif event.keycode == KEY_ESCAPE:
+				if examining_object and examining_object.has_method("cancel_examine"):
+					examining_object.cancel_examine(self)
+				else:
+					end_examine()
 		return
 		
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -186,7 +278,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 		move_and_slide()
-		interact_label.show()
+		interact_label.hide()
 		return
 
 	if in_cinematic:

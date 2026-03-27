@@ -1,50 +1,51 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene format=3 uid="uid://c7q2u58d00pbe"]
 
-[ext_resource type="Script" path="res://scenes/wallet.gd" id="1_wallet"]
+[ext_resource type="Script" uid="uid://dme67gskfr6y0" path="res://scenes/wallet.gd" id="1_wallet"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xx"]
-size = Vector3(0.12, 0.03, 0.10)
+size = Vector3(0.12, 0.03, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w"]
-albedo_color = Color(0.15, 0.07, 0.03, 1)
+albedo_color = Color(0.35, 0.18, 0.08, 1)
 roughness = 0.9
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_money"]
-albedo_color = Color(0.1, 0.5, 0.15, 1)
-roughness = 0.8
 
 [sub_resource type="BoxMesh" id="BoxMesh_body"]
 material = SubResource("StandardMaterial3D_w")
-size = Vector3(0.12, 0.015, 0.10)
+size = Vector3(0.12, 0.015, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_flap"]
 material = SubResource("StandardMaterial3D_w")
-size = Vector3(0.12, 0.015, 0.10)
+size = Vector3(0.12, 0.015, 0.1)
 
-[node name="Wallet" type="StaticBody3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_coin"]
+albedo_color = Color(0.85, 0.65, 0.13, 1)
+metallic = 0.9
+roughness = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_coin"]
+material = SubResource("StandardMaterial3D_coin")
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.003
+
+[node name="Wallet" type="StaticBody3D" unique_id=1541786193]
 script = ExtResource("1_wallet")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1914522488]
 shape = SubResource("BoxShape3D_xx")
 
-[node name="Body" type="MeshInstance3D" parent="."]
+[node name="Body" type="MeshInstance3D" parent="." unique_id=395472538]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0075, 0)
 mesh = SubResource("BoxMesh_body")
 
-[node name="Flap" type="Node3D" parent="."]
+[node name="Flap" type="Node3D" parent="." unique_id=354657878]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
 
-[node name="FlapMesh" type="MeshInstance3D" parent="Flap"]
+[node name="FlapMesh" type="MeshInstance3D" parent="Flap" unique_id=63690480]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0075, 0.05)
 mesh = SubResource("BoxMesh_flap")
 
-[node name="Money" type="MeshInstance3D" parent="."]
+[node name="Coin" type="MeshInstance3D" parent="." unique_id=634399051]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
 visible = false
-transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0.002, 0)
-mesh = SubResource("BoxMesh_body")
-material_override = SubResource("StandardMaterial3D_money")
-
-[node name="MoneyLabel" type="Label3D" parent="Money"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
-text = "₱50"
-font_size = 32
+mesh = SubResource("CylinderMesh_coin")

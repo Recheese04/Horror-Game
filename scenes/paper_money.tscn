@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scenes/paper_money.gd" id="1_paper"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pm"]
+size = Vector3(0.06, 0.001, 0.12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pm"]
+albedo_color = Color(0.18, 0.35, 0.22, 1)
+roughness = 0.9
+
+[sub_resource type="BoxMesh" id="BoxMesh_pm"]
+material = SubResource("StandardMaterial3D_pm")
+size = Vector3(0.06, 0.001, 0.12)
+
+[node name="PaperMoney" type="StaticBody3D"]
+script = ExtResource("1_paper")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_pm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pm")

@@ -9,11 +9,11 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var is_in_cinematic = false
 var interaction_count = 0
 
-# Dialogue sequence: [speaker, bisaya, english]
-var dialogue_sequence = [
-	["Nanay", "Christian. Pag adto sa tindahan ni Aling Rosa. Wa tay asin ug posporo. Balik dayon.", "Christian. Go to Aling Rosa's store. We're out of salt and matches. Come right back."],
-	["Christian", "Ma gabii na man. Mo-uwan pa.", "Mom it's already night. And it's about to rain."],
-	["Nanay", "Kaduol ra. Dali lang anak.", "It's close by. Just hurry, anak."],
+var dialogue_lines = [
+	"Nanay: Christian. Pag adto sa tindahan ni Aling Rosa. Wa tay asin ug posporo. Balik dayon.",
+	"Christian: Ma gabii na man. Mo-uwan pa.",
+	"Nanay: Kaduol ra. Dali lang anak.",
+	"Nanay: Kuha og kwarta sa akong wallet."
 ]
 
 func _ready():
@@ -50,21 +50,11 @@ func _on_body_entered(body):
 		if body.has_method("start_cinematic"):
 			body.start_cinematic(self)
 		
-		# Play through the full dialogue sequence
-		for entry in dialogue_sequence:
-			var speaker = entry[0]
-			var bisaya = entry[1]
-			var english = entry[2]
-			
-			# Show Bisaya line with speaker name and English subtitle below
-			var display_text = speaker + ": \"" + bisaya + "\"\n" + english
-			
+		# Play through dialogue one line at a time
+		for line in dialogue_lines:
 			if body.has_method("show_subtitle"):
-				body.show_subtitle(display_text)
-			
-			# Wait based on line length (longer lines get more time)
-			var wait_time = max(3.5, bisaya.length() * 0.04)
-			await get_tree().create_timer(wait_time).timeout
+				body.show_subtitle(line)
+			await get_tree().create_timer(3.5).timeout
 		
 		interaction_count += 1
 			
@@ -79,4 +69,4 @@ func _on_body_entered(body):
 		
 		# Show objective after dialogue ends
 		if body.has_method("show_objective"):
-			body.show_objective("Kuhaa ang pitaka sa lamesa\n(Take the wallet on the table)")
+			body.show_objective("Kuhaa ang pitaka sa lamesa")

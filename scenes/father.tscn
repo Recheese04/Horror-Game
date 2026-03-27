@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://father"]
+[gd_scene format=3 uid="uid://ewfqq8dd72k2"]
 
 [ext_resource type="Script" uid="uid://dgcwnd5oafnha" path="res://scenes/father.gd" id="1_father"]
 [ext_resource type="AudioStream" uid="uid://bbtmvbptfnwe1" path="res://assets/sounds/father.mp3" id="2_voice"]
