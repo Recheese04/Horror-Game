@@ -36,8 +36,8 @@
 [ext_resource type="PackedScene" uid="uid://dxftenp5o5nah" path="res://scenes/water_dispenser.tscn" id="36_td8cy"]
 [ext_resource type="PackedScene" uid="uid://dxr4ecseuha3i" path="res://animation scene/intro.tscn" id="39_mdra8"]
 [ext_resource type="PackedScene" uid="uid://ceb7i1msvwnrk" path="res://scenes/dish_cabinet.tscn" id="78_dish"]
-[ext_resource type="PackedScene" uid="uid://8dl8f1751g5a" path="res://scenes/family_photo.tscn" id="family_photo_scene"]
-[ext_resource type="PackedScene" path="res://scenes/intro.tscn" id="intro_cutscene"]
+[ext_resource type="PackedScene" path="res://scenes/family_photo.tscn" id="family_photo_scene"]
+[ext_resource type="PackedScene" uid="uid://50iyhj583ne3" path="res://scenes/intro.tscn" id="intro_cutscene"]
 [ext_resource type="PackedScene" uid="uid://bq38u5ijvxc5c" path="res://scenes/lutuanan.tscn" id="lutuanan_scene"]
 [ext_resource type="PackedScene" uid="uid://b15sj82nx2qcy" path="res://scenes/mother.tscn" id="mother_scene"]
 [ext_resource type="PackedScene" path="res://scenes/saksakan.tscn" id="saksakan_scene"]
@@ -164,7 +164,7 @@ size = Vector3(100, 0.1, 100)
 material = SubResource("ShaderMaterial_hn12h")
 
 [node name="Player" parent="." unique_id=222895145 instance=ExtResource("1_player")]
-transform = Transform3D(-0.32721776, -0.12085476, 0.93718874, 4.937109e-09, 0.99178755, 0.1278955, -0.9449488, 0.041849725, -0.32453078, -0.8393345, 0.100000024, -7.608339)
+transform = Transform3D(-0.32721776, -0.12085476, 0.93718874, 4.937109e-09, 0.99178755, 0.1278955, -0.9449488, 0.041849725, -0.32453078, -0.54825956, -0.10797548, -7.608339)
 
 [node name="IntroCutscene" parent="." unique_id=1273567523 instance=ExtResource("intro_cutscene")]
 
@@ -495,7 +495,7 @@ transform = Transform3D(0.52663183, 0, 0, 0, 0.36204973, 0, 0, 0, 1, -2.9824996,
 transform = Transform3D(0.7268971, 0, 0, 0, 1, 0, 0, 0, 1, -7.677517, 2.3795843, -3.5123227)
 
 [node name="FilipinoBed" parent="House" unique_id=1583668024 instance=ExtResource("13_filipinobed")]
-transform = Transform3D(0.0018257933, 0, -1.2589461, 0, 1.5483625, 0, 1.1753728, 0, 0.0019556137, -1.648838, 0.066814065, -7.4537215)
+transform = Transform3D(0.0018257932, 0, -1.258946, 0, 1.5483624, 0, 1.1753727, 0, 0.0019556137, -1.648838, 0.066814065, -7.4537215)
 
 [node name="FilipinoBed2" parent="House" unique_id=109889447 instance=ExtResource("13_filipinobed")]
 transform = Transform3D(0.0018256274, 0, -1.3325738, 0, 1.5483625, 0, 1.175266, 0, 0.002069985, -8.006741, 0.066814065, -7.4537215)
@@ -1113,7 +1113,7 @@ shape = SubResource("BoxShape3D_monobloc")
 transform = Transform3D(0.9998855, -0.015131427, 0, 0.015131427, 0.9998855, 0, 0, 0, 1, -1.6792043, 1.5000001, -3.5)
 
 [node name="Wallet" parent="House" unique_id=241533865 instance=ExtResource("wallet_scene")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.708708, 1.0627682, 1.2097102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2956285, 1.0627681, 0.6241572)
 
 [node name="FakeMother" parent="." unique_id=5551212 instance=ExtResource("16_fakeperson")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 8.5)

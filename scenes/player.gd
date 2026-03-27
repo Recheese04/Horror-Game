@@ -189,7 +189,16 @@ func end_examine():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _unhandled_input(event: InputEvent) -> void:
+	# During intro: allow looking around but block everything else
 	if is_intro_playing:
+		if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			# Save phone position so it stays still
+			var phone_global = phone_3d.global_transform
+			rotate_y(-event.relative.x * mouse_sensitivity)
+			camera.rotate_x(-event.relative.y * mouse_sensitivity)
+			camera.rotation.x = clamp(camera.rotation.x, -0.3, 1.2)
+			# Restore phone so it doesn't move with the camera
+			phone_3d.global_transform = phone_global
 		return
 
 	if in_cinematic:

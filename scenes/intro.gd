@@ -32,7 +32,7 @@ func _ready():
 	
 	# Show the 3D phone and position it in front of face (laying down view)
 	phone_3d.show()
-	phone_3d.position = Vector3(0, -0.02, -0.15)
+	phone_3d.position = Vector3(0, -0.02, -0.22)
 	phone_3d.rotation = Vector3(-0.57, 0, 0)
 	phone_3d.get_node("Screen").show()
 	
@@ -106,10 +106,6 @@ func _start_sequence():
 	await fade_in.finished
 	if _is_skipping: return
 	
-	# Slowly bring the phone closer over 25 seconds (subtle drift)
-	var drift = _add_tween(create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE))
-	drift.tween_property(phone_3d, "position", Vector3(0, -0.02, -0.13), 25.0)
-	
 	# Wait 25 seconds then trigger brownout
 	var timer = get_tree().create_timer(25.0)
 	await timer.timeout
@@ -147,6 +143,9 @@ func _instant_skip():
 func _trigger_brownout():
 	# CP stays on during brownout - don't hide the screen
 	
+	# Lock camera so player can't look around during brownout sequence
+	player.in_cinematic = true
+	
 	# Flash a brief black overlay
 	dark_overlay.color = Color(0, 0, 0, 1.0)
 	
@@ -154,6 +153,8 @@ func _trigger_brownout():
 	get_tree().call_group("Bulbs", "turn_off")
 	# Turn off TV, VCD, and other electronics
 	get_tree().call_group("Electronics", "turn_off")
+	# Stop the fan
+	get_tree().call_group("Fans", "turn_off")
 	var dir_light = get_tree().root.find_child("DirectionalLight3D", true, false)
 	if dir_light:
 		dir_light.visible = false
@@ -194,6 +195,11 @@ func _look_at_bulb():
 	await sub_out.finished
 	
 	if _is_skipping: return
+	
+	# Allow player to look around again after 1 second
+	await get_tree().create_timer(1.0).timeout
+	player.in_cinematic = false
+	
 	_rain_and_dialogue()
 
 func _show_subtitle(text: String, duration: float):
@@ -218,14 +224,6 @@ func _rain_and_dialogue():
 	
 	if _is_skipping: return
 	await _show_subtitle("[Sound of rain starting outside...]", 3.0)
-	if _is_skipping: return
-	await _show_subtitle("[Knock on door]", 2.0)
-	if _is_skipping: return
-	await _show_subtitle("Christian. Pag adto sa tindahan ni Aling Rosa. Wa tay asin, posporo og kandila. Balik dayon.", 4.0)
-	if _is_skipping: return
-	await _show_subtitle("Ma gabii na man. Mo-uwan pa.", 3.0)
-	if _is_skipping: return
-	await _show_subtitle("Kaduol ra. Dali lang anak.", 3.0)
 	if _is_skipping: return
 	
 	_stand_up()
@@ -274,22 +272,6 @@ func _end_intro():
 	flashlight_ui.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	flashlight_ui.set_anchors_preset(Control.PRESET_FULL_RECT)
 	phone_3d.get_node("SubViewport").add_child(flashlight_ui)
-	
-	# Show battery label
-	var battery_label = Label.new()
-	battery_label.name = "BatteryLabel"
-	battery_label.text = "Battery: 23%"
-	battery_label.add_theme_font_size_override("font_size", 24)
-	battery_label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
-	battery_label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
-	battery_label.add_theme_constant_override("outline_size", 4)
-	battery_label.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	battery_label.offset_left = -150
-	battery_label.offset_top = 10
-	battery_label.offset_right = -10
-	battery_label.offset_bottom = 50
-	battery_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	phone_3d.get_node("SubViewport").add_child(battery_label)
 	
 	# Turn on the 3D flashlight automatically
 	# (Removed based on user feedback: let the player turn it on)

@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://c7q2u58d00pbe"]
 
 [ext_resource type="Script" uid="uid://dme67gskfr6y0" path="res://scenes/wallet.gd" id="1_wallet"]
+[ext_resource type="Texture2D" uid="uid://cjycqd0aycwp0" path="res://models/image texture/wallet.png" id="2_mwry7"]
+[ext_resource type="Texture2D" uid="uid://c8ouxd0851lc8" path="res://models/image texture/coin.webp" id="3_epkb7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xx"]
-size = Vector3(0.12, 0.03, 0.1)
+size = Vector3(0.11285645, 0.03, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w"]
-albedo_color = Color(0.35, 0.18, 0.08, 1)
+albedo_texture = ExtResource("2_mwry7")
 roughness = 0.9
 
 [sub_resource type="BoxMesh" id="BoxMesh_body"]
@@ -18,9 +20,12 @@ material = SubResource("StandardMaterial3D_w")
 size = Vector3(0.12, 0.015, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_coin"]
-albedo_color = Color(0.85, 0.65, 0.13, 1)
+albedo_texture = ExtResource("3_epkb7")
 metallic = 0.9
 roughness = 0.2
+uv1_scale = Vector3(2, 2, 2)
+uv1_offset = Vector3(0, 1, 0.1)
+uv2_scale = Vector3(2, 2, 2)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_coin"]
 material = SubResource("StandardMaterial3D_coin")
@@ -29,9 +34,11 @@ bottom_radius = 0.02
 height = 0.003
 
 [node name="Wallet" type="StaticBody3D" unique_id=1541786193]
+transform = Transform3D(1.3301824, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_wallet")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1914522488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0035717748, 0, 0)
 shape = SubResource("BoxShape3D_xx")
 
 [node name="Body" type="MeshInstance3D" parent="." unique_id=395472538]
@@ -46,6 +53,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0075, 0.05)
 mesh = SubResource("BoxMesh_flap")
 
 [node name="Coin" type="MeshInstance3D" parent="." unique_id=634399051]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
-visible = false
+transform = Transform3D(0.787215, 0, 0, 0, 1, 0, 0, 0, 1, -0.0010620382, 0.005, 0)
 mesh = SubResource("CylinderMesh_coin")

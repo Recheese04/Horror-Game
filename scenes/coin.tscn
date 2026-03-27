@@ -1,15 +1,17 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://4616qa1rnggy"]
 
-[ext_resource type="Script" path="res://scenes/coin.gd" id="1_coin"]
+[ext_resource type="Script" uid="uid://cni43ev68ioer" path="res://scenes/coin.gd" id="1_coin"]
+[ext_resource type="Texture2D" uid="uid://c8ouxd0851lc8" path="res://models/image texture/coin.webp" id="2_i64fm"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_coin"]
 height = 0.005
 radius = 0.02
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gold"]
-albedo_color = Color(0.85, 0.65, 0.13, 1)
+albedo_texture = ExtResource("2_i64fm")
 metallic = 0.9
 roughness = 0.2
+uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_coin"]
 material = SubResource("StandardMaterial3D_gold")
@@ -17,11 +19,11 @@ top_radius = 0.02
 bottom_radius = 0.02
 height = 0.005
 
-[node name="Coin" type="StaticBody3D"]
+[node name="Coin" type="StaticBody3D" unique_id=804825129]
 script = ExtResource("1_coin")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=784718610]
 shape = SubResource("CylinderShape3D_coin")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=500921648]
 mesh = SubResource("CylinderMesh_coin")
