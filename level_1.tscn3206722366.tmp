@@ -165,8 +165,11 @@ material = SubResource("ShaderMaterial_hn12h")
 
 [node name="Player" parent="." unique_id=222895145 instance=ExtResource("1_player")]
 transform = Transform3D(-0.32721776, -0.12085476, 0.93718874, 4.937109e-09, 0.99178755, 0.1278955, -0.9449488, 0.041849725, -0.32453078, -0.8393345, 0.100000024, -7.608339)
+speed = null
+jump_velocity = null
+mouse_sensitivity = null
 
-[node name="IntroCutscene" parent="." unique_id=1273567523 instance=ExtResource("intro_cutscene")]
+[node name="IntroCutscene" parent="." unique_id=251763021 instance=ExtResource("intro_cutscene")]
 
 [node name="House" type="Node3D" parent="." unique_id=1241009710]
 
@@ -1109,11 +1112,11 @@ transform = Transform3D(1.5274671, 0, 0, 0, 1.2474388, 0, 0, 0, 1.2869037, -1.14
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.425, 0)
 shape = SubResource("BoxShape3D_monobloc")
 
-[node name="FamilyPhoto" parent="House" unique_id=1675933175 instance=ExtResource("family_photo_scene")]
+[node name="FamilyPhoto" parent="House" unique_id=1800552336 instance=ExtResource("family_photo_scene")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3, 1.5, -3.5)
 
-[node name="Wallet" parent="House" unique_id=241533865 instance=ExtResource("wallet_scene")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.708708, 1.0627682, 1.2097102)
+[node name="Wallet" parent="House" unique_id=366466211 instance=ExtResource("wallet_scene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.7, 1.1, 1.2)
 
 [node name="FakeMother" parent="." unique_id=5551212 instance=ExtResource("16_fakeperson")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 8.5)

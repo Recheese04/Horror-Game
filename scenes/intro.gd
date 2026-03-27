@@ -193,6 +193,41 @@ func _look_at_bulb():
 	sub_out.tween_property(subtitle_label, "modulate:a", 0.0, 0.5)
 	await sub_out.finished
 	
+	if _is_skipping: return
+	_rain_and_dialogue()
+
+func _show_subtitle(text: String, duration: float):
+	if _is_skipping: return
+	subtitle_label.text = text
+	var sub_in = create_tween()
+	sub_in.tween_property(subtitle_label, "modulate:a", 1.0, 0.5)
+	await sub_in.finished
+	if _is_skipping: return
+	await get_tree().create_timer(duration).timeout
+	if _is_skipping: return
+	var sub_out = create_tween()
+	sub_out.tween_property(subtitle_label, "modulate:a", 0.0, 0.5)
+	await sub_out.finished
+
+func _rain_and_dialogue():
+	if _is_skipping: return
+	# Look at ceiling (straight up)
+	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(camera, "rotation", Vector3(1.0, 0, 0), 2.0)
+	await tween.finished
+	
+	if _is_skipping: return
+	await _show_subtitle("[Sound of rain starting outside...]", 3.0)
+	if _is_skipping: return
+	await _show_subtitle("[Knock on door]", 2.0)
+	if _is_skipping: return
+	await _show_subtitle("Christian. Pag adto sa tindahan ni Aling Rosa. Wa tay asin, posporo og kandila. Balik dayon.", 4.0)
+	if _is_skipping: return
+	await _show_subtitle("Ma gabii na man. Mo-uwan pa.", 3.0)
+	if _is_skipping: return
+	await _show_subtitle("Kaduol ra. Dali lang anak.", 3.0)
+	if _is_skipping: return
+	
 	_stand_up()
 
 func _stand_up():
@@ -231,7 +266,7 @@ func _end_intro():
 	if ui_control:
 		ui_control.hide()
 	
-	# Show flashlight off image on the phone screen
+	# Show flashlight off image on the phone screen initially
 	var flashlight_ui = TextureRect.new()
 	flashlight_ui.name = "FlashlightUI"
 	flashlight_ui.texture = load("res://assets/images/flashlightoff.jpg")
@@ -239,6 +274,25 @@ func _end_intro():
 	flashlight_ui.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	flashlight_ui.set_anchors_preset(Control.PRESET_FULL_RECT)
 	phone_3d.get_node("SubViewport").add_child(flashlight_ui)
+	
+	# Show battery label
+	var battery_label = Label.new()
+	battery_label.name = "BatteryLabel"
+	battery_label.text = "Battery: 23%"
+	battery_label.add_theme_font_size_override("font_size", 24)
+	battery_label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
+	battery_label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
+	battery_label.add_theme_constant_override("outline_size", 4)
+	battery_label.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	battery_label.offset_left = -150
+	battery_label.offset_top = 10
+	battery_label.offset_right = -10
+	battery_label.offset_bottom = 50
+	battery_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	phone_3d.get_node("SubViewport").add_child(battery_label)
+	
+	# Turn on the 3D flashlight automatically
+	# (Removed based on user feedback: let the player turn it on)
 	
 	# Show flashlight hint
 	var hint = Label.new()
@@ -264,5 +318,8 @@ func _end_intro():
 	var hint_out = create_tween()
 	hint_out.tween_property(hint, "modulate:a", 0.0, 1.0)
 	await hint_out.finished
+	
+	if player.has_method("show_objective"):
+		player.show_objective("Pangitaa ang kwarta/pitaka")
 	
 	queue_free()

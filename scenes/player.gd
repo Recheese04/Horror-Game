@@ -12,6 +12,7 @@ var held_object: Node3D = null
 @onready var interact_label: Label = $CanvasLayer/InteractLabel
 @onready var interact_ray: RayCast3D = $Camera3D/InteractRay
 @onready var subtitle_label: Label = $CanvasLayer/SubtitleLabel
+@onready var objective_label: Label = $CanvasLayer/ObjectiveLabel
 
 var in_cinematic = false
 var cinematic_target = null
@@ -24,6 +25,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	interact_label.hide()
 	subtitle_label.hide()
+	if objective_label: objective_label.hide()
 
 func start_cinematic(target: Node3D):
 	in_cinematic = true
@@ -43,6 +45,13 @@ func show_subtitle(text: String):
 func hide_subtitle():
 	subtitle_label.hide()
 	subtitle_label.text = ""
+
+func show_objective(text: String):
+	objective_label.text = "Sugu: " + text
+	objective_label.show()
+
+func hide_objective():
+	objective_label.hide()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if is_intro_playing:
@@ -137,6 +146,10 @@ func _physics_process(delta: float) -> void:
 	# Handle interact label
 	if interact_ray.is_colliding():
 		var collider = interact_ray.get_collider()
+		if not is_instance_valid(collider):
+			interact_label.hide()
+			return
+		
 		var target = null
 		
 		# Find the actual interactive target (could be parent)

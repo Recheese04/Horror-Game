@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scenes/wallet.gd" id="1_wallet"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xx"]
+size = Vector3(0.12, 0.03, 0.10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w"]
+albedo_color = Color(0.15, 0.07, 0.03, 1)
+roughness = 0.9
+
+[sub_resource type="BoxMesh" id="BoxMesh_yy"]
+material = SubResource("StandardMaterial3D_w")
+size = Vector3(0.12, 0.03, 0.10)
+
+[node name="Wallet" type="StaticBody3D"]
+script = ExtResource("1_wallet")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_yy")
