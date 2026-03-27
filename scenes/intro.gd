@@ -12,6 +12,9 @@ var canvas_layer: CanvasLayer
 var dark_overlay: ColorRect
 var subtitle_label: Label
 
+var _is_skipping: bool = false
+var _active_tweens: Array[Tween] = []
+
 func _ready():
 	player = get_tree().root.find_child("Player", true, false)
 	if not player:
@@ -38,7 +41,22 @@ func _ready():
 	camera.rotation = Vector3(0.6, 0, 0)
 	
 	_build_ui()
+	
+	# Small hint for skipping in debug builds
+	if OS.is_debug_build():
+		print("DEBUG: Press SPACE/ESC to skip intro")
+		
 	_start_sequence()
+
+func _input(event):
+	if event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_cancel") or (event is InputEventKey and event.pressed and event.keycode == KEY_SPACE):
+		if not _is_skipping:
+			_instant_skip()
+
+func _add_tween(tween: Tween) -> Tween:
+	_active_tweens.append(tween)
+	tween.finished.connect(func(): _active_tweens.erase(tween))
+	return tween
 
 func _build_ui():
 	canvas_layer = CanvasLayer.new()
@@ -70,6 +88,8 @@ func _build_ui():
 # ── SEQUENCE ─────────────────────────────────────────────────────
 
 func _start_sequence():
+	if _is_skipping: return
+	
 	# Hide the manual Facebook UI immediately - we only use the video
 	var ui_control = phone_3d.get_node_or_null("SubViewport/Control")
 	if ui_control: ui_control.hide()
@@ -81,17 +101,48 @@ func _start_sequence():
 		video_player.play()
 	
 	# Fade in from black
-	var fade_in = create_tween()
+	var fade_in = _add_tween(create_tween())
 	fade_in.tween_property(dark_overlay, "color:a", 0.0, 5.0)
 	await fade_in.finished
+	if _is_skipping: return
 	
 	# Slowly bring the phone closer over 25 seconds (subtle drift)
-	var drift = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	var drift = _add_tween(create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE))
 	drift.tween_property(phone_3d, "position", Vector3(0, -0.02, -0.13), 25.0)
 	
 	# Wait 25 seconds then trigger brownout
-	await get_tree().create_timer(25.0).timeout
+	var timer = get_tree().create_timer(25.0)
+	await timer.timeout
+	if _is_skipping: return
+	
 	_trigger_brownout()
+
+func _instant_skip():
+	_is_skipping = true
+	print("Intro: Skipping sequence...")
+	
+	# Kill all active tweens
+	for t in _active_tweens:
+		if t and t.is_valid():
+			t.kill()
+	_active_tweens.clear()
+	
+	# Instantly perform world changes that happen during brownout
+	get_tree().call_group("Bulbs", "turn_off")
+	get_tree().call_group("Electronics", "turn_off")
+	var dir_light = get_tree().root.find_child("DirectionalLight3D", true, false)
+	if dir_light:
+		dir_light.visible = false
+	
+	# Ensure overlay is gone
+	if dark_overlay:
+		dark_overlay.color.a = 0.0
+	
+	# Final standing position for camera and phone
+	camera.position = Vector3(0, 1.6, 0)
+	camera.rotation = Vector3(0, 0, 0)
+	
+	_end_intro()
 
 func _trigger_brownout():
 	# CP stays on during brownout - don't hide the screen
