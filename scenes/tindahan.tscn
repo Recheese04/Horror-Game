@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://858xb4xubgt5"]
+
+[ext_resource type="Texture2D" uid="uid://bbhsx4i4vvhj4" path="res://models/Concrete wall smooth pillar texture.jpg" id="1_concrete"]
+[ext_resource type="Texture2D" uid="uid://bt8sd1eytl5eb" path="res://models/wood1.jpg" id="2_wood"]
+[ext_resource type="Texture2D" uid="uid://dt7v7k0w8o5y" path="res://models/wood.jpg" id="3_wood2"]
+[ext_resource type="Texture2D" uid="uid://bbii84dkx6b5o" path="res://models/image texture/tindahan1.jpg" id="4_ew6hj"]
+[ext_resource type="Texture2D" uid="uid://chfbi041l1rgj" path="res://models/image texture/tindahan2.jpg" id="5_id5i3"]
+[ext_resource type="Texture2D" uid="uid://c38ek2vr1l6u5" path="res://models/image texture/tindahan3.jpg" id="6_qk7ir"]
+[ext_resource type="PackedScene" uid="uid://cn3h2ipc2saeh" path="res://scenes/tindera.tscn" id="7_tindera"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_floor"]
+albedo_color = Color(0.4, 0.38, 0.35, 1)
+albedo_texture = ExtResource("1_concrete")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_concrete"]
+albedo_color = Color(0.1209, 0.93, 0.84908986, 1)
+albedo_texture = ExtResource("1_concrete")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_counter"]
+albedo_color = Color(0.5, 0.35, 0.2, 1)
+albedo_texture = ExtResource("3_wood2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shelf"]
+albedo_color = Color(0.35, 0.25, 0.15, 1)
+albedo_texture = ExtResource("2_wood")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wood"]
+albedo_color = Color(0.45, 0.3, 0.18, 1)
+albedo_texture = ExtResource("2_wood")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6pcdh"]
+albedo_texture = ExtResource("4_ew6hj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugmkj"]
+albedo_texture = ExtResource("5_id5i3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgfq7"]
+albedo_texture = ExtResource("6_qk7ir")
+
+[node name="Tindahan" type="StaticBody3D" unique_id=123240055]
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=1992221084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1325562, -0.05, -1.25)
+use_collision = true
+size = Vector3(4.465112, 0.1, 2.7)
+material = SubResource("StandardMaterial3D_floor")
+
+[node name="WallBack" type="CSGBox3D" parent="." unique_id=1609530303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.25, -2.5)
+use_collision = true
+size = Vector3(3.2, 2.6, 0.15)
+material = SubResource("StandardMaterial3D_concrete")
+
+[node name="WallLeft" type="CSGBox3D" parent="." unique_id=988857800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025, 1.25, -1.25)
+use_collision = true
+size = Vector3(0.15, 2.6, 2.65)
+material = SubResource("StandardMaterial3D_concrete")
+
+[node name="WallRight" type="CSGBox3D" parent="." unique_id=162060179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.458775, 1.25, -1.25)
+use_collision = true
+size = Vector3(0.15, 2.6, 2.65)
+material = SubResource("StandardMaterial3D_concrete")
+
+[node name="WallFrontLeft" type="CSGBox3D" parent="." unique_id=2012249961]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.25, 0.025)
+use_collision = true
+size = Vector3(0.6, 2.6, 0.15)
+material = SubResource("StandardMaterial3D_concrete")
+
+[node name="WallFrontRight" type="CSGBox3D" parent="." unique_id=1054462690]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.08275, 1.25, 0.025)
+use_collision = true
+size = Vector3(0.6842529, 2.6, 0.15)
+material = SubResource("StandardMaterial3D_concrete")
+
+[node name="WallFrontTop" type="CSGBox3D" parent="." unique_id=1661260136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2368257, 2.292627, 0.025)
+use_collision = true
+size = Vector3(3.1736512, 0.51474607, 0.15)
+material = SubResource("StandardMaterial3D_concrete")
+
+[node name="WallFrontBottom" type="CSGBox3D" parent="." unique_id=2070631761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.191307, 0.375, 0.025)
+use_collision = true
+size = Vector3(3.3067749, 0.75, 0.15)
+material = SubResource("StandardMaterial3D_concrete")
+
+[node name="Counter" type="CSGBox3D" parent="." unique_id=110605827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1746705, 0.8, 0.15)
+use_collision = true
+size = Vector3(3.0493407, 0.08, 0.4)
+material = SubResource("StandardMaterial3D_counter")
+
+[node name="Shelf2" type="CSGBox3D" parent="." unique_id=1676317051]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.1, -1.5)
+use_collision = true
+size = Vector3(2.6, 0.05, 0.6)
+material = SubResource("StandardMaterial3D_shelf")
+
+[node name="Shelf3" type="CSGBox3D" parent="." unique_id=1736122438]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.7, -1.5)
+use_collision = true
+size = Vector3(2.6, 0.05, 0.6)
+material = SubResource("StandardMaterial3D_shelf")
+
+[node name="ShelfBack" type="CSGBox3D" parent="." unique_id=243652886]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.1, -1.75)
+use_collision = true
+size = Vector3(2.6, 1.8, 0.05)
+material = SubResource("StandardMaterial3D_wood")
+
+[node name="Tindera" parent="." unique_id=418779185 instance=ExtResource("7_tindera")]
+transform = Transform3D(-0.9998498, 0, -0.017330168, 0, 1, 0, 0.017330168, 0, -0.9998498, 2.19, 0, -0.4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1400691060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.25, -1.25)
+
+[node name="CollisionBox" type="CSGBox3D" parent="CollisionShape3D" unique_id=418847930]
+visible = false
+size = Vector3(3.2, 2.5, 2.7)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1651353320]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2084624, 1.191843, -0.066248894)
+size = Vector3(1.1834717, 0.70910645, 0.012756348)
+material = SubResource("StandardMaterial3D_6pcdh")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1039678161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.157364, 1.191843, -0.07206309)
+size = Vector3(1.1834717, 0.70910645, 0.0056762695)
+material = SubResource("StandardMaterial3D_ugmkj")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1922128515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1883392, 1.7832148, -0.18711692)
+size = Vector3(3.121521, 0.5055084, 0.21276855)
+material = SubResource("StandardMaterial3D_lgfq7")

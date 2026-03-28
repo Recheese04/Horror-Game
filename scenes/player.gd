@@ -25,6 +25,9 @@ var is_examining = false
 
 @onready var phone_3d: Node3D = $Camera3D/CP
 
+var has_candle = false
+var has_posporo = false
+
 func _ready() -> void:
 	add_to_group("Player")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

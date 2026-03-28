@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://table_candle"]
+
+[ext_resource type="Script" path="res://scenes/table_candle.gd" id="1_script"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_body"]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wax"]
+albedo_color = Color(0.9, 0.9, 0.8, 1)
+roughness = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_coll"]
+size = Vector3(0.1, 0.2, 0.1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fire"]
+direction = Vector3(0, 1, 0)
+spread = 5.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 0.2
+color = Color(1, 0.5, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fire"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.588235, 0, 0.8)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_fire"]
+material = SubResource("StandardMaterial3D_fire")
+size = Vector2(0.02, 0.02)
+
+[node name="TableCandle" type="StaticBody3D"]
+script = ExtResource("1_script")
+
+[node name="V_Indicator" type="Label3D" parent="." unique_id=565722000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+billboard = 1
+double_sided = false
+no_depth_test = true
+modulate = Color(1, 1, 0, 1)
+text = "V"
+font_size = 48
+outline_size = 12
+
+[node name="CandleBody" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
+mesh = SubResource("CylinderMesh_body")
+surface_material_override/0 = SubResource("StandardMaterial3D_wax")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_coll")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 0)
+light_color = Color(1, 0.7, 0.3, 1)
+light_energy = 1.0
+omni_range = 5.0
+shadow_enabled = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 0)
+amount = 8
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_fire")
+draw_pass_1 = SubResource("QuadMesh_fire")
+

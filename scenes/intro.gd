@@ -236,8 +236,19 @@ func _stand_up():
 	# Bring phone back into held position
 	tween.tween_property(phone_3d, "position", Vector3(0.07, -0.08, -0.15), 2.0)
 	tween.tween_property(phone_3d, "rotation", Vector3(0, 0, 0), 2.0)
+	
+	# Slide the entire physical player body out of the bed frame so they don't get stuck!
+	var slide_pos = player.global_position
+	# Slide 1.5 meters towards the open room (Z axis)
+	slide_pos.z += 1.5
+	tween.tween_property(player, "global_position", slide_pos, 2.0)
 	await tween.finished
 	
+	# RE-ENABLE physics collision now that we are clear of the bed
+	var col = player.get_node_or_null("CollisionShape3D")
+	if col:
+		col.set_deferred("disabled", false)
+		
 	_end_intro()
 
 func _end_intro():

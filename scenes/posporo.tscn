@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://posporo_item_01"]
+
+[ext_resource type="Script" path="res://scenes/posporo.gd" id="1_script"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_posporo"]
+size = Vector3(0.08, 0.03, 0.12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_posporo"]
+albedo_color = Color(0.8, 0.2, 0.2, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_posporo"]
+material = SubResource("StandardMaterial3D_posporo")
+size = Vector3(0.08, 0.03, 0.12)
+
+[node name="Posporo" type="RigidBody3D" groups=["Interactable"]]
+script = ExtResource("1_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0)
+shape = SubResource("BoxShape3D_posporo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0)
+mesh = SubResource("BoxMesh_posporo")

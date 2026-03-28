@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cn3h2ipc2saeh"]
+
+[ext_resource type="Script" uid="uid://eq04wh6r2bmn" path="res://scenes/tindera.gd" id="1_script"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tindera"]
+size = Vector3(0.6, 2, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tindera"]
+albedo_color = Color(0.8, 0.4, 0.4, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tindera"]
+material = SubResource("StandardMaterial3D_tindera")
+top_radius = 0.3
+bottom_radius = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_zone"]
+size = Vector3(5, 2, 4)
+
+[node name="Tindera" type="StaticBody3D" unique_id=1006962010]
+script = ExtResource("1_script")
+
+[node name="BodyCollision" type="CollisionShape3D" parent="." unique_id=351320105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_tindera")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1901438057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_tindera")
+
+[node name="InteractionZone" type="Area3D" parent="." unique_id=89078645]
+transform = Transform3D(0.52221125, 0, 0, 0, 1, 0, 0, 0, 0.6646552, 0, 1, 0.20680022)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionZone" unique_id=1036190289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+shape = SubResource("BoxShape3D_zone")

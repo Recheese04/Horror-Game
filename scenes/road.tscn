@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://nxs0ej718blm"]
+
+[ext_resource type="Texture2D" uid="uid://dd326d8pi2n8g" path="res://assets/images/roadtext.png" id="1_mv8x7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_road"]
+albedo_color = Color(0.33, 0.33, 0.33, 1)
+albedo_texture = ExtResource("1_mv8x7")
+roughness = 0.95
+uv1_scale = Vector3(1, 0.125, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_road"]
+material = SubResource("StandardMaterial3D_road")
+size = Vector3(6, 0.15, 80)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_road"]
+size = Vector3(6, 0.15, 80)
+
+[node name="Road" type="StaticBody3D" unique_id=50260139]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1351529267]
+transform = Transform3D(0.86070716, 0, 0, 0, 1, 0, 0, 0, -0.08985278, 0, 0, 0)
+mesh = SubResource("BoxMesh_road")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1600073281]
+shape = SubResource("BoxShape3D_road")
