@@ -23,7 +23,10 @@ var examining_object: Node3D = null
 var examine_clone: Node3D = null
 var is_examining = false
 
+var _stashed_nodes: Dictionary = {}
+
 @onready var phone_3d: Node3D = $Camera3D/CP
+@onready var inventory_ui = $InventoryUI
 
 var has_candle = false
 var has_posporo = false
@@ -59,7 +62,78 @@ func show_objective(text: String):
 	objective_label.show()
 
 func hide_objective():
-	objective_label.hide()
+	if objective_label: objective_label.hide()
+
+func equip_item(item_data: Dictionary):
+	# 1. Stash current held_object back into inventory
+	if held_object != null:
+		var held_id = ""
+		var held_name = "Item"
+		var held_desc = ""
+		var held_path = ""
+		
+		# Catch crude cellphone from the floor
+		if held_object.name == "cellphone" or held_object.name == "CP" or held_object.has_node("Flashlight"):
+			held_id = "cellphone"
+			held_name = "Cellphone"
+			held_desc = "Ang daang cellphone. F ipasiga."
+			held_path = "res://scenes/cp.tscn"
+		else:
+			if held_object.has_meta("item_id"):
+				held_id = held_object.get_meta("item_id")
+				held_name = held_object.get_meta("item_name")
+				held_desc = held_object.get_meta("item_desc")
+				held_path = held_object.get_meta("scene_path")
+		
+		if held_path != "":
+			InventoryManager.add_item(held_id, held_name, held_desc, held_path)
+			
+		# CACHE the node instead of deleting it! This preserves its exact position, flashlight state, and model.
+		held_object.hide()
+		_stashed_nodes[held_id] = held_object
+		held_object = null
+
+	# 2. Equip new item_data
+	InventoryManager.remove_item(item_data["id"])
+	
+	# If we have the exact physical object stashed, just show it!
+	if _stashed_nodes.has(item_data["id"]) and is_instance_valid(_stashed_nodes[item_data["id"]]):
+		held_object = _stashed_nodes[item_data["id"]]
+		held_object.show()
+	else:
+		# Fallback: instantiate from scratch if it was directly picked up to inventory
+		if item_data.get("scene_path"):
+			var scene = load(item_data["scene_path"])
+			if scene:
+				var new_item = scene.instantiate()
+				
+				if new_item is RigidBody3D:
+					new_item.freeze = true
+				if "use_collision" in new_item:
+					new_item.use_collision = false
+				for child in new_item.get_children():
+					if child is CollisionShape3D:
+						child.disabled = true
+						
+				camera.add_child(new_item)
+				
+				# Fixed safe hand positions
+				new_item.position = Vector3(0.07, -0.1, -0.25)
+				new_item.rotation = Vector3(0, 0, 0)
+				
+				if item_data["id"] == "cellphone":
+					new_item.position = Vector3(0.12, -0.15, -0.35)
+				elif item_data["id"] == "posporo":
+					new_item.rotation = Vector3(0, PI/4, 0)
+					new_item.position = Vector3(0.1, -0.15, -0.3)
+					
+				new_item.set_meta("item_id", item_data["id"])
+				new_item.set_meta("item_name", item_data["name"])
+				new_item.set_meta("item_desc", item_data.get("description", ""))
+				new_item.set_meta("scene_path", item_data["scene_path"])
+				
+				held_object = new_item
+
 
 # ── EXAMINE MODE ─────────────────────────────────────────────────
 
@@ -207,6 +281,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if in_cinematic:
 		return
 	
+	# Block all gameplay input while inventory is open (TAB handled in inventory_ui.gd)
+	if inventory_ui and inventory_ui.is_open:
+		return
+	
 	# Examine mode input handling
 	if is_examining:
 		if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
@@ -284,6 +362,14 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+
+	# Block movement during inventory
+	if inventory_ui and inventory_ui.is_open:
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
+		move_and_slide()
+		interact_label.hide()
+		return
 
 	# Block movement during examine
 	if is_examining:

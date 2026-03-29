@@ -11,6 +11,8 @@ func interact():
 			player.show_subtitle("Christian: Nakuha nako ang posporo.")
 			var timer = get_tree().create_timer(3.0)
 			timer.timeout.connect(func(): player.hide_subtitle())
+	
+	InventoryManager.add_item("posporo", "Posporo", "Usa ka posporo.", "res://scenes/posporo.tscn")
 			
 	var root = get_tree().current_scene
 	var tindera = root.find_child("Tindera", true, false)

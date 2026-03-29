@@ -1,0 +1,136 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/inventory_ui.gd" id="1_inv"]
+
+[node name="InventoryUI" type="CanvasLayer"]
+layer = 20
+script = ExtResource("1_inv")
+
+[node name="Background" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.05, 0.04, 0.03, 0.85)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="CenterContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.8, 0.6, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 32
+text = "- Mga Dala Nako -"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/separator = Color(0.3, 0.25, 0.2, 0.8)
+
+[node name="EmptyLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.45, 0.4, 0.6)
+theme_override_font_sizes/font_size = 20
+text = "Wala pay sulod ang bulsa..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CarouselHBox" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 24
+
+[node name="PrevSlot" type="CenterContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/CarouselHBox"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="LeftBtn" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/CarouselHBox"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "<"
+flat = true
+
+[node name="CenterSlot" type="CenterContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/CarouselHBox"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+
+[node name="RightBtn" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/CarouselHBox"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = ">"
+flat = true
+
+[node name="NextSlot" type="CenterContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/CarouselHBox"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="DetailsVBox" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 120)
+layout_mode = 2
+alignment = 0
+
+[node name="ItemName" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/DetailsVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+
+[node name="ItemDesc" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/DetailsVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.65, 0.6, 0.9)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PickupNotification" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -100.0
+offset_right = -40.0
+offset_bottom = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.95, 0.9, 0.7, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 32
+text = "+ Item"
+horizontal_alignment = 2

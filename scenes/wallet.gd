@@ -55,6 +55,9 @@ func _take_coin(player):
 	# Show coin on screen briefly
 	_show_coin_on_screen(player)
 	
+	# Add to inventory
+	InventoryManager.add_item("coin", "Coin", "Usa ka sinsilyo gikan sa wallet.", "res://scenes/coin.tscn")
+	
 	# Show subtitle
 	if player.has_method("show_subtitle"):
 		player.show_subtitle("Nakuha na nako ang kwarta.")

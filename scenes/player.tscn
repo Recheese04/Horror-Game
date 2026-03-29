@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://cax2bqhqxtqxk"]
+[gd_scene load_steps=3 format=3 uid="uid://cax2bqhqxtqxk"]
 
 [ext_resource type="Script" uid="uid://wg0lla2v2y5b" path="res://scenes/player.gd" id="1_8m3n2"]
 [ext_resource type="PackedScene" path="res://scenes/cp.tscn" id="2_cp"]
+[ext_resource type="PackedScene" path="res://scenes/inventory_ui.tscn" id="3_inv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hw02x"]
 
@@ -113,4 +114,4 @@ outline_modulate = Color(0, 0.2, 0, 1)
 text = "?"
 font_size = 64
 
-
+[node name="InventoryUI" parent="." instance=ExtResource("3_inv")]

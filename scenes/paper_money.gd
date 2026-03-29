@@ -10,4 +10,5 @@ func interact():
 		var timer = get_tree().create_timer(2.0)
 		timer.timeout.connect(func(): player.hide_subtitle())
 	
+	InventoryManager.add_item("paper_money", "₱100", "Usa ka gatus pesos.", "res://scenes/paper_money.tscn")
 	queue_free()

@@ -11,6 +11,8 @@ func interact():
 			player.show_subtitle("Christian: Nakuha nako ang kandila.")
 			var timer = get_tree().create_timer(3.0)
 			timer.timeout.connect(func(): player.hide_subtitle())
+	
+	InventoryManager.add_item("candle", "Kandila", "Usa ka kandila.", "res://scenes/candle.tscn")
 			
 	var root = get_tree().current_scene
 	var tindera = root.find_child("Tindera", true, false)

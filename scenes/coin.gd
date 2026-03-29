@@ -10,4 +10,5 @@ func interact():
 		var timer = get_tree().create_timer(2.0)
 		timer.timeout.connect(func(): player.hide_subtitle())
 	
+	InventoryManager.add_item("coin", "Coin", "Usa ka sinsilyo.", "res://scenes/coin.tscn")
 	queue_free()
