@@ -20,7 +20,7 @@ func interact():
 			count = tindera.get_meta("items_collected")
 		count += 1
 		tindera.set_meta("items_collected", count)
-		if count >= 2:
+		if count >= 5:
 			if player and player.has_method("hide_objective"):
 				player.hide_objective()
 			tindera.set_meta("task_done", true)

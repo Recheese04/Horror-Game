@@ -41,7 +41,7 @@ func interact():
 	if not player: return
 	
 	if not is_placed:
-		if player.get("has_candle") == true:
+		if player.get("candles_count") > 0:
 			_place_candle(player)
 		else:
 			player.show_subtitle("Christian: Wala pa nako ang kandila.")
@@ -56,6 +56,7 @@ func interact():
 			_hide_sub_later(player)
 
 func _place_candle(player):
+	player.candles_count -= 1
 	is_placed = true
 	candle_mesh.show()
 	if v_indicator:
@@ -72,8 +73,12 @@ func _light_candle(player):
 	player.show_subtitle("Christian: Atay, hayag na.")
 	_hide_sub_later(player)
 	
-	if player.has_method("hide_objective"):
-		player.hide_objective()
+	player.lit_candles += 1
+	if player.has_method("show_objective"):
+		if player.lit_candles >= 4:
+			player.hide_objective()
+		else:
+			player.show_objective("Sindiha ang 4 ka kandila (" + str(player.lit_candles) + "/4)")
 	_flicker()
 
 func _hide_sub_later(player):
