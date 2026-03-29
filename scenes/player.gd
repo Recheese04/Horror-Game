@@ -28,7 +28,8 @@ var _stashed_nodes: Dictionary = {}
 @onready var phone_3d: Node3D = $Camera3D/CP
 @onready var inventory_ui = $InventoryUI
 
-var has_candle = false
+var candles_count = 0
+var lit_candles = 0
 var has_posporo = false
 
 func _ready() -> void:

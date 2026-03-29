@@ -56,7 +56,7 @@ func _on_body_entered(body):
 		
 		# 4. Player asks to buy
 		if body.has_method("show_subtitle"):
-			body.show_subtitle("Christian: Paliton te kandila isa og posporo isa.")
+			body.show_subtitle("Christian: Paliton te upat ka kandila og posporo isa.")
 			
 		await get_tree().create_timer(4.0).timeout
 		
@@ -89,14 +89,15 @@ func _spawn_items():
 	var right = global_transform.basis.x.normalized()
 	
 	if candle_scene:
-		var candle = candle_scene.instantiate()
-		level.add_child(candle)
-		# Spawn slightly above the counter (1.0) so they drop safely
-		candle.global_position = global_position + forward * 1.0 + Vector3(0, 1.0, 0)
+		for i in range(4):
+			var candle = candle_scene.instantiate()
+			level.add_child(candle)
+			# Spawn slightly above the counter (1.0) so they drop safely
+			candle.global_position = global_position + forward * 1.0 + right * (i * 0.15 - 0.2) + Vector3(0, 1.0, 0)
 	
 	if posporo_scene:
 		var posporo = posporo_scene.instantiate()
 		level.add_child(posporo)
 		# Spawn slightly to the right of the candle and above the counter
-		posporo.global_position = global_position + forward * 1.0 + right * 0.3 + Vector3(0, 1.0, 0)
+		posporo.global_position = global_position + forward * 1.0 + right * 0.4 + Vector3(0, 1.0, 0)
 

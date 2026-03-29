@@ -296,7 +296,7 @@ operation = 2
 size = Vector3(1.9525146, 0.6521301, 0.21733093)
 
 [node name="wall26" type="CSGBox3D" parent="House" unique_id=1012327215]
-transform = Transform3D(0.3226776, -0.11647634, -0.04457935, 0.00243433, 0.021355271, 6.0877767, -0.010987913, -3.4157836, 0.03958061, 0.021579504, 1.4705695, -7.862508)
+transform = Transform3D(0.3226776, -0.11647634, -0.04457935, 0.00243433, 0.021355271, 6.0877767, -0.010987913, -3.4157836, 0.03958061, 0.021579504, 1.4705695, -6.196947)
 use_collision = true
 size = Vector3(1, 1.4223938, 0.526001)
 material = SubResource("StandardMaterial3D_td8cy")
@@ -1096,8 +1096,17 @@ transform = Transform3D(0.24843086, 0, -1.0639657, 0, 1.3795747, 0, 1.4850419, 0
 [node name="BambooTable" parent="House" unique_id=976104873 instance=ExtResource("20_3qmij")]
 transform = Transform3D(1, 0, 0, 0, 1.3054397, 0, 0, 0, 1.7510042, -2.2181883, 0.059439063, 1.762958)
 
+[node name="BambooTable2" parent="House" unique_id=1322286154 instance=ExtResource("20_3qmij")]
+transform = Transform3D(2.3180385, 0, 0, 0, 1.7903048, 0, 0, 0, 2.7220747, -1.0483302, 0.059439063, -4.5880656)
+
+[node name="BambooTable3" parent="House" unique_id=2042021923 instance=ExtResource("20_3qmij")]
+transform = Transform3D(2.3180385, 0, 0, 0, 1.7903048, 0, 0, 0, 2.7220747, -9.405288, 0.059439063, -4.5880656)
+
+[node name="BambooTable4" parent="House" unique_id=1488043004 instance=ExtResource("20_3qmij")]
+transform = Transform3D(1.2718081, 0, 0, 0, 1.7903048, 0, 0, 0, 2.7220747, -17.354485, 0.059439063, -1.0446731)
+
 [node name="TableCandle" parent="House" unique_id=10271105 instance=ExtResource("table_candle_scene")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.63, 1.76)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.5942366, 1.76)
 
 [node name="Mother" parent="House" unique_id=5551213 instance=ExtResource("mother_scene")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.100000024, -1)
@@ -1126,6 +1135,15 @@ transform = Transform3D(0.9998855, -0.015131427, 0, 0.015131427, 0.9998855, 0, 0
 
 [node name="Wallet" parent="House" unique_id=241533865 instance=ExtResource("wallet_scene")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2956285, 1.0627681, 0.6241572)
+
+[node name="TableCandle2" parent="House" unique_id=13308101 instance=ExtResource("table_candle_scene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2363226, 0.81690836, -4.7790933)
+
+[node name="TableCandle4" parent="House" unique_id=402568205 instance=ExtResource("table_candle_scene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.40659, 0.78090525, -4.8621383)
+
+[node name="TableCandle5" parent="House" unique_id=1308466782 instance=ExtResource("table_candle_scene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.19745, 0.832088, -1.0226297)
 
 [node name="NPC" parent="." unique_id=1632518412 instance=ExtResource("8_npc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.926191, -0.0031981468, 20.295311)

@@ -6,7 +6,7 @@ func get_interaction_prompt() -> String:
 func interact():
 	var player = get_tree().root.find_child("Player", true, false)
 	if player:
-		player.has_candle = true
+		player.candles_count += 1
 		if player.has_method("show_subtitle"):
 			player.show_subtitle("Christian: Nakuha nako ang kandila.")
 			var timer = get_tree().create_timer(3.0)
@@ -22,7 +22,7 @@ func interact():
 			count = tindera.get_meta("items_collected")
 		count += 1
 		tindera.set_meta("items_collected", count)
-		if count >= 2:
+		if count >= 5:
 			if player and player.has_method("hide_objective"):
 				player.hide_objective()
 			tindera.set_meta("task_done", true)

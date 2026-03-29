@@ -19,7 +19,7 @@ var dialogue_lines_intro = [
 ]
 
 var dialogue_lines_return = [
-	"Christian: Ma, naa na ang kandila ug posporo.",
+	"Christian: Ma, naa na ang 4 ka kandila ug posporo.",
 	"Nanay: Ikaw ra sindi ana kay gikapoy ko."
 ]
 
@@ -103,7 +103,7 @@ func _start_dialogue(body):
 	# Show objective after dialogue ends
 	if body.has_method("show_objective"):
 		if is_return_interaction:
-			body.show_objective("Sindiha ang kandila sa lamesa na kawayan")
+			body.show_objective("Sindiha ang 4 ka kandila (0/4)")
 			# ENABLE THE CANDLE PLACEMENT SPOT NOW
 			get_tree().call_group("CandleSpots", "enable_candle")
 		else:

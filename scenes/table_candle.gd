@@ -79,8 +79,12 @@ func _light_candle(player):
 	player.show_subtitle("Christian: Atay, hayag na.")
 	_hide_sub_later(player)
 	
-	if player.has_method("hide_objective"):
-		player.hide_objective()
+	player.lit_candles += 1
+	if player.has_method("show_objective"):
+		if player.lit_candles >= 4:
+			player.hide_objective()
+		else:
+			player.show_objective("Sindiha ang 4 ka kandila (" + str(player.lit_candles) + "/4)")
 	_flicker()
 
 func _hide_sub_later(player):
