@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://bx714qpwqabcd"]
+
+[ext_resource type="Script" path="res://scenes/ph_streetlight.gd" id="1_flicker"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbmxl"]
+albedo_color = Color(0.3, 0.22, 0.15, 1)
+roughness = 0.85
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_metal"]
+albedo_color = Color(0.3, 0.35, 0.35, 1)
+metallic = 0.7
+roughness = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bulb"]
+emission_enabled = true
+emission = Color(1, 0.85, 0.55, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wire"]
+albedo_color = Color(0.1, 0.1, 0.1, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_solar"]
+albedo_color = Color(0.1, 0.15, 0.3, 1)
+metallic = 0.5
+roughness = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_post"]
+radius = 0.08
+height = 5.0
+
+[node name="PH_Streetlight" type="Node3D"]
+script = ExtResource("1_flicker")
+is_flickering = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("CylinderShape3D_post")
+
+[node name="WoodPole" type="CSGCylinder3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+radius = 0.08
+height = 5.0
+sides = 12
+material = SubResource("StandardMaterial3D_dbmxl")
+
+[node name="BambooArm" type="CSGCylinder3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.5, 4.5, 0)
+radius = 0.03
+height = 1.2
+sides = 8
+material = SubResource("StandardMaterial3D_dbmxl")
+
+[node name="SupportAngle" type="CSGCylinder3D" parent="StaticBody3D"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.25, 4.25, 0)
+radius = 0.02
+height = 0.7
+sides = 6
+material = SubResource("StandardMaterial3D_dbmxl")
+
+[node name="Wire" type="CSGCylinder3D" parent="StaticBody3D"]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0.5, 4.45, 0)
+radius = 0.005
+height = 1.0
+sides = 4
+material = SubResource("StandardMaterial3D_wire")
+
+[node name="TinShade" type="CSGCylinder3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0, 4.45, 0)
+radius = 0.2
+height = 0.05
+cone = true
+sides = 16
+material = SubResource("StandardMaterial3D_metal")
+
+[node name="Bulb" type="CSGSphere3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0, 4.42, 0)
+radius = 0.05
+radial_segments = 12
+rings = 6
+material = SubResource("StandardMaterial3D_bulb")
+
+[node name="SolarPanelBase" type="CSGBox3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.0, 0)
+size = Vector3(0.15, 0.1, 0.15)
+material = SubResource("StandardMaterial3D_metal")
+
+[node name="SolarPanel" type="CSGBox3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 5.1, 0)
+size = Vector3(0.5, 0.05, 0.8)
+material = SubResource("StandardMaterial3D_solar")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.0, 4.4, 0)
+light_color = Color(1, 0.82, 0.5, 1)
+light_energy = 1.5
+shadow_enabled = true
+spot_range = 10.0
+spot_angle = 60.0
+
+[node name="OmniLight_Ambient" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0, 4.3, 0)
+light_color = Color(1, 0.82, 0.5, 1)
+light_energy = 0.3
+omni_range = 5.0

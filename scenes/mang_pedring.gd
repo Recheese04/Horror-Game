@@ -16,9 +16,10 @@ func _ready():
 	area.body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body):
-	if body.name == "Player" and not triggered:
-		triggered = true
-		_start_dialogue(body)
+	if body.name == "Player":
+		if not InventoryManager.has_meta("mang_pedring_talked"):
+			InventoryManager.set_meta("mang_pedring_talked", true)
+			_start_dialogue(body)
 
 # Disable manual interaction prompt since it's automatic now
 func get_interaction_prompt() -> String:

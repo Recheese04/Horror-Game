@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cgxspawn0001"]
+
+[ext_resource type="Script" path="res://scenes/entity_spawn_trigger.gd" id="1_sp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trig"]
+size = Vector3(5.0, 3.0, 1.0)
+
+[node name="EntitySpawnTrigger" type="Area3D"]
+script = ExtResource("1_sp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_trig")

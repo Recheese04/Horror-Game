@@ -35,6 +35,16 @@ func _on_body_entered(body):
 		interaction_count = 1
 		_run_cinematic(body)
 
+func _wait_or_skip(duration: float):
+	var elapsed = 0.0
+	while elapsed < duration:
+		await get_tree().create_timer(0.1).timeout
+		elapsed += 0.1
+		if Input.is_physical_key_pressed(KEY_SPACE):
+			# Small debounce for holding space
+			await get_tree().create_timer(0.15).timeout
+			break
+
 func _run_cinematic(body):
 	is_in_cinematic = true
 	
@@ -52,24 +62,24 @@ func _run_cinematic(body):
 	
 	# -- LINE 1: Christian calls out --
 	if body.has_method("show_subtitle"):
-		body.show_subtitle("Christian: Aling Rosa? Naa ka?\n(Aling Rosa? Are you there?)")
-	await get_tree().create_timer(3.5).timeout
+		body.show_subtitle("Christian: Aling Rosa? Naa ka?")
+	await _wait_or_skip(3.5)
 	
 	# -- LINE 2: Silence, then louder --
 	if body.has_method("show_subtitle"):
-		body.show_subtitle("Christian: Aling Rosaaaa?\n(Aling Rosaaaa?)")
-	await get_tree().create_timer(3.0).timeout
+		body.show_subtitle("Christian: Aling Rosaaaa?")
+	await _wait_or_skip(3.0)
 	
 	if body.has_method("hide_subtitle"):
 		body.hide_subtitle()
-	await get_tree().create_timer(0.5).timeout
+	await _wait_or_skip(0.5)
 	
 	# -- LOCK PLAYER into cinematic before jumpscare --
 	if body.has_method("start_cinematic"):
 		body.start_cinematic(self)
 	
 	# -- SUSPENSE BUILD: brief silence --
-	await get_tree().create_timer(1.0).timeout
+	await _wait_or_skip(1.0)
 	
 	# -- ALING ROSA POPS UP (jumpscare!) --
 	mesh_instance.position = Vector3(0, -0.8, 0)
@@ -90,41 +100,41 @@ func _run_cinematic(body):
 	ftw.tween_property(suspense_audio, "volume_db", -40.0, 3.0)
 	ftw.tween_callback(func(): if suspense_audio: suspense_audio.queue_free())
 	
-	await get_tree().create_timer(0.4).timeout
+	await _wait_or_skip(0.4)
 	
 	# -- ALING ROSA LINE --
 	if body.has_method("show_subtitle"):
-		body.show_subtitle("Aling Rosa: NAAAA!\n(YESSS!)")
-	await get_tree().create_timer(2.5).timeout
+		body.show_subtitle("Aling Rosa: NAAAA!")
+	await _wait_or_skip(2.5)
 	
 	# -- CHRISTIAN REACTION --
 	if body.has_method("show_subtitle"):
-		body.show_subtitle("Christian: AYYY! Susmaryosep!\n(AYYY! Good heavens!)")
-	await get_tree().create_timer(3.0).timeout
+		body.show_subtitle("Christian: AYYY! Susmaryosep!")
+	await _wait_or_skip(3.0)
 	
 	# -- ALING ROSA LAUGHS --
 	if body.has_method("show_subtitle"):
-		body.show_subtitle("Aling Rosa: Hahaha! Ngano? Nahadlok ka?\n(Hahaha! What? Were you scared?)")
-	await get_tree().create_timer(3.5).timeout
+		body.show_subtitle("Aling Rosa: Hahaha! Ngano? Nahadlok ka?")
+	await _wait_or_skip(3.5)
 	
 	# -- CHRISTIAN RECOVERS --
 	if body.has_method("show_subtitle"):
-		body.show_subtitle("Christian: Aling Rosa naman! Napalabog nimo akong kasingkasing!\n(Aling Rosa! You nearly gave me a heart attack!)")
-	await get_tree().create_timer(4.5).timeout
+		body.show_subtitle("Christian: Aling Rosa naman! Napalabog nimo akong kasingkasing!")
+	await _wait_or_skip(4.5)
 	
 	# -- ALING ROSA RESTS --
 	if body.has_method("show_subtitle"):
-		body.show_subtitle("Aling Rosa: Nagpangita og lugar para matulog. Brownout man.\n(I was looking for a spot to rest. Brownout you know.)")
-	await get_tree().create_timer(4.5).timeout
+		body.show_subtitle("Aling Rosa: Nagpangita og lugar para matulog. Brownout man.")
+	await _wait_or_skip(4.5)
 	
 	# -- CHRISTIAN BUYS --
 	if body.has_method("show_subtitle"):
-		body.show_subtitle("Christian: Paliton te upat ka kandila og posporo isa.\n(I'll buy four candles and one matchbox please.)")
-	await get_tree().create_timer(4.0).timeout
+		body.show_subtitle("Christian: Paliton te upat ka kandila og posporo isa.")
+	await _wait_or_skip(4.0)
 	
 	# -- ALING ROSA PAUSES, STUDIES CHRISTIAN --
 	if body.has_method("show_subtitle"):
-		body.show_subtitle("Aling Rosa: Anak ni Clara?\n(Are you Clara's son?)")
+		body.show_subtitle("Aling Rosa: Anak ni Clara?")
 	
 	# Re-introduce suspense here — the story gets darker
 	var suspense2 = AudioStreamPlayer.new()
@@ -136,45 +146,45 @@ func _run_cinematic(body):
 	var stw2 = create_tween()
 	stw2.tween_property(suspense2, "volume_db", -14.0, 3.0)
 	
-	await get_tree().create_timer(4.0).timeout
+	await _wait_or_skip(4.0)
 	
 	# -- CHRISTIAN REPLIES --
 	if body.has_method("show_subtitle"):
-		body.show_subtitle("Christian: Oo. Anak ni Nanay Clara. Nganong?\n(Yes. Mom Clara's son. Why?)")
-	await get_tree().create_timer(4.0).timeout
+		body.show_subtitle("Christian: Oo. Anak ni Nanay Clara. Nganong?")
+	await _wait_or_skip(4.0)
 	
 	# -- ALING ROSA — UNSETTLING PAUSE --
 	if body.has_method("show_subtitle"):
-		body.show_subtitle("Aling Rosa: Wala. Susama ra mo kaayo.\n(Nothing. You just look so much like her.)")
-	await get_tree().create_timer(5.0).timeout
+		body.show_subtitle("Aling Rosa: Wala. Susama ra mo kaayo.")
+	await _wait_or_skip(5.0)
 	
 	# -- SPAWN ITEMS ON COUNTER --
 	_spawn_items()
 	
 	if body.has_method("show_subtitle"):
-		body.show_subtitle("Aling Rosa: Mag-amping ha sa dalan. Ug—\n(Be careful on the road. And—)")
-	await get_tree().create_timer(3.5).timeout
+		body.show_subtitle("Aling Rosa: Mag-amping ha sa dalan. Ug—")
+	await _wait_or_skip(3.5)
 	
 	# -- CHRISTIAN ASKS --
 	if body.has_method("show_subtitle"):
-		body.show_subtitle("Christian: Ug unsa Aling?\n(And what?)")
-	await get_tree().create_timer(3.0).timeout
+		body.show_subtitle("Christian: Ug unsa Aling?")
+	await _wait_or_skip(3.0)
 	
 	# -- ALING ROSA FORCES A SMILE --
 	if body.has_method("show_subtitle"):
-		body.show_subtitle("Aling Rosa: Balik dayon ha. Gabii na.\n(Come back quickly okay. It's late.)")
+		body.show_subtitle("Aling Rosa: Balik dayon ha. Gabii na.")
 	
 	# Fade out 2nd suspense layer
 	var etw = create_tween()
 	etw.tween_property(suspense2, "volume_db", -40.0, 4.0)
 	etw.tween_callback(func(): if suspense2: suspense2.queue_free())
 	
-	await get_tree().create_timer(4.5).timeout
+	await _wait_or_skip(4.5)
 	
 	# -- FINAL WHISPER (monologue, player doesn't hear in-story) --
 	if body.has_method("show_subtitle"):
-		body.show_subtitle("Aling Rosa: (to herself) Ginoo ko. Susama jud kaayo.\n((My God. The resemblance is uncanny.))")
-	await get_tree().create_timer(5.0).timeout
+		body.show_subtitle("Aling Rosa: (to herself) Ginoo ko. Susama jud kaayo.")
+	await _wait_or_skip(5.0)
 	
 	# -- END CINEMATIC --
 	if body.has_method("hide_subtitle"):
