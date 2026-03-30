@@ -83,7 +83,7 @@ func _light_candle(player):
 	player.lit_candles += 1
 	if player.has_method("show_objective"):
 		if player.lit_candles >= 4:
-			player.hide_objective()
+			player.show_objective("Matulog na sa imo kwarto (Go to bed)")
 		else:
 			player.show_objective("Sindiha ang 4 ka kandila (" + str(player.lit_candles) + "/4)")
 	_flicker()

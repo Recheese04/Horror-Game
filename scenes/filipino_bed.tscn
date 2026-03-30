@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bt84rddsr5cb0"]
 
+[ext_resource type="Script" path="res://scenes/filipino_bed.gd" id="1_bedscript"]
+
 [ext_resource type="Shader" uid="uid://bg6nwla64bicd" path="res://scenes/habol.gdshader" id="1_hshader"]
 [ext_resource type="Texture2D" uid="uid://wog354yfl42k" path="res://models/image texture/wood-texture-background-free-photo.jpg" id="1_woodtex"]
 [ext_resource type="Texture2D" uid="uid://b8b215ehx4o6n" path="res://models/image texture/banig.jpg" id="2_wxwjr"]
@@ -42,6 +44,17 @@ albedo_texture = ExtResource("4_wec0l")
 roughness = 0.8
 
 [node name="FilipinoBed" type="Node3D" unique_id=1583668024]
+script = ExtResource("1_bedscript")
+
+[node name="V_Indicator" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+billboard = 1
+double_sided = false
+no_depth_test = true
+modulate = Color(1, 1, 0, 1)
+text = "V"
+font_size = 48
+outline_size = 12
 
 [node name="BedFrame" type="CSGCombiner3D" parent="." unique_id=1086111481]
 use_collision = true
