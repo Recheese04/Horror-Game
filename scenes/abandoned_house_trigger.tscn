@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/abandoned_house_trigger.gd" id="1_script"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trigger"]
+size = Vector3(10, 5, 10)
+
+[node name="AbandonedHouseTrigger" type="Area3D"]
+script = ExtResource("1_script")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_trigger")

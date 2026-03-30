@@ -108,3 +108,6 @@ func _create_eyelids(player):
 	# Final close
 	tween.chain().set_parallel(true).tween_property(top_lid, "position:y", 0.0, 2.5)
 	tween.tween_property(bot_lid, "position:y", 0.0, 2.5)
+	
+	# Transition to Day 2
+	tween.chain().tween_callback(func(): get_tree().change_scene_to_file("res://level_2.tscn"))

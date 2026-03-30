@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/jake.gd" id="1_jake"]
+[ext_resource type="AudioStream" uid="uid://bbtmvbptfnwe1" path="res://assets/sounds/father.mp3" id="2_voice"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jake"]
+radius = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jake"]
+albedo_color = Color(0.2, 0.4, 1.0, 1)
+emission_enabled = true
+emission = Color(0.2, 0.4, 0.8, 1)
+emission_energy_multiplier = 0.3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jake"]
+material = SubResource("StandardMaterial3D_jake")
+top_radius = 0.3
+bottom_radius = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_line"]
+size = Vector3(8.31518, 2, 2.4677582)
+
+[node name="Jake" type="CharacterBody3D"]
+script = ExtResource("1_jake")
+
+[node name="BodyCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_jake")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_jake")
+
+[node name="InteractionZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1156435, 0, 0.39200592)
+shape = SubResource("BoxShape3D_line")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+billboard = 2
+text = "JAKE"
+font_size = 64

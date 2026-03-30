@@ -286,6 +286,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	if in_cinematic:
+		if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			rotate_y(-event.relative.x * mouse_sensitivity)
+			camera.rotate_x(-event.relative.y * mouse_sensitivity)
+			camera.rotation.x = clamp(camera.rotation.x, -PI / 3, PI / 3) # Slightly more restricted vertically in cinematic
 		return
 	
 	# Block all gameplay input while inventory is open (TAB handled in inventory_ui.gd)
@@ -392,12 +396,12 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 		move_and_slide()
 		
-		# Smoothly rotate head to look at NPC face (approximate Y offset)
+		# Smoothly pull head back to NPC face if no mouse movement, but allow player to nudge away
 		if is_instance_valid(cinematic_target):
 			var face_pos = cinematic_target.global_position + Vector3(0, 1.5, 0)
 			var look_target = camera.global_transform.looking_at(face_pos, Vector3.UP)
-			# Slerp the rotation basis specifically for much smoother results
-			camera.global_transform.basis = camera.global_transform.basis.slerp(look_target.basis, 5.0 * delta)
+			# Slower slerp so player has more control
+			camera.global_transform.basis = camera.global_transform.basis.slerp(look_target.basis, 1.5 * delta)
 		
 		# Zoom FOV in
 		camera.fov = lerp(camera.fov, 40.0, 3.0 * delta)

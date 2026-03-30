@@ -27,6 +27,11 @@ var dialogue_lines_return = [
 	"Nanay: Ikaw ra sindi ana kay gikapoy ko."
 ]
 
+var dialogue_lines_sleep = [
+	"Nanay: Hayag na. Maayong gabii Niel. Tug na.",
+	"Christian: Sige Ma. Maayong gabii."
+]
+
 func _ready():
 	interaction_zone.body_entered.connect(_on_body_entered)
 	add_to_group("Mothers")
@@ -48,15 +53,22 @@ func _physics_process(delta):
 
 func get_interaction_prompt() -> String:
 	if is_return_interaction:
-		return "Give candle and posporo to Nanay"
+		if not return_used:
+			return "Give candle and posporo to Nanay"
+		var player = get_tree().root.find_child("Player", true, false)
+		if player and player.lit_candles >= 4:
+			return "Talk to Nanay (End Day 1)"
 	return ""
 
 func interact():
 	if is_return_interaction:
-		if return_used: return
 		var player = get_tree().root.find_child("Player", true, false)
-		if player:
-			_start_dialogue(player)
+		if not player: return
+		
+		if not return_used:
+			_start_dialogue(player, dialogue_lines_return)
+		elif player.lit_candles >= 4:
+			_start_dialogue(player, dialogue_lines_sleep)
 
 func _on_body_entered(body):
 	if is_return_interaction:
@@ -66,9 +78,9 @@ func _on_body_entered(body):
 		return
 		
 	if body.name == "Player" or body.is_in_group("Player"):
-		_start_dialogue(body)
+		_start_dialogue(body, dialogue_lines_intro)
 
-func _start_dialogue(body):
+func _start_dialogue(body, lines):
 	is_in_cinematic = true
 	
 	# Play the voice line (only for Intro normally, but safe to play here too if generic)
@@ -84,9 +96,6 @@ func _start_dialogue(body):
 	# Lock player into cinematic look
 	if body.has_method("start_cinematic"):
 		body.start_cinematic(self)
-	
-	# Determine which dialogue array to use
-	var lines = dialogue_lines_return if is_return_interaction else dialogue_lines_intro
 	
 	# Play through dialogue one line at a time
 	for line in lines:
@@ -117,9 +126,11 @@ func _start_dialogue(body):
 	
 	# Show objective after dialogue ends
 	if body.has_method("show_objective"):
-		if is_return_interaction:
+		if lines == dialogue_lines_sleep:
+			# GO TO DAY 2
+			get_tree().change_scene_to_file("res://level_2.tscn")
+		elif lines == dialogue_lines_return:
 			body.show_objective("Sindiha ang 4 ka kandila (0/4)")
-			# ENABLE THE CANDLE PLACEMENT SPOT NOW
 			get_tree().call_group("CandleSpots", "enable_candle")
-		else:
+		elif lines == dialogue_lines_intro:
 			body.show_objective("Kuhaa ang pitaka sa lamesa")
