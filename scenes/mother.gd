@@ -10,6 +10,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var is_in_cinematic = false
 var interaction_count = 0
+var return_used = false
 
 var dialogue_lines_intro = [
 	"Christian. Pag adto sa tindahan ni Aling Rosa.",
@@ -52,6 +53,7 @@ func get_interaction_prompt() -> String:
 
 func interact():
 	if is_return_interaction:
+		if return_used: return
 		var player = get_tree().root.find_child("Player", true, false)
 		if player:
 			_start_dialogue(player)
@@ -108,6 +110,10 @@ func _start_dialogue(body):
 	# Unlock player
 	if body.has_method("end_cinematic"):
 		body.end_cinematic()
+	
+	# Mark return interaction as used and hide prompt
+	if is_return_interaction:
+		return_used = true
 	
 	# Show objective after dialogue ends
 	if body.has_method("show_objective"):

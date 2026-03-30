@@ -3,16 +3,20 @@ extends StaticBody3D
 @onready var candle_light = $OmniLight3D
 @onready var candle_mesh = $CandleBody
 @onready var fire_particles = $GPUParticles3D
-@onready var v_indicator = $V_Indicator
 
+var v_indicators = []
 var is_placed = false
 var is_lit = false
 
 func _ready():
 	candle_mesh.hide()
 	candle_light.hide()
-	if v_indicator:
-		v_indicator.hide()
+	
+	for child in get_children():
+		if child is Label3D or child is Sprite3D:
+			v_indicators.append(child)
+			child.hide()
+			
 	if fire_particles:
 		fire_particles.emitting = false
 	
@@ -25,8 +29,8 @@ func _ready():
 func enable_candle():
 	show()
 	process_mode = Node.PROCESS_MODE_INHERIT
-	if v_indicator:
-		v_indicator.show()
+	for ind in v_indicators:
+		ind.show()
 
 
 func get_interaction_prompt() -> String:
@@ -58,8 +62,8 @@ func interact():
 func _place_candle(player):
 	is_placed = true
 	candle_mesh.show()
-	if v_indicator:
-		v_indicator.hide()
+	for ind in v_indicators:
+		ind.hide()
 	
 	# Remove candle from inventory
 	InventoryManager.remove_item("candle")
