@@ -72,9 +72,6 @@ func _light_candle(player):
 	candle_light.show()
 	if fire_particles:
 		fire_particles.emitting = true
-	
-	# Remove posporo from inventory
-	InventoryManager.remove_item("posporo")
 		
 	player.show_subtitle("Christian: Atay, hayag na.")
 	_hide_sub_later(player)

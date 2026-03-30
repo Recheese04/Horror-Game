@@ -12,10 +12,13 @@ var is_in_cinematic = false
 var interaction_count = 0
 
 var dialogue_lines_intro = [
-	"Nanay: Christian. Pag adto sa tindahan ni Aling Rosa. Wa tay asin ug posporo. Balik dayon.",
-	"Christian: Ma gabii na man. Mo-uwan pa.",
-	"Nanay: Kaduol ra. Dali lang anak.",
-	"Nanay: Kuha og kwarta sa akong wallet."
+	"Christian. Pag adto sa tindahan ni Aling Rosa.",
+	"Palit sag kandila ug posporo, ngitngit kaayo. Balik dayon ha.",
+	"Ma, gabii na man. Mo-uwan pa.",
+	"Kaduol ra anak. Lima minuto lang.",
+	"(muttering) Kanunay na lang ko ang sugosugo...",
+	"Uy. Nadunggan tika.",
+	"Ang kwarta naa sa pitaka sa lamesa. Dali lang ha."
 ]
 
 var dialogue_lines_return = [
@@ -87,7 +90,13 @@ func _start_dialogue(body):
 	for line in lines:
 		if body.has_method("show_subtitle"):
 			body.show_subtitle(line)
-		await get_tree().create_timer(3.5).timeout
+			
+		var t = 0.0
+		while t < 3.5:
+			await get_tree().create_timer(0.1).timeout
+			t += 0.1
+			if Input.is_physical_key_pressed(KEY_SPACE):
+				break
 	
 	interaction_count += 1
 		

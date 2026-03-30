@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://fk6ildbxyqvo"]
+
+[ext_resource type="Script" uid="uid://kf3aj215jsja" path="res://scenes/kubo.gd" id="1_ftpli"]
+[ext_resource type="Texture2D" uid="uid://t556cdtrqwqu" path="res://models/image texture/amakan.jpg" id="2_aiace"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aiace"]
+resource_local_to_scene = true
+albedo_color = Color(0.35, 0.2, 0.1, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_17nxt"]
+resource_local_to_scene = true
+albedo_color = Color(0.65, 0.55, 0.35, 1)
+albedo_texture = ExtResource("2_aiace")
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_241wh"]
+resource_local_to_scene = true
+albedo_color = Color(0.4, 0.45, 0.25, 1)
+
+[node name="Kubo" type="Node3D" unique_id=1227965155]
+script = ExtResource("1_ftpli")
+
+[node name="Posts" type="Node3D" parent="." unique_id=1068821953]
+
+[node name="Post_1" type="CSGCylinder3D" parent="Posts" unique_id=1811310492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.6860352, -2)
+material_override = SubResource("StandardMaterial3D_aiace")
+use_collision = true
+radius = 0.1
+height = 2.6279297
+
+[node name="Post_2" type="CSGCylinder3D" parent="Posts" unique_id=1190545364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.6131592, -2)
+material_override = SubResource("StandardMaterial3D_aiace")
+use_collision = true
+radius = 0.1
+height = 2.7736816
+
+[node name="Post_3" type="CSGCylinder3D" parent="Posts" unique_id=676119275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.7363281, 2)
+material_override = SubResource("StandardMaterial3D_aiace")
+use_collision = true
+radius = 0.1
+height = 2.5273438
+
+[node name="Post_4" type="CSGCylinder3D" parent="Posts" unique_id=522079308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.7053223, 2)
+material_override = SubResource("StandardMaterial3D_aiace")
+use_collision = true
+radius = 0.1
+height = 2.5893555
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=933445823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+material_override = SubResource("StandardMaterial3D_17nxt")
+use_collision = true
+size = Vector3(4, 0.1, 4)
+
+[node name="Walls" type="Node3D" parent="." unique_id=413397642]
+
+[node name="BackWall" type="CSGBox3D" parent="Walls" unique_id=817099994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, -2)
+material_override = SubResource("StandardMaterial3D_17nxt")
+use_collision = true
+size = Vector3(4, 2.5, 0.05)
+
+[node name="LeftWall" type="CSGBox3D" parent="Walls" unique_id=1146136183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.75, 0)
+material_override = SubResource("StandardMaterial3D_17nxt")
+use_collision = true
+size = Vector3(0.05, 2.5, 4)
+
+[node name="WindowCutout" type="CSGBox3D" parent="Walls/LeftWall" unique_id=193923376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+operation = 2
+size = Vector3(0.5, 1.2, 1.5)
+
+[node name="RightWall" type="CSGBox3D" parent="Walls" unique_id=864201669]
+transform = Transform3D(1.0145364, 0, 0, 0, 1.0145364, 0, 0, 0, 1.0145364, 2, 2.75, 0)
+material_override = SubResource("StandardMaterial3D_17nxt")
+use_collision = true
+size = Vector3(0.05, 2.5, 4)
+
+[node name="WindowCutout" type="CSGBox3D" parent="Walls/RightWall" unique_id=203170492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+operation = 2
+size = Vector3(0.5, 1.2, 1.5)
+
+[node name="FrontWall" type="CSGBox3D" parent="Walls" unique_id=704930781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 2)
+material_override = SubResource("StandardMaterial3D_17nxt")
+use_collision = true
+size = Vector3(4, 2.5, 0.05)
+
+[node name="DoorCutout" type="CSGBox3D" parent="Walls/FrontWall" unique_id=65432461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+operation = 2
+size = Vector3(1.2, 2, 0.5)
+
+[node name="Roof" type="Node3D" parent="." unique_id=1062131673]
+
+[node name="LeftPanel" type="CSGBox3D" parent="Roof" unique_id=1372477176]
+transform = Transform3D(0.792624, -0.60971075, 0, 0.60971075, 0.792624, 0, 0, 0, 1, -1.3, 5, 0)
+material_override = SubResource("StandardMaterial3D_241wh")
+use_collision = true
+size = Vector3(3.2802439, 0.1, 5.2)
+
+[node name="RightPanel" type="CSGBox3D" parent="Roof" unique_id=1545200457]
+transform = Transform3D(0.792624, 0.60971075, 0, -0.60971075, 0.792624, 0, 0, 0, 1, 1.3, 5, 0)
+material_override = SubResource("StandardMaterial3D_241wh")
+use_collision = true
+size = Vector3(3.2802439, 0.1, 5.2)
+
+[node name="FrontTriangle" type="CSGPolygon3D" parent="Roof" unique_id=1439069167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 2.55)
+material_override = SubResource("StandardMaterial3D_17nxt")
+use_collision = true
+polygon = PackedVector2Array(-2.6, 0, 0, 2, 2.6, 0)
+depth = 0.1
+
+[node name="BackTriangle" type="CSGPolygon3D" parent="Roof" unique_id=908013437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -2.55)
+material_override = SubResource("StandardMaterial3D_17nxt")
+use_collision = true
+polygon = PackedVector2Array(-2.6, 0, 0, 2, 2.6, 0)
+depth = 0.1
+
+[node name="Stairs" type="Node3D" parent="." unique_id=1458800640]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.749382, -1.1213346)
+
+[node name="Step_1" type="CSGBox3D" parent="Stairs" unique_id=852900527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 3.85)
+material_override = SubResource("StandardMaterial3D_aiace")
+use_collision = true
+size = Vector3(1.2, 0.25, 0.3)
+
+[node name="Step_2" type="CSGBox3D" parent="Stairs" unique_id=1575635937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 3.55)
+material_override = SubResource("StandardMaterial3D_aiace")
+use_collision = true
+size = Vector3(1.2, 0.25, 0.3)
+
+[node name="Step_3" type="CSGBox3D" parent="Stairs" unique_id=1020974386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 3.25)
+material_override = SubResource("StandardMaterial3D_aiace")
+use_collision = true
+size = Vector3(1.2, 0.25, 0.3)

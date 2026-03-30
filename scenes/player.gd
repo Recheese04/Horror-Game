@@ -23,6 +23,19 @@ var examining_object: Node3D = null
 var examine_clone: Node3D = null
 var is_examining = false
 
+func end_cinematic():
+	in_cinematic = false
+	cinematic_target = null
+	
+	# Extract where the camera is actually looking right now
+	var cam_forward = -camera.global_transform.basis.z
+	# Player body yaw = atan2 of the forward direction on the XZ plane
+	rotation.y = atan2(-cam_forward.x, -cam_forward.z)
+	# Camera pitch = asin of the vertical component  
+	camera.rotation.x = clamp(asin(cam_forward.y), -1.5, 1.5)
+	camera.rotation.y = 0
+	camera.rotation.z = 0
+
 var _stashed_nodes: Dictionary = {}
 
 @onready var phone_3d: Node3D = $Camera3D/CP
@@ -42,13 +55,6 @@ func _ready() -> void:
 func start_cinematic(target: Node3D):
 	in_cinematic = true
 	cinematic_target = target
-
-func end_cinematic():
-	in_cinematic = false
-	cinematic_target = null
-	# Smoothly reset camera to forward-facing
-	var tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(camera, "rotation", Vector3(0, 0, 0), 0.5)
 
 func show_subtitle(text: String):
 	subtitle_label.text = text
@@ -455,13 +461,18 @@ func _physics_process(delta: float) -> void:
 		
 	input_dir = input_dir.normalized()
 	
+	# Handle Sprint (Shift)
+	var current_speed = speed
+	if Input.is_physical_key_pressed(KEY_SHIFT):
+		current_speed = speed * 2.5
+	
 	# Handle movement
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
+		velocity.x = direction.x * current_speed
+		velocity.z = direction.z * current_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, current_speed)
+		velocity.z = move_toward(velocity.z, 0, current_speed)
 
 	move_and_slide()

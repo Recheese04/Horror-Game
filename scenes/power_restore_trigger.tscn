@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c3me4n5v4kbq7"]
+
+[ext_resource type="Script" path="res://scenes/power_restore_trigger.gd" id="1_pwrr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pwr"]
+size = Vector3(4, 3, 4)
+
+[node name="PowerRestoreTrigger" type="Area3D" unique_id=204835165]
+script = ExtResource("1_pwrr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=686853150]
+shape = SubResource("BoxShape3D_pwr")

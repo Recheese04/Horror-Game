@@ -181,18 +181,9 @@ func _look_at_bulb():
 		tween.tween_property(camera, "global_transform:basis", target.basis, 1.5)
 		await tween.finished
 	
-	# Show Bisaya subtitle
-	subtitle_label.text = "Atay... brownout."
-	var sub_in = create_tween()
-	sub_in.tween_property(subtitle_label, "modulate:a", 1.0, 0.5)
-	
-	# Hold for 3 seconds
-	await get_tree().create_timer(3.0).timeout
-	
-	# Fade out subtitle
-	var sub_out = create_tween()
-	sub_out.tween_property(subtitle_label, "modulate:a", 0.0, 0.5)
-	await sub_out.finished
+	await _show_subtitle("Ay brownout na pod.", 3.0)
+	if _is_skipping: return
+	await _show_subtitle("Kanang brownout jud lagi pag gabii.", 3.0)
 	
 	if _is_skipping: return
 	

@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://cvp4j73fd6sxe"]
+[gd_scene format=3 uid="uid://cltptwkc2g68h"]
 
 [ext_resource type="PackedScene" uid="uid://cax2bqhqxtqxk" path="res://scenes/player.tscn" id="1_wom8k"]
-[ext_resource type="PackedScene" path="res://scenes/intro.tscn" id="2_wa552"]
+[ext_resource type="PackedScene" uid="uid://50iyhj583ne3" path="res://scenes/intro.tscn" id="2_wa552"]
 [ext_resource type="Texture2D" uid="uid://bbhsx4i4vvhj4" path="res://models/Concrete wall smooth pillar texture.jpg" id="3_v0i6o"]
 [ext_resource type="Texture2D" uid="uid://dj3piq7f31a3j" path="res://models/image texture/1000_F_84925916_ob9CyFxvjMItjJ4qVNzQNDqXPA9QjaTO.jpg" id="4_bamb7"]
 [ext_resource type="PackedScene" uid="uid://cgrvyndvmd6f8" path="res://models/old_wooden_table.glb" id="5_8jqp6"]
-[ext_resource type="Script" path="res://scenes/door.gd" id="6_jscgt"]
+[ext_resource type="Script" uid="uid://di6wwccdstubw" path="res://scenes/door.gd" id="6_jscgt"]
 [ext_resource type="PackedScene" uid="uid://dj8kw81c6sdlw" path="res://scenes/jumpscare.tscn" id="7_0bysi"]
 [ext_resource type="Texture2D" uid="uid://bt8sd1eytl5eb" path="res://models/wood1.jpg" id="8_y0ove"]
 [ext_resource type="PackedScene" uid="uid://dwbvmn66jxxfy" path="res://scenes/bulb.tscn" id="9_awarj"]
@@ -59,8 +59,12 @@ ambient_light_energy = 0.77
 tonemap_mode = 2
 glow_enabled = true
 fog_enabled = true
-fog_light_color = Color(0, 0, 0.01, 1)
-fog_density = 0.02
+fog_light_color = Color(0.01, 0.01, 0.015, 1)
+fog_light_energy = 0.1
+fog_density = 0.05
+fog_depth_curve = 1.5
+fog_depth_begin = 1.0
+fog_depth_end = 30.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hn12h"]
 
@@ -388,6 +392,7 @@ shape = SubResource("BoxShape3D_chair")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7476, 0, 5.09188)
 script = ExtResource("6_jscgt")
 jumpscare_scene = ExtResource("7_0bysi")
+is_front_door = null
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="House/Door" unique_id=161460234]
 transform = Transform3D(1.545742, 0, 0, 0, 2.5365372, 0, 0, 0, 0.10706239, 0.77274, 1.2250953, 0)
