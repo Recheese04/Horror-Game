@@ -19,11 +19,10 @@ var dialogue_arrival = [
 ]
 
 var dialogue_sneak_out = [
-	"Jake: Niel. Magmabinantayon ta.",
-	"Christian: Jake. Moadto ko sa balay ni Nang Caring.",
-	"Jake: Kuyog ko.",
-	"Christian: Kuyaw na Jake.",
-	"Jake: Mas kuyaw kung mag-inusara ka. Dali."
+	"Christian: Dili man mo tug an mama nako bai.",
+	"Jake: Ngano kaha naa kaha gitaguan imo mama?",
+	"Christian: Ambot laman bai, unya gabie mag investigate ta.",
+	"Jake: Sge bai ingna lang ko."
 ]
 
 var manager = null

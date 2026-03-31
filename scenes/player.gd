@@ -26,15 +26,6 @@ var is_examining = false
 func end_cinematic():
 	in_cinematic = false
 	cinematic_target = null
-	
-	# Extract where the camera is actually looking right now
-	var cam_forward = -camera.global_transform.basis.z
-	# Player body yaw = atan2 of the forward direction on the XZ plane
-	rotation.y = atan2(-cam_forward.x, -cam_forward.z)
-	# Camera pitch = asin of the vertical component  
-	camera.rotation.x = clamp(asin(cam_forward.y), -1.5, 1.5)
-	camera.rotation.y = 0
-	camera.rotation.z = 0
 
 var _stashed_nodes: Dictionary = {}
 
@@ -286,10 +277,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	if in_cinematic:
-		if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			rotate_y(-event.relative.x * mouse_sensitivity)
-			camera.rotate_x(-event.relative.y * mouse_sensitivity)
-			camera.rotation.x = clamp(camera.rotation.x, -PI / 3, PI / 3) # Slightly more restricted vertically in cinematic
+		# Camera and movement are completely locked during conversation
 		return
 	
 	# Block all gameplay input while inventory is open (TAB handled in inventory_ui.gd)
@@ -396,12 +384,19 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 		move_and_slide()
 		
-		# Smoothly pull head back to NPC face if no mouse movement, but allow player to nudge away
+		# Smoothly pull head back to NPC face maintaining exact local transforms
 		if is_instance_valid(cinematic_target):
 			var face_pos = cinematic_target.global_position + Vector3(0, 1.5, 0)
-			var look_target = camera.global_transform.looking_at(face_pos, Vector3.UP)
-			# Slower slerp so player has more control
-			camera.global_transform.basis = camera.global_transform.basis.slerp(look_target.basis, 1.5 * delta)
+			var global_pos = camera.global_position
+			var target_dir = (face_pos - global_pos).normalized()
+			
+			var target_yaw = atan2(-target_dir.x, -target_dir.z)
+			var target_pitch = asin(target_dir.y)
+			
+			rotation.y = lerp_angle(rotation.y, target_yaw, 3.0 * delta)
+			camera.rotation.x = lerp_angle(camera.rotation.x, target_pitch, 3.0 * delta)
+			camera.rotation.y = 0
+			camera.rotation.z = 0
 		
 		# Zoom FOV in
 		camera.fov = lerp(camera.fov, 40.0, 3.0 * delta)

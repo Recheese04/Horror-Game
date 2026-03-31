@@ -37,8 +37,8 @@
 [ext_resource type="PackedScene" path="res://scenes/mang_pedring.tscn" id="47_jf2qc"]
 [ext_resource type="PackedScene" uid="uid://fk6ildbxyqvo" path="res://scenes/kubo.tscn" id="47_wc02i"]
 [ext_resource type="PackedScene" uid="uid://bx714qpwqabcd" path="res://scenes/ph_streetlight.tscn" id="48_jf2qc"]
-[ext_resource type="PackedScene" path="res://scenes/creepy_entity.tscn" id="49_cgue7"]
-[ext_resource type="PackedScene" path="res://scenes/entity_spawn_trigger.tscn" id="50_0t3i3"]
+[ext_resource type="PackedScene" uid="uid://cxentity0001" path="res://scenes/creepy_entity.tscn" id="49_cgue7"]
+[ext_resource type="PackedScene" uid="uid://cgxspawn0001" path="res://scenes/entity_spawn_trigger.tscn" id="50_0t3i3"]
 [ext_resource type="PackedScene" uid="uid://ceb7i1msvwnrk" path="res://scenes/dish_cabinet.tscn" id="78_dish"]
 [ext_resource type="PackedScene" path="res://scenes/family_photo.tscn" id="family_photo_scene"]
 [ext_resource type="PackedScene" uid="uid://50iyhj583ne3" path="res://scenes/intro.tscn" id="intro_cutscene"]
@@ -304,7 +304,7 @@ operation = 2
 size = Vector3(1.9525146, 0.6521301, 0.21733093)
 
 [node name="wall26" type="CSGBox3D" parent="House" unique_id=1012327215]
-transform = Transform3D(0.3226776, -0.11647634, -0.04457935, 0.00243433, 0.021355271, 6.0877767, -0.010987913, -3.4157836, 0.03958061, 0.04260285, 1.4823772, -6.565167)
+transform = Transform3D(0.3226776, -0.11647634, -0.04457935, 0.00243433, 0.021355271, 6.0877767, -0.010987913, -3.4157836, 0.03958061, 0.04260285, 1.4823772, -6.036479)
 use_collision = true
 size = Vector3(1, 1.319107, 0.526001)
 material = SubResource("StandardMaterial3D_td8cy")
@@ -1359,7 +1359,7 @@ is_flickering = false
 transform = Transform3D(-0.24002466, 0, -0.97076684, 0, 1, 0, 0.97076684, 0, -0.24002466, -44.85321, -0.5884496, 22.39698)
 
 [node name="CreepyEntity" parent="." unique_id=1653367622 instance=ExtResource("49_cgue7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.364405, 0.049677014, 21.438166)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.431456, 0.049677014, 22.463125)
 
 [node name="EntitySpawnTrigger" parent="." unique_id=1611750731 instance=ExtResource("50_0t3i3")]
 transform = Transform3D(0.57027453, 0, 0, 0, 1, 0, 0, 0, 4.3431287, -21.140049, 0.15598452, 25.819883)

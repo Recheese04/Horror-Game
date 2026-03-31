@@ -3,6 +3,7 @@ extends AnimatableBody3D
 @onready var anim = $AnimationPlayer
 @export var jumpscare_scene: PackedScene
 @export var is_front_door: bool = false
+@export var is_level_2_front_door: bool = false
 
 var jumpscare_triggered = false
 var front_door_triggered = false
@@ -19,6 +20,16 @@ func _ready():
 func interact():
 	if is_front_door:
 		_play_front_door_transition()
+		return
+		
+	if is_level_2_front_door:
+		var manager = get_tree().root.find_child("Level2", true, false)
+		if manager and manager.current_state >= 1 and manager.current_state < 3:
+			_play_level2_jake_arrival()
+		elif manager and manager.current_state < 1:
+			var player = get_tree().root.find_child("Player", true, false)
+			if player and player.has_method("show_subtitle"):
+				player.show_subtitle("Sirado ang pultahan.")
 		return
 
 	# Play the creaking sound effect immediately
@@ -175,4 +186,51 @@ func _play_front_door_transition():
 			player.hide_subtitle()
 			
 		front_door_triggered = true
+	)
+
+func _play_level2_jake_arrival():
+	var player = get_tree().root.find_child("Player", true, false)
+	if not player: return
+	
+	player.in_cinematic = true
+	
+	# Play door creak sound immediately
+	door_audio.pitch_scale = randfn(1.0, 0.1)
+	door_audio.play()
+	
+	# Create fade to black UI dynamically
+	var canvas = CanvasLayer.new()
+	var fade_rect = ColorRect.new()
+	fade_rect.color = Color.BLACK
+	fade_rect.modulate.a = 0.0
+	fade_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	canvas.add_child(fade_rect)
+	add_child(canvas)
+	
+	var tw = create_tween()
+	
+	# Fast fade out
+	tw.tween_property(fade_rect, "modulate:a", 1.0, 0.5)
+	
+	tw.tween_callback(func():
+		var jake = get_tree().get_nodes_in_group("Jake").front()
+		if jake:
+			# Teleport Jake just inside the door
+			jake.global_position = Vector3(-3.7, 0.1, 3.5)
+			# Face the player (approximate inside rotation)
+			jake.global_rotation = Vector3(0, PI, 0)
+			
+			if jake.has_method("enable_interaction"):
+				jake.enable_interaction()
+	)
+	
+	tw.tween_interval(1.0)
+	
+	# Fade back in
+	tw.tween_property(fade_rect, "modulate:a", 0.0, 1.0)
+	tw.tween_callback(func():
+		var jake = get_tree().get_nodes_in_group("Jake").front()
+		if not jake or not jake.get("is_in_cinematic"):
+			player.in_cinematic = false
+		canvas.queue_free()
 	)

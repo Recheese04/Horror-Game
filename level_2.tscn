@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://jlel7w3v3p0p"]
+[gd_scene format=3 uid="uid://q60pddlfm30n"]
 
 [ext_resource type="PackedScene" uid="uid://cax2bqhqxtqxk" path="res://scenes/player.tscn" id="1_player"]
 [ext_resource type="Texture2D" uid="uid://bbhsx4i4vvhj4" path="res://models/Concrete wall smooth pillar texture.jpg" id="2_hbghi"]
@@ -10,21 +10,21 @@
 [ext_resource type="Script" uid="uid://cdvuq4fp0ptpc" path="res://scenes/switch.gd" id="9_switchscript"]
 [ext_resource type="PackedScene" uid="uid://dqql1j1aphgpo" path="res://scenes/curtain.tscn" id="11_1pe0h"]
 [ext_resource type="PackedScene" uid="uid://tvset123" path="res://scenes/tv_set.tscn" id="11_ggavl"]
-[ext_resource type="PackedScene" path="res://scenes/wall_fan.tscn" id="11_newfan"]
+[ext_resource type="PackedScene" uid="uid://d3yq1vx6n5c3g" path="res://scenes/wall_fan.tscn" id="11_newfan"]
 [ext_resource type="Script" uid="uid://di6wwccdstubw" path="res://scenes/door.gd" id="12_doorscript"]
 [ext_resource type="PackedScene" uid="uid://bt84rddsr5cb0" path="res://scenes/filipino_bed.tscn" id="13_filipinobed"]
 [ext_resource type="PackedScene" uid="uid://dj8kw81c6sdlw" path="res://scenes/jumpscare.tscn" id="14_jsscene"]
 [ext_resource type="Texture2D" uid="uid://dt7v7k0w8o5y" path="res://models/wood.jpg" id="15_3o2xh"]
 [ext_resource type="PackedScene" uid="uid://bnlsls3aonod3" path="res://scenes/gripo.tscn" id="16_be5co"]
 [ext_resource type="PackedScene" uid="uid://bvnwje8h27y1v" path="res://scenes/bamboo_chair.tscn" id="18_00ld1"]
-[ext_resource type="PackedScene" uid="uid://jalousie123" path="res://scenes/jalousie_window.tscn" id="18_gjkv5"]
+[ext_resource type="PackedScene" path="res://scenes/jalousie_window.tscn" id="18_gjkv5"]
 [ext_resource type="PackedScene" uid="uid://k8pfcshtk014" path="res://scenes/bamboo_bench.tscn" id="19_00ld1"]
 [ext_resource type="PackedScene" uid="uid://pr8u5v1ossgy" path="res://scenes/bamboo_table.tscn" id="20_3qmij"]
 [ext_resource type="PackedScene" uid="uid://parador123" path="res://scenes/aparador.tscn" id="21_kb5eu"]
 [ext_resource type="PackedScene" uid="uid://dju1ptyv0d0wp" path="res://scenes/clothesline.tscn" id="22_lfy8a"]
 [ext_resource type="PackedScene" uid="uid://6546vxfr4hy7" path="res://models/monobloc_-_plastic_garden_chair.glb" id="23_ethxx"]
 [ext_resource type="PackedScene" uid="uid://dudvrlbf0xntb" path="res://models/low_poly_roof_tile_game_ready.glb" id="25_duihb"]
-[ext_resource type="PackedScene" path="res://scenes/refrigerator.tscn" id="26_b6mmh"]
+[ext_resource type="PackedScene" uid="uid://cuaahjjhcwcgi" path="res://scenes/refrigerator.tscn" id="26_b6mmh"]
 [ext_resource type="PackedScene" uid="uid://di36whhfkkr7g" path="res://scenes/soap_dispenser.tscn" id="30_hycyb"]
 [ext_resource type="PackedScene" uid="uid://platexy0" path="res://scenes/plate.tscn" id="31_swvua"]
 [ext_resource type="PackedScene" uid="uid://platito" path="res://scenes/platito.tscn" id="32_ka01f"]
@@ -39,29 +39,28 @@
 [ext_resource type="PackedScene" uid="uid://bx714qpwqabcd" path="res://scenes/ph_streetlight.tscn" id="48_jf2qc"]
 [ext_resource type="PackedScene" uid="uid://cxentity0001" path="res://scenes/creepy_entity.tscn" id="49_cgue7"]
 [ext_resource type="PackedScene" uid="uid://cgxspawn0001" path="res://scenes/entity_spawn_trigger.tscn" id="50_0t3i3"]
-[ext_resource type="PackedScene" path="res://scenes/dish_cabinet.tscn" id="78_dish"]
+[ext_resource type="PackedScene" uid="uid://ceb7i1msvwnrk" path="res://scenes/dish_cabinet.tscn" id="78_dish"]
 [ext_resource type="PackedScene" path="res://scenes/abandoned_house_trigger.tscn" id="abandoned_house_scene"]
 [ext_resource type="PackedScene" path="res://scenes/family_photo.tscn" id="family_photo_scene"]
-[ext_resource type="PackedScene" uid="uid://50iyhj583ne3" path="res://scenes/intro.tscn" id="intro_cutscene"]
 [ext_resource type="PackedScene" path="res://scenes/jake.tscn" id="jake_scene"]
 [ext_resource type="Script" uid="uid://dh7y3o2w01thq" path="res://scenes/level_2_manager.gd" id="level2_script"]
 [ext_resource type="PackedScene" uid="uid://bq38u5ijvxc5c" path="res://scenes/lutuanan.tscn" id="lutuanan_scene"]
-[ext_resource type="Script" uid="uid://riiuu0sfxacx" path="res://scenes/mother_day2.gd" id="mother2_script"]
+[ext_resource type="Script" path="res://scenes/mother_day2.gd" id="mother2_script"]
 [ext_resource type="PackedScene" uid="uid://b15sj82nx2qcy" path="res://scenes/mother.tscn" id="mother_scene"]
-[ext_resource type="Script" uid="uid://i8mdkio4kgv6" path="res://scenes/mang_pedring_day2.gd" id="mp2_script"]
+[ext_resource type="Script" path="res://scenes/mang_pedring_day2.gd" id="mp2_script"]
 [ext_resource type="PackedScene" path="res://scenes/nang_caring_trigger.tscn" id="nang_caring_scene"]
 [ext_resource type="PackedScene" uid="uid://nxs0ej718blm" path="res://scenes/road.tscn" id="road_scene"]
-[ext_resource type="PackedScene" uid="uid://saksakan01" path="res://scenes/saksakan.tscn" id="saksakan_scene"]
+[ext_resource type="PackedScene" path="res://scenes/saksakan.tscn" id="saksakan_scene"]
 [ext_resource type="PackedScene" path="res://scenes/table_candle.tscn" id="table_candle_scene"]
 [ext_resource type="PackedScene" path="res://scenes/terrain.tscn" id="terrain_scene"]
 [ext_resource type="PackedScene" uid="uid://858xb4xubgt5" path="res://scenes/tindahan.tscn" id="tindahan_scene"]
 [ext_resource type="PackedScene" uid="uid://c7q2u58d00pbe" path="res://scenes/wallet.tscn" id="wallet_scene"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x"]
-sky_top_color = Color(0, 0, 0.01, 1)
-sky_horizon_color = Color(0.01, 0.01, 0.03, 1)
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0.01, 0.01, 0.03, 1)
+sky_top_color = Color(0.35, 0.55, 0.8, 1)
+sky_horizon_color = Color(0.7, 0.75, 0.8, 1)
+ground_bottom_color = Color(0.2, 0.15, 0.1, 1)
+ground_horizon_color = Color(0.7, 0.75, 0.8, 1)
 
 [sub_resource type="Sky" id="Sky_y"]
 sky_material = SubResource("ProceduralSkyMaterial_x")
@@ -70,17 +69,15 @@ sky_material = SubResource("ProceduralSkyMaterial_x")
 background_mode = 2
 sky = SubResource("Sky_y")
 ambient_light_source = 2
-ambient_light_color = Color(0.065, 0.078, 0.13, 1)
-ambient_light_energy = 0.75
+ambient_light_color = Color(0.6, 0.65, 0.7, 1)
+ambient_light_energy = 0.2
 tonemap_mode = 2
 glow_enabled = true
-fog_enabled = true
-fog_light_color = Color(0.01, 0.01, 0.015, 1)
-fog_light_energy = 0.1
-fog_density = 0.05
+fog_light_color = Color(0.7, 0.75, 0.8, 1)
+fog_light_energy = 0.5
 fog_depth_curve = 1.5
 fog_depth_begin = 1.0
-fog_depth_end = 30.0
+fog_depth_end = 50.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbghi"]
 albedo_texture = ExtResource("2_hbghi")
@@ -177,8 +174,6 @@ transform = Transform3D(-0.015864316, -0.12787946, 0.991663, 4.9953153e-09, 0.99
 [node name="Jake" parent="." unique_id=142507917 instance=ExtResource("jake_scene")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7, 0.1, 7)
 
-[node name="IntroCutscene" parent="." unique_id=1273567523 instance=ExtResource("intro_cutscene")]
-
 [node name="House" type="Node3D" parent="." unique_id=1241009710]
 
 [node name="Atop" parent="House" unique_id=67482910 instance=ExtResource("40_atop")]
@@ -191,7 +186,7 @@ size = Vector3(1, 1, 0.2187233)
 material = SubResource("StandardMaterial3D_hbghi")
 
 [node name="wall27" type="CSGBox3D" parent="House" unique_id=1723178913]
-transform = Transform3D(-0.0024355422, 0, -10.008078, 0, 3.4178355, 0, 0.323019, 0, -0.07546026, -7.270291, 1.3999383, -8.517794)
+transform = Transform3D(-0.0024355422, 0, -10.008078, 0, 3.4178355, 0, 0.323019, 0, -0.07546026, -5.516188, 1.3999383, -8.517794)
 use_collision = true
 size = Vector3(1, 1, 0.18541813)
 material = SubResource("StandardMaterial3D_hbghi")
@@ -209,7 +204,7 @@ size = Vector3(1, 0.15075684, 0.24437809)
 material = SubResource("StandardMaterial3D_hbghi")
 
 [node name="wall6" type="CSGBox3D" parent="House" unique_id=1665017143]
-transform = Transform3D(-0.0024355422, 0, -10.008078, 0, 3.4178355, 0, 0.323019, 0, -0.07546026, -10.583975, 1.3999383, -3.6504014)
+transform = Transform3D(-0.0024355422, 0, -10.008078, 0, 3.4178355, 0, 0.323019, 0, -0.07546026, -10.582381, 1.4007103, -3.65083)
 use_collision = true
 size = Vector3(1, 1, 0.43157196)
 material = SubResource("StandardMaterial3D_hbghi")
@@ -314,7 +309,7 @@ operation = 2
 size = Vector3(1.9525146, 0.6521301, 0.21733093)
 
 [node name="wall26" type="CSGBox3D" parent="House" unique_id=1012327215]
-transform = Transform3D(0.3226776, -0.11647634, -0.04457935, 0.00243433, 0.021355271, 6.0877767, -0.010987913, -3.4157836, 0.03958061, 0.04260285, 1.4823772, -6.565167)
+transform = Transform3D(0.3226776, -0.11647634, -0.04457935, 0.00243433, 0.021355271, 6.0877767, -0.010987913, -3.4157836, 0.03958061, 0.04260285, 1.4823772, -6.1155314)
 use_collision = true
 size = Vector3(1, 1.319107, 0.526001)
 material = SubResource("StandardMaterial3D_td8cy")
@@ -413,7 +408,7 @@ shape = SubResource("BoxShape3D_chair")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7476, 0, 5.09188)
 script = ExtResource("12_doorscript")
 jumpscare_scene = ExtResource("14_jsscene")
-is_front_door = true
+is_level_2_front_door = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="House/Door" unique_id=161460234]
 transform = Transform3D(1.545742, 0, 0, 0, 2.5365372, 0, 0, 0, 0.10706239, 0.77274, 1.2250953, 0)
@@ -1137,7 +1132,7 @@ transform = Transform3D(1.2718081, 0, 0, 0, 1.7903048, 0, 0, 0, 2.7220747, -17.3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.5942366, 1.76)
 
 [node name="Mother" parent="House" unique_id=5551213 instance=ExtResource("mother_scene")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.100000024, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.871866, 0.100000024, 0.31946635)
 script = ExtResource("mother2_script")
 interactable = true
 
@@ -1235,6 +1230,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9260013, 0.049677014, 10.89
 
 [node name="banana2" parent="." unique_id=153237135 instance=ExtResource("43_mmag5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9260013, 0.049677014, 6.8474483)
+
+[node name="banana49" parent="." unique_id=779843848 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9260013, 0.049677014, 0.4270153)
+
+[node name="banana51" parent="." unique_id=661954332 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9260013, 0.049677014, 2.3121257)
+
+[node name="banana52" parent="." unique_id=487145098 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3087826, 0.049677014, 2.3121257)
+
+[node name="banana53" parent="." unique_id=369575972 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3087826, 0.049677014, 3.8597035)
+
+[node name="banana54" parent="." unique_id=1653375234 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3087826, 0.049677014, -4.1512313)
+
+[node name="banana55" parent="." unique_id=2023749507 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3087826, 0.049677014, -1.8091877)
+
+[node name="banana56" parent="." unique_id=2036243045 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.600996, 0.049677014, -1.8091877)
+
+[node name="banana57" parent="." unique_id=889477810 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.600996, 0.049677014, 0.020436168)
+
+[node name="banana50" parent="." unique_id=1970630715 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9260013, 0.049677014, -4.2960606)
+
+[node name="banana39" parent="." unique_id=2115836704 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2642953, 0.049677014, -11.787088)
+
+[node name="banana40" parent="." unique_id=587557132 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.081402, 0.049677014, -11.787088)
+
+[node name="banana41" parent="." unique_id=568558547 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.162962, 0.049677014, -14.310204)
+
+[node name="banana42" parent="." unique_id=98947123 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1127367, 0.049677014, -14.310204)
+
+[node name="banana43" parent="." unique_id=1335896653 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2045147, 0.049677014, -14.310204)
+
+[node name="banana44" parent="." unique_id=142534496 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5937014, 0.049677014, -14.310204)
+
+[node name="banana45" parent="." unique_id=1961270217 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45474386, 0.049677014, -14.310204)
+
+[node name="banana46" parent="." unique_id=1722214382 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45474386, 0.049677014, -17.367191)
+
+[node name="banana47" parent="." unique_id=1247099362 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.619991, 0.049677014, -15.458078)
+
+[node name="banana48" parent="." unique_id=876235094 instance=ExtResource("43_mmag5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5970955, 0.049677014, -17.756706)
 
 [node name="banana3" parent="." unique_id=1104678026 instance=ExtResource("43_mmag5")]
 transform = Transform3D(1, 0, 0, 0, 1.6310873, 0, 0, 0, 1, 3.9260013, 0.049677014, 13.842645)

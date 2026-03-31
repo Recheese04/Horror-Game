@@ -7,6 +7,11 @@ func _ready():
 	# Wait one frame to make sure WorldEnvironment is loaded
 	await get_tree().process_frame
 	
+	# Skip the global dark fog if we are in the morning sequence of Level 2!
+	var current_scene = get_tree().current_scene
+	if current_scene and current_scene.name == "Level2":
+		return
+		
 	var world_env = _find_world_env(get_tree().root)
 	if not world_env:
 		print("FogSetup: No WorldEnvironment found, creating one...")
