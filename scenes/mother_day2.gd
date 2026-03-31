@@ -43,7 +43,7 @@ func get_interaction_prompt() -> String:
 	var state = get_level_state()
 	if state == 0 and current_dialogue_state == 0:
 		return "Talk to Nanay"
-	elif state == 3 and current_dialogue_state == 1:
+	elif state == 4 and current_dialogue_state == 1:
 		return "Pangutan-a si Nanay sa Estranghero"
 	return ""
 
@@ -65,7 +65,7 @@ func interact():
 		if player: _start_dialogue(player, dialogue_morning)
 		current_dialogue_state = 1
 		
-	elif state == 3 and current_dialogue_state == 1:
+	elif state == 4 and current_dialogue_state == 1:
 		var player = get_tree().root.find_child("Player", true, false)
 		if player: _start_dialogue(player, dialogue_asking)
 		current_dialogue_state = 3
@@ -118,4 +118,4 @@ func _start_dialogue(body, lines):
 		if lines == dialogue_morning:
 			manager.advance_story(1) # TALKED_TO_NANAY_MORNING
 		elif lines == dialogue_asking:
-			manager.advance_story(4) # ASKED_NANAY_ABOUT_STRANGER
+			manager.advance_story(5) # ASKED_NANAY_ABOUT_STRANGER

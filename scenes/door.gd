@@ -24,9 +24,9 @@ func interact():
 		
 	if is_level_2_front_door:
 		var manager = get_tree().root.find_child("Level2", true, false)
-		if manager and manager.current_state >= 1 and manager.current_state < 3:
+		if manager and manager.current_state >= 2 and manager.current_state < 4:
 			_play_level2_jake_arrival()
-		elif manager and manager.current_state < 1:
+		elif manager and manager.current_state < 2:
 			var player = get_tree().root.find_child("Player", true, false)
 			if player and player.has_method("show_subtitle"):
 				player.show_subtitle("Sirado ang pultahan.")

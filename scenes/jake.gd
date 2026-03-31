@@ -41,7 +41,7 @@ func get_interaction_prompt() -> String:
 	var state = get_level_state()
 	if current_dialogue_state == 1:
 		return "Talk to Jake"
-	elif state == 4 and current_dialogue_state == 2:
+	elif state == 5 and current_dialogue_state == 2:
 		return "Go with Jake"
 	return ""
 
@@ -51,7 +51,7 @@ func interact():
 		var player = get_tree().root.find_child("Player", true, false)
 		if player: _start_dialogue(player, dialogue_arrival)
 		current_dialogue_state = 2
-	elif state == 4 and current_dialogue_state == 2:
+	elif state == 5 and current_dialogue_state == 2:
 		var player = get_tree().root.find_child("Player", true, false)
 		if player: _start_dialogue(player, dialogue_sneak_out)
 		current_dialogue_state = 5
@@ -100,6 +100,6 @@ func _start_dialogue(body, lines):
 	# Notify manager
 	if manager and manager.has_method("advance_story"):
 		if lines == dialogue_arrival:
-			manager.advance_story(3) # TALKED_TO_JAKE
+			manager.advance_story(4) # TALKED_TO_JAKE
 		elif lines == dialogue_sneak_out:
-			manager.advance_story(5) # SNEAKING_OUT
+			manager.advance_story(6) # SNEAKING_OUT

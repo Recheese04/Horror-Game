@@ -17,6 +17,7 @@ var held_object: Node3D = null
 var in_cinematic = false
 var cinematic_target = null
 var is_intro_playing = false
+var is_sitting = false
 
 # Examine mode
 var examining_object: Node3D = null
@@ -277,7 +278,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	if in_cinematic:
-		# Camera and movement are completely locked during conversation
+		if is_sitting:
+			if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+				rotate_y(-event.relative.x * mouse_sensitivity)
+				camera.rotate_x(-event.relative.y * mouse_sensitivity)
+				camera.rotation.x = clamp(camera.rotation.x, -0.8, 0.5)
 		return
 	
 	# Block all gameplay input while inventory is open (TAB handled in inventory_ui.gd)

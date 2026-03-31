@@ -3,6 +3,7 @@ extends Node3D
 enum StoryState {
 	MORNING_WAKEUP,
 	TALKED_TO_NANAY_MORNING,
+	FINISHED_EATING,
 	JAKE_ARRIVED,
 	TALKED_TO_JAKE,
 	ASKED_NANAY_ABOUT_STRANGER,
@@ -141,7 +142,11 @@ func advance_story(new_state: int):
 	current_state = new_state
 	
 	if current_state == StoryState.TALKED_TO_NANAY_MORNING:
-		# Nanay told the player to eat, door knock happens shortly after
+		# Nanay told the player to eat
+		if player: player.show_objective("Kaon sa pagkaon sa lamesa")
+		
+	elif current_state == StoryState.FINISHED_EATING:
+		# Player ate, now someone knocks
 		if player: player.show_objective("Kinsa nang nanuktok?")
 		_trigger_jake_arrival()
 		
