@@ -180,6 +180,12 @@ use_collision = true
 size = Vector3(1, 1, 0.2187233)
 material = SubResource("StandardMaterial3D_hbghi")
 
+[node name="wall8" type="CSGBox3D" parent="House" unique_id=1072382129]
+transform = Transform3D(-0.0024355422, 0, -10.008078, 0, 3.4178355, 0, 0.323019, 0, -0.07546026, -5.6832857, 1.3999383, -8.513377)
+use_collision = true
+size = Vector3(1, 1, 0.20604134)
+material = SubResource("StandardMaterial3D_hbghi")
+
 [node name="wall27" type="CSGBox3D" parent="House" unique_id=1723178913]
 transform = Transform3D(-0.0024355422, 0, -10.008078, 0, 3.4178355, 0, 0.323019, 0, -0.07546026, -7.270291, 1.3999383, -8.517794)
 use_collision = true
