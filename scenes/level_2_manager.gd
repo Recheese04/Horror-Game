@@ -218,24 +218,6 @@ func _transition_to_night():
 	tween.tween_property(fade_rect, "modulate:a", 1.0, 2.0)
 	
 	tween.tween_callback(func():
-		# The screen is now perfectly black so you can add subtitles or scenes later.
-		# We'll also change the actual environment behind the scenes so whenever you DO fade back in, it will be night.
-		if directional_light:
-			directional_light.light_energy = 0.05
-			directional_light.light_color = Color(0.2, 0.3, 0.5)
-		
-		var we = get_node_or_null("WorldEnvironment")
-		if we and we.environment:
-			we.environment.fog_enabled = true
-			we.environment.ambient_light_energy = 0.1
-			
-		# Play rain sound
-		var rain_sound = load("res://assets/sounds/321173__inspectorj__ambience-rain-heavy-a.wav")
-		if rain_sound:
-			audio_player.stream = rain_sound
-			if rain_sound.has_method("set_loop"):
-				rain_sound.loop = true
-			elif "loop_mode" in rain_sound:
-				rain_sound.loop_mode = 1
-			audio_player.play()
+		# The screen is now perfectly black, seamlessly load Level 3 where it's night!
+		get_tree().change_scene_to_file("res://level_three.tscn")
 	)
