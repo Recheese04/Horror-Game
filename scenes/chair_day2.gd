@@ -41,7 +41,20 @@ func interact():
 			# Make player look at the table (center of plate area)
 			# Plates are around X=-8.3, Z=4.3
 			var look_target = Vector3(-8.3, 0.8, 4.3)
-			player.camera.look_at(look_target)
+			var eye_pos = player.global_position + Vector3(0, 0.8, 0) # Camera's approximate global pos?
+			if player.has_node("Camera3D"):
+				eye_pos = player.get_node("Camera3D").global_position
+			var target_dir = (look_target - eye_pos).normalized()
+			
+			var target_yaw = atan2(-target_dir.x, -target_dir.z)
+			var target_pitch = asin(target_dir.y)
+			
+			player.rotation.y = target_yaw
+			if player.has_node("Camera3D"):
+				var cam = player.get_node("Camera3D")
+				cam.rotation.x = target_pitch
+				cam.rotation.y = 0
+				cam.rotation.z = 0
 			
 			if player.has_method("show_subtitle"):
 				player.show_subtitle("Lami-a sa baho sa pagkaon...")

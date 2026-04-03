@@ -185,7 +185,7 @@ func _trigger_jake_arrival():
 	# Play knock sound
 	# Attempt to load the M4A or any knock sound found
 	var knock_path = "res://assets/sounds/437589__wakaproduction2018__3-knock-101.m4a"
-	if FileAccess.file_exists(knock_path):
+	if ResourceLoader.exists(knock_path):
 		var knock_sound = load(knock_path)
 		if knock_sound:
 			audio_player.stream = knock_sound

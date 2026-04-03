@@ -28,8 +28,12 @@ func interact():
 		bites_left -= 1
 		
 		# Shrink visually
+		var target_scale = initial_scale * (float(bites_left) / float(max_bites))
+		if bites_left == 0:
+			target_scale = initial_scale * 0.01
+
 		var tween = create_tween()
-		tween.tween_property(self, "scale", initial_scale * (float(bites_left) / float(max_bites)), 0.2)
+		tween.tween_property(self, "scale", target_scale, 0.2)
 		
 		var player = get_tree().root.find_child("Player", true, false)
 		if player and player.has_method("show_subtitle"):
@@ -59,8 +63,12 @@ func _check_all_food_eaten():
 			
 		# Stand up the player if they were sitting
 		var chair = get_tree().root.find_child("Chair", true, false)
-		if chair and chair.has_method("stand_up"):
-			chair.stand_up()
+		if chair:
+			var chair_body = chair.get_node_or_null("StaticBody3D")
+			if chair_body and chair_body.has_method("stand_up"):
+				chair_body.stand_up()
+			elif chair.has_method("stand_up"):
+				chair.stand_up()
 			
 		if not manager: manager = get_tree().root.find_child("Level2", true, false)
 		if manager and manager.has_method("advance_story"):

@@ -282,8 +282,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 				rotate_y(-event.relative.x * mouse_sensitivity)
 				camera.rotate_x(-event.relative.y * mouse_sensitivity)
-				camera.rotation.x = clamp(camera.rotation.x, -0.8, 0.5)
-		return
+				camera.rotation.x = clamp(camera.rotation.x, -1.2, 0.6)
+				return
+			if event is InputEventKey and event.keycode == KEY_E:
+				pass # Let E fall through into the main input logic to trigger interact()
+			else:
+				return
+		else:
+			return
 	
 	# Block all gameplay input while inventory is open (TAB handled in inventory_ui.gd)
 	if inventory_ui and inventory_ui.is_open:
@@ -402,12 +408,16 @@ func _physics_process(delta: float) -> void:
 			camera.rotation.x = lerp_angle(camera.rotation.x, target_pitch, 3.0 * delta)
 			camera.rotation.y = 0
 			camera.rotation.z = 0
+			
+			# Zoom FOV in when talking to target
+			camera.fov = lerp(camera.fov, 40.0, 3.0 * delta)
+		else:
+			# If no target (e.g. sitting or looking at door), restore normal FOV
+			camera.fov = lerp(camera.fov, 75.0, 5.0 * delta)
 		
-		# Zoom FOV in
-		camera.fov = lerp(camera.fov, 40.0, 3.0 * delta)
-		
-		interact_label.hide()
-		return
+		if not is_sitting:
+			interact_label.hide()
+			return
 		
 	# Smoothly return FOV back to normal if escaping cinematic
 	camera.fov = lerp(camera.fov, 75.0, 5.0 * delta)
@@ -447,6 +457,9 @@ func _physics_process(delta: float) -> void:
 			interact_label.hide()
 	else:
 		interact_label.hide()
+
+	if in_cinematic:
+		return
 
 	# Handle Jump.
 	if Input.is_physical_key_pressed(KEY_SPACE) and is_on_floor():

@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@onready var interaction_zone = $InteractionZone
+@onready var interaction_zone = get_node_or_null("InteractionZone")
 
 var is_in_cinematic = false
 
